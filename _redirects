@@ -1,12 +1,2 @@
-/people/munger   /people/munger.html   301
-/people/naval    /people/naval.html    301
-/people/buffett  /people/buffett.html  301
-/people/musk     /people/musk.html     301
-/people/jobs     /people/jobs.html     301
-/people/taleb    /people/taleb.html    301
-/collision       /collision/index.html 301
-/graph           /graph.html           301
-/concepts        /concepts/index.html  301
-/quotes          /quotes/index.html    301
-/articles        /articles/index.html  301
-/search          /search.html          301
+# Cloudflare Pages handles Pretty URLs automatically
+# No manual redirects needed - they cause redirect loops
