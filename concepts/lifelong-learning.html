@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">姒傚康璇︽儏 路 澶х璁ょ煡鐭ヨ瘑搴?/title>
+  <title id="page-title">概念详情 · 大神认知知识库</title>
   <link rel="stylesheet" href="../assets/css/main.css">
   <style>
     .concept-layout {
@@ -309,7 +309,104 @@
 <script src="../data/concepts.js"></script>
 <script src="../data/quotes.js"></script>
 <script>
-// 浠嶶RL鑾峰彇姒傚康ID锛堟枃浠跺悕锛?const conceptId = location.pathname.split('/').pop().replace('.html','');
+// 从URL获取概念ID（文件名）
+const conceptId = location.pathname.split('/').pop().replace('.html','');
+
+const PERSON_CONFIG = Object.fromEntries(
+  WV_PEOPLE.map(p => [p.id, {
+    name: p.name,
+    nameShort: p.nameShort,
+    emoji: p.emoji,
+    color: p.color,
+    bg: 'rgba(128,128,128,0.1)',
+    path: '../' + p.url
+  }])
+);
+
+function init() {
+  const concept = WV_CONCEPTS.find(c => c.id === conceptId);
+  if (!concept) {
+    document.querySelector('.concept-main').innerHTML = '<p style="color:var(--text-muted);padding:40px 0">概念未找到</p>';
+    return;
+  }
+
+  // 页面标题
+  document.title = concept.name + ' · 大神认知知识库';
+  document.getElementById('page-title').textContent = concept.name + ' · 大神认知知识库';
+  document.getElementById('bc-name').textContent = concept.name;
+
+  // 英雄区
+  document.getElementById('hero-name').textContent = concept.name;
+  document.getElementById('hero-en').textContent = concept.nameEn;
+  document.getElementById('hero-desc').textContent = concept.desc;
+
+  // 人物标签
+  const peoplePips = concept.people.map(p => {
+    const cfg = PERSON_CONFIG[p];
+    if (!cfg) return '';
+    return `<a class="person-badge" href="${cfg.path}" style="background:${cfg.bg};color:${cfg.color}">${cfg.emoji} ${cfg.name}</a>`;
+  }).join('');
+  document.getElementById('hero-people').innerHTML = peoplePips;
+
+  // 语录
+  const quotes = WV_QUOTES.filter(q => (q.concepts||[]).includes(conceptId));
+  document.getElementById('quotes-count').textContent = quotes.length + ' 条';
+  document.getElementById('quotes-container').innerHTML = quotes.map(q => {
+    const p = PERSON_CONFIG[q.person];
+    if (!p) return '';
+    return `
+      <div class="quote-item" style="border-left-color:${p.color}66">
+        <div class="quote-item-header">
+          <span class="quote-person-tag" style="background:${p.bg};color:${p.color}">${p.emoji} ${p.name}</span>
+          <span class="quote-source-tag">${q.source}</span>
+          <span class="quote-year-tag">${q.year}</span>
+        </div>
+        <div class="quote-text-main">"${q.text}"</div>
+        ${q.textEn ? `<div class="quote-text-en-main">"${q.textEn}"</div>` : ''}
+      </div>
+    `;
+  }).join('') || '<p style="color:var(--text-muted);font-size:14px">暂无语录</p>';
+
+  // 关联概念
+  const links = WV_CONCEPT_LINKS.filter(l => l.source === conceptId || l.target === conceptId);
+  const relatedIds = links.map(l => l.source === conceptId ? l.target : l.source);
+  const relatedConcepts = relatedIds.map(id => WV_CONCEPTS.find(c => c.id === id)).filter(Boolean);
+
+  document.getElementById('related-concepts').innerHTML = relatedConcepts.map(c => `
+    <a class="related-concept-link" href="${c.id}.html">
+      <span>${c.name}</span>
+      <span class="arrow">→</span>
+    </a>
+  `).join('') || '<p style="color:var(--text-muted);font-size:13px">暂无关联</p>';
+
+  // 涉及人物
+  document.getElementById('related-people').innerHTML = concept.people.map(p => {
+    const cfg = PERSON_CONFIG[p];
+    if (!cfg) return '';
+    const qCount = WV_QUOTES.filter(q => q.person === p && (q.concepts||[]).includes(conceptId)).length;
+    return `
+      <a class="person-link-card" href="${cfg.path}">
+        <div class="person-link-avatar" style="background:${cfg.bg};border:1px solid ${cfg.color}44">${cfg.emoji}</div>
+        <div>
+          <div class="person-link-name" style="color:${cfg.color}">${cfg.name}</div>
+          <div class="person-link-sub">${qCount} 条相关语录</div>
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  // 标签
+  document.getElementById('tag-cloud').innerHTML = (concept.tags||[]).map(t =>
+    `<span class="tag-cloud-item">${t}</span>`
+  ).join('');
+}
+
+init();
+</script>
+<script src="../data/concepts.js"></script>
+<script src="../data/quotes.js"></script>
+<script>
+// 从URL获取概念ID（文件名）?const conceptId = location.pathname.split('/').pop().replace('.html','');
 
 const PERSON_CONFIG = Object.fromEntries(
   WV_PEOPLE.map(p => [p.id, {
@@ -329,16 +426,19 @@ function init() {
     return;
   }
 
-  // 椤甸潰鏍囬
+  // 页面标题
+  
   document.title = concept.name + ' 路 澶х璁ょ煡鐭ヨ瘑搴?;
   document.getElementById('page-title').textContent = concept.name + ' 路 澶х璁ょ煡鐭ヨ瘑搴?;
   document.getElementById('bc-name').textContent = concept.name;
 
-  // 鑻遍泟鍖?  document.getElementById('hero-name').textContent = concept.name;
+  // 英雄区
+  ?  document.getElementById('hero-name').textContent = concept.name;
   document.getElementById('hero-en').textContent = concept.nameEn;
   document.getElementById('hero-desc').textContent = concept.desc;
 
-  // 浜虹墿鏍囩
+  // 人物标签
+  
   const peoplePips = concept.people.map(p => {
     const cfg = PERSON_CONFIG[p];
     return `<a class="person-badge" href="${cfg.path}" style="background:${cfg.bg};color:${cfg.color}">${cfg.emoji} ${cfg.name}</a>`;
@@ -363,7 +463,7 @@ function init() {
     `;
   }).join('') || '<p style="color:var(--text-muted);font-size:14px">鏆傛棤璇綍</p>';
 
-  // 鍏宠仈姒傚康
+  // 关联概念
   const links = WV_CONCEPT_LINKS.filter(l => l.source === conceptId || l.target === conceptId);
   const relatedIds = links.map(l => l.source === conceptId ? l.target : l.source);
   const relatedConcepts = relatedIds.map(id => WV_CONCEPTS.find(c => c.id === id)).filter(Boolean);
@@ -373,9 +473,9 @@ function init() {
       <span>${c.name}</span>
       <span class="arrow">鈫?/span>
     </a>
-  `).join('') || '<p style="color:var(--text-muted);font-size:13px">鏆傛棤鍏宠仈</p>';
+  `).join('') || '<p style="color:var(--text-muted);font-size:13px">暂无关联</p>';
 
-  // 娑夊強浜虹墿
+  // 涉及人物
   document.getElementById('related-people').innerHTML = concept.people.map(p => {
     const cfg = PERSON_CONFIG[p];
     const qCount = WV_QUOTES.filter(q => q.person === p && (q.concepts||[]).includes(conceptId)).length;
@@ -384,13 +484,14 @@ function init() {
         <div class="person-link-avatar" style="background:${cfg.bg};border:1px solid ${cfg.color}44">${cfg.emoji}</div>
         <div>
           <div class="person-link-name" style="color:${cfg.color}">${cfg.name}</div>
-          <div class="person-link-sub">${qCount} 鏉＄浉鍏宠褰?/div>
+          <div class="person-link-sub">${qCount} 条相关语录褰?/div>
         </div>
       </a>
     `;
   }).join('');
 
-  // 鏍囩浜?  document.getElementById('tag-cloud').innerHTML = (concept.tags||[]).map(t =>
+  // 标签
+  浜?  document.getElementById('tag-cloud').innerHTML = (concept.tags||[]).map(t =>
     `<span class="tag-cloud-item">${t}</span>`
   ).join('');
 }
