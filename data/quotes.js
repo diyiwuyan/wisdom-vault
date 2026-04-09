@@ -932,5 +932,477 @@ window.WV_QUOTES = [
     year: 2020,
     concepts: ["skin-in-the-game", "desire-management"],
     tags: ["自由", "人生"]
+  },
+
+  // ── 查理·芒格（续）──────────────────────────────────────────
+  {
+    id: "munger-21",
+    person: "munger",
+    text: "我们的目标是找到一个优秀的企业，然后坐在那里什么都不做。",
+    textEn: "Our job is to find a few intelligent things to do, not to keep up with every damn thing in the world.",
+    source: "Berkshire Hathaway Annual Meeting",
+    year: 2003,
+    concepts: ["patience", "circle-of-competence"],
+    tags: ["投资", "耐心"]
+  },
+  {
+    id: "munger-22",
+    person: "munger",
+    text: "嫉妒是最愚蠢的罪恶，因为你不可能从中得到任何乐趣。",
+    textEn: "Envy is the most stupid of vices, for there is no single advantage to be gained from it.",
+    source: "Poor Charlie's Almanack",
+    year: 2005,
+    concepts: ["cognitive-bias", "desire-management"],
+    tags: ["心理", "人性"]
+  },
+  {
+    id: "munger-23",
+    person: "munger",
+    text: "如果你不能在一分钟内解释清楚，说明你自己也没搞懂。",
+    textEn: "If you can't explain it simply, you don't understand it well enough.",
+    source: "Daily Journal Annual Meeting",
+    year: 2020,
+    concepts: ["first-principles", "mental-models"],
+    tags: ["思维", "表达"]
+  },
+  {
+    id: "munger-24",
+    person: "munger",
+    text: "世界上最好的企业是那些你可以不断投入资本，并以高回报率持续增长的企业。",
+    textEn: "The best business to own is one that over an extended period can employ large amounts of incremental capital at very high rates of return.",
+    source: "Berkshire Hathaway Annual Letter",
+    year: 1992,
+    concepts: ["moat", "compounding", "long-term"],
+    tags: ["投资", "商业"]
+  },
+  {
+    id: "munger-25",
+    person: "munger",
+    text: "我们的方法是：当机会来临时，大举下注。其余时间，等待。",
+    textEn: "Our approach is to swing hard when the opportunity comes. The rest of the time, we wait.",
+    source: "Poor Charlie's Almanack",
+    year: 2005,
+    concepts: ["patience", "circle-of-competence"],
+    tags: ["投资", "决策"]
+  },
+  {
+    id: "munger-26",
+    person: "munger",
+    text: "一个人如果不能控制自己的情绪，就无法控制自己的钱包。",
+    textEn: "A man who cannot control his emotions cannot control his money.",
+    source: "Berkshire Hathaway Annual Meeting",
+    year: 2001,
+    concepts: ["cognitive-bias", "desire-management"],
+    tags: ["投资", "心理"]
+  },
+  {
+    id: "munger-27",
+    person: "munger",
+    text: "我们的优势不是更聪明，而是更理性。",
+    textEn: "Our advantage is not that we're smarter, but that we're more rational.",
+    source: "Daily Journal Annual Meeting",
+    year: 2017,
+    concepts: ["mental-models", "cognitive-bias"],
+    tags: ["投资", "理性"]
+  },
+  {
+    id: "munger-28",
+    person: "munger",
+    text: "真正的知识是知道你不知道什么。",
+    textEn: "Knowing what you don't know is more useful than being brilliant.",
+    source: "Poor Charlie's Almanack",
+    year: 2005,
+    concepts: ["circle-of-competence", "lifelong-learning"],
+    tags: ["认知", "智慧"]
+  },
+
+  // ── 纳瓦尔（续）──────────────────────────────────────────────
+  {
+    id: "naval-25",
+    person: "naval",
+    text: "花时间在你的健康、家庭和朋友上。其他一切都是次要的。",
+    textEn: "Spend time on your health, family, and friends. Everything else is secondary.",
+    source: "Twitter / X",
+    year: 2020,
+    concepts: ["happiness", "desire-management"],
+    tags: ["人生", "健康"]
+  },
+  {
+    id: "naval-26",
+    person: "naval",
+    text: "你的网络是你的净资产。但更重要的是，你的声誉是你的净资产。",
+    textEn: "Your network is your net worth. But more importantly, your reputation is your net worth.",
+    source: "Naval Almanack",
+    year: 2022,
+    concepts: ["accountability", "specific-knowledge"],
+    tags: ["声誉", "财富"]
+  },
+  {
+    id: "naval-27",
+    person: "naval",
+    text: "冥想是我做过的最重要的事情之一。它让我能够观察自己的思维，而不是被它控制。",
+    textEn: "Meditation is one of the most important things I've done. It lets me observe my mind rather than be controlled by it.",
+    source: "Naval Almanack",
+    year: 2022,
+    concepts: ["happiness", "desire-management"],
+    tags: ["冥想", "心理"]
+  },
+  {
+    id: "naval-28",
+    person: "naval",
+    text: "如果你想要某样东西，先问自己：我愿意为此付出什么代价？",
+    textEn: "If you want something, first ask yourself: what am I willing to pay for it?",
+    source: "Twitter / X",
+    year: 2019,
+    concepts: ["desire-management", "accountability"],
+    tags: ["决策", "人生"]
+  },
+  {
+    id: "naval-29",
+    person: "naval",
+    text: "最好的工作不是工作，而是玩耍。找到你愿意免费做的事，然后学会如何从中获得报酬。",
+    textEn: "The best jobs are not jobs. They're play. Find what you'd do for free, then learn how to get paid for it.",
+    source: "How to Get Rich (without getting lucky)",
+    year: 2018,
+    concepts: ["specific-knowledge", "wealth"],
+    tags: ["工作", "热情"]
+  },
+  {
+    id: "naval-30",
+    person: "naval",
+    text: "在信息时代，最稀缺的资源不是信息，而是注意力。",
+    textEn: "In the information age, the scarcest resource is not information, but attention.",
+    source: "Twitter / X",
+    year: 2021,
+    concepts: ["specific-knowledge", "leverage"],
+    tags: ["注意力", "信息"]
+  },
+
+  // ── 沃伦·巴菲特（续）──────────────────────────────────────────
+  {
+    id: "buffett-13",
+    person: "buffett",
+    text: "我们不需要比别人聪明，我们只需要比别人更有纪律。",
+    textEn: "We don't have to be smarter than the rest. We have to be more disciplined than the rest.",
+    source: "Berkshire Hathaway Annual Meeting",
+    year: 2005,
+    concepts: ["patience", "circle-of-competence"],
+    tags: ["投资", "纪律"]
+  },
+  {
+    id: "buffett-14",
+    person: "buffett",
+    text: "时间是优秀企业的朋友，是平庸企业的敌人。",
+    textEn: "Time is the friend of the wonderful company, the enemy of the mediocre.",
+    source: "Berkshire Hathaway Annual Letter",
+    year: 1989,
+    concepts: ["moat", "long-term", "compounding"],
+    tags: ["投资", "时间"]
+  },
+  {
+    id: "buffett-15",
+    person: "buffett",
+    text: "只有当潮水退去，你才知道谁在裸泳。",
+    textEn: "Only when the tide goes out do you discover who's been swimming naked.",
+    source: "Berkshire Hathaway Annual Letter",
+    year: 2001,
+    concepts: ["margin-of-safety", "circle-of-competence"],
+    tags: ["投资", "风险"]
+  },
+  {
+    id: "buffett-16",
+    person: "buffett",
+    text: "我们的投资哲学很简单：以合理的价格买入优秀的企业，然后永远持有。",
+    textEn: "Our investment philosophy is simple: buy wonderful businesses at fair prices and hold them forever.",
+    source: "Berkshire Hathaway Annual Meeting",
+    year: 1998,
+    concepts: ["moat", "long-term", "patience"],
+    tags: ["投资", "哲学"]
+  },
+  {
+    id: "buffett-17",
+    person: "buffett",
+    text: "多元化是对无知的保护。如果你知道自己在做什么，多元化就没有意义。",
+    textEn: "Diversification is protection against ignorance. It makes little sense if you know what you are doing.",
+    source: "Berkshire Hathaway Annual Meeting",
+    year: 1993,
+    concepts: ["circle-of-competence", "margin-of-safety"],
+    tags: ["投资", "决策"]
+  },
+  {
+    id: "buffett-18",
+    person: "buffett",
+    text: "我们的目标是找到那些我们能理解的、有持久竞争优势的企业，然后以合理的价格买入，永远持有。",
+    textEn: "Our goal is to find outstanding businesses at sensible prices, not mediocre businesses at cheap prices.",
+    source: "Berkshire Hathaway Annual Letter",
+    year: 1992,
+    concepts: ["moat", "circle-of-competence", "long-term"],
+    tags: ["投资", "商业"]
+  },
+  {
+    id: "buffett-19",
+    person: "buffett",
+    text: "如果你不愿意持有一只股票十年，就不要持有它十分钟。",
+    textEn: "If you aren't willing to own a stock for ten years, don't even think about owning it for ten minutes.",
+    source: "Berkshire Hathaway Annual Letter",
+    year: 1996,
+    concepts: ["long-term", "patience"],
+    tags: ["投资", "时间"]
+  },
+  {
+    id: "buffett-20",
+    person: "buffett",
+    text: "我们的最大优势是我们不需要每天都做决定。",
+    textEn: "Our biggest advantage is that we don't have to make a decision every day.",
+    source: "Berkshire Hathaway Annual Meeting",
+    year: 2007,
+    concepts: ["patience", "inversion"],
+    tags: ["投资", "决策"]
+  },
+
+  // ── 埃隆·马斯克（续）──────────────────────────────────────────
+  {
+    id: "musk-13",
+    person: "musk",
+    text: "我认为人类应该成为多星球物种。这不是因为地球有什么问题，而是因为这是生命的本质——扩张和探索。",
+    textEn: "I think humanity should become a multi-planetary species. Not because there's something wrong with Earth, but because it's the nature of life to expand and explore.",
+    source: "SpaceX Press Conference",
+    year: 2016,
+    concepts: ["long-term", "first-principles"],
+    tags: ["使命", "未来"]
+  },
+  {
+    id: "musk-14",
+    person: "musk",
+    text: "要求高标准。如果你不要求高标准，你就会得到低标准。",
+    textEn: "Demand high standards. If you don't demand high standards, you'll get low standards.",
+    source: "Tesla All-Hands Meeting",
+    year: 2018,
+    concepts: ["iteration", "product-craft"],
+    tags: ["管理", "标准"]
+  },
+  {
+    id: "musk-15",
+    person: "musk",
+    text: "最大的错误是不尝试。如果你不尝试，你就已经失败了。",
+    textEn: "The biggest mistake is not trying. If you don't try, you've already failed.",
+    source: "Interview",
+    year: 2015,
+    concepts: ["iteration", "first-principles"],
+    tags: ["行动", "勇气"]
+  },
+  {
+    id: "musk-16",
+    person: "musk",
+    text: "我们的目标是让人类成为太空文明。这需要完全可重复使用的火箭，就像飞机一样。",
+    textEn: "Our goal is to make humanity a spacefaring civilization. That requires fully reusable rockets, just like airplanes.",
+    source: "IAC Conference",
+    year: 2017,
+    concepts: ["first-principles", "iteration", "long-term"],
+    tags: ["SpaceX", "工程"]
+  },
+  {
+    id: "musk-17",
+    person: "musk",
+    text: "我不是在试图成为最富有的人。我是在试图解决最重要的问题。",
+    textEn: "I'm not trying to be the richest person. I'm trying to solve the most important problems.",
+    source: "TED Talk",
+    year: 2022,
+    concepts: ["long-term", "first-principles"],
+    tags: ["使命", "财富"]
+  },
+  {
+    id: "musk-18",
+    person: "musk",
+    text: "工程师应该直接与工程师交流，而不是通过管理层传话。这样可以减少信息失真。",
+    textEn: "Engineers should communicate directly with engineers, not through management layers. This reduces information distortion.",
+    source: "Tesla Production Meeting",
+    year: 2019,
+    concepts: ["iteration", "first-principles"],
+    tags: ["管理", "工程"]
+  },
+  {
+    id: "musk-19",
+    person: "musk",
+    text: "如果你在做一件事，而且你认为它很重要，那就全力以赴。不要半途而废。",
+    textEn: "If you're doing something important, go all in. Don't half-ass it.",
+    source: "Interview",
+    year: 2016,
+    concepts: ["iteration", "long-term"],
+    tags: ["执行", "专注"]
+  },
+  {
+    id: "musk-20",
+    person: "musk",
+    text: "特斯拉的使命是加速世界向可持续能源的转变。这不只是一家汽车公司。",
+    textEn: "Tesla's mission is to accelerate the world's transition to sustainable energy. It's not just a car company.",
+    source: "Tesla Shareholder Meeting",
+    year: 2020,
+    concepts: ["long-term", "first-principles"],
+    tags: ["使命", "能源"]
+  },
+
+  // ── 史蒂夫·乔布斯（续）──────────────────────────────────────────
+  {
+    id: "jobs-13",
+    person: "jobs",
+    text: "我们在宇宙中留下一个凹痕的方式，是通过制造伟大的产品。",
+    textEn: "The way we're going to put a dent in the universe is by making great products.",
+    source: "Interview",
+    year: 1995,
+    concepts: ["product-craft", "simplicity"],
+    tags: ["产品", "使命"]
+  },
+  {
+    id: "jobs-14",
+    person: "jobs",
+    text: "质量比数量更重要。一次本垒打比两次二垒打好。",
+    textEn: "Quality is more important than quantity. One home run is much better than two doubles.",
+    source: "BusinessWeek Interview",
+    year: 2006,
+    concepts: ["simplicity", "product-craft"],
+    tags: ["质量", "专注"]
+  },
+  {
+    id: "jobs-15",
+    person: "jobs",
+    text: "我们不做市场调研。我们不雇用顾问。我们只是想做出伟大的产品。",
+    textEn: "We don't do market research. We don't hire consultants. We just want to make great products.",
+    source: "Fortune Interview",
+    year: 2008,
+    concepts: ["product-craft", "simplicity"],
+    tags: ["产品", "创新"]
+  },
+  {
+    id: "jobs-16",
+    person: "jobs",
+    text: "活着就是为了改变世界，难道还有其他原因吗？",
+    textEn: "We're here to put a dent in the universe. Otherwise, why else even be here?",
+    source: "Interview",
+    year: 1994,
+    concepts: ["product-craft", "long-term"],
+    tags: ["使命", "人生"]
+  },
+  {
+    id: "jobs-17",
+    person: "jobs",
+    text: "伟大的艺术家偷窃。",
+    textEn: "Good artists copy, great artists steal.",
+    source: "Triumph of the Nerds Documentary",
+    year: 1996,
+    concepts: ["product-craft", "specific-knowledge"],
+    tags: ["创意", "学习"]
+  },
+  {
+    id: "jobs-18",
+    person: "jobs",
+    text: "我们的目标是制造出让人们爱上的产品，而不只是使用的产品。",
+    textEn: "Our goal is to make products that people love, not just use.",
+    source: "Apple Keynote",
+    year: 2007,
+    concepts: ["product-craft", "simplicity"],
+    tags: ["产品", "设计"]
+  },
+  {
+    id: "jobs-19",
+    person: "jobs",
+    text: "我宁愿做一个海盗，也不愿加入海军。",
+    textEn: "It's more fun to be a pirate than to join the navy.",
+    source: "Apple Internal Meeting",
+    year: 1983,
+    concepts: ["specific-knowledge", "accountability"],
+    tags: ["创业", "文化"]
+  },
+  {
+    id: "jobs-20",
+    person: "jobs",
+    text: "死亡是生命最好的发明。它是生命的变革推动者，它清除旧的，为新的让路。",
+    textEn: "Death is very likely the single best invention of Life. It is Life's change agent.",
+    source: "Stanford Commencement Speech",
+    year: 2005,
+    concepts: ["desire-management", "long-term"],
+    tags: ["人生", "死亡"]
+  },
+
+  // ── 纳西姆·塔勒布（续）──────────────────────────────────────────
+  {
+    id: "taleb-13",
+    person: "taleb",
+    text: "在不确定性中，最好的策略是保持选择权开放，而不是押注于某个预测。",
+    textEn: "In uncertainty, the best strategy is to keep options open, not to bet on a prediction.",
+    source: "Antifragile",
+    year: 2012,
+    concepts: ["antifragile", "black-swan"],
+    tags: ["策略", "不确定性"]
+  },
+  {
+    id: "taleb-14",
+    person: "taleb",
+    text: "专家的问题不是他们不知道，而是他们不知道自己不知道。",
+    textEn: "The problem with experts is not that they don't know, but that they don't know what they don't know.",
+    source: "The Black Swan",
+    year: 2007,
+    concepts: ["black-swan", "cognitive-bias"],
+    tags: ["认知", "专家"]
+  },
+  {
+    id: "taleb-15",
+    person: "taleb",
+    text: "强壮不是最好的。最好的是反脆弱——从压力中变得更强。",
+    textEn: "Strong is not the best. The best is antifragile — getting stronger from stress.",
+    source: "Antifragile",
+    year: 2012,
+    concepts: ["antifragile", "skin-in-the-game"],
+    tags: ["反脆弱", "成长"]
+  },
+  {
+    id: "taleb-16",
+    person: "taleb",
+    text: "历史不是由平均值驱动的，而是由极端值驱动的。",
+    textEn: "History is not driven by averages, but by extremes.",
+    source: "The Black Swan",
+    year: 2007,
+    concepts: ["black-swan", "antifragile"],
+    tags: ["历史", "风险"]
+  },
+  {
+    id: "taleb-17",
+    person: "taleb",
+    text: "你不能通过平均两个错误来得到正确答案。",
+    textEn: "You cannot average two wrongs to get a right.",
+    source: "Nassim Taleb Twitter",
+    year: 2018,
+    concepts: ["first-principles", "mental-models"],
+    tags: ["思维", "逻辑"]
+  },
+  {
+    id: "taleb-18",
+    person: "taleb",
+    text: "真正的勇气是在没有观众的情况下做正确的事。",
+    textEn: "Real courage is doing the right thing when there's no audience.",
+    source: "Skin in the Game",
+    year: 2018,
+    concepts: ["skin-in-the-game", "accountability"],
+    tags: ["道德", "勇气"]
+  },
+  {
+    id: "taleb-19",
+    person: "taleb",
+    text: "如果你想要稳定，就要拥抱不稳定。如果你想要安全，就要拥抱风险。",
+    textEn: "If you want stability, embrace instability. If you want security, embrace risk.",
+    source: "Antifragile",
+    year: 2012,
+    concepts: ["antifragile", "margin-of-safety"],
+    tags: ["风险", "哲学"]
+  },
+  {
+    id: "taleb-20",
+    person: "taleb",
+    text: "过去的数据无法告诉你未来的黑天鹅。它只能告诉你过去没有发生过的事情。",
+    textEn: "Past data cannot tell you about future black swans. It can only tell you what hasn't happened in the past.",
+    source: "The Black Swan",
+    year: 2007,
+    concepts: ["black-swan", "cognitive-bias"],
+    tags: ["风险", "预测"]
   }
 ];

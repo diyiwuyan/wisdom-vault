@@ -229,6 +229,9 @@
     .result-person.munger  { background: rgba(240,165,0,0.12);  color: var(--munger); }
     .result-person.naval   { background: rgba(0,201,167,0.12);  color: var(--naval); }
     .result-person.buffett { background: rgba(224,92,92,0.12);  color: var(--buffett); }
+    .result-person.musk    { background: rgba(0,180,255,0.12);  color: var(--musk); }
+    .result-person.jobs    { background: rgba(200,160,255,0.12); color: var(--jobs); }
+    .result-person.taleb   { background: rgba(255,100,80,0.12); color: var(--taleb); }
     .result-person.all     { background: rgba(255,255,255,0.06); color: var(--text-muted); }
 
     .result-source {
@@ -299,21 +302,34 @@
     Wisdom Vault
   </a>
   <ul class="nav-links">
-    <li><a href="people/munger.html">芒格</a></li>
-    <li><a href="people/naval.html">纳瓦尔</a></li>
-    <li><a href="people/buffett.html">巴菲特</a></li>
+    <li><a href="index.html">首页</a></li>
+    <li class="nav-dropdown">
+      <span class="nav-dropdown-trigger">
+        大神们
+        <svg class="nav-dropdown-arrow" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,3 5,7 8,3"/></svg>
+      </span>
+      <div class="nav-dropdown-menu">
+        <a href="people/munger.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--munger)"></span>查理·芒格</a>
+        <a href="people/naval.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--naval)"></span>纳瓦尔</a>
+        <a href="people/buffett.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--buffett)"></span>沃伦·巴菲特</a>
+        <a href="people/musk.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--musk)"></span>埃隆·马斯克</a>
+        <a href="people/jobs.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--jobs)"></span>史蒂夫·乔布斯</a>
+        <a href="people/taleb.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--taleb)"></span>纳西姆·塔勒布</a>
+      </div>
+    </li>
     <li><a href="concepts/index.html">概念库</a></li>
     <li><a href="quotes/index.html">语录库</a></li>
     <li><a href="articles/index.html">书单</a></li>
-    <li><a href="search.html" class="active">搜索</a></li>
+    <li><a href="collision/index.html">思想碰撞</a></li>
     <li><a href="graph.html">知识图谱</a></li>
+    <li><a href="search.html" class="active nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
   </ul>
 </nav>
 
 <main>
   <div class="search-hero">
     <div class="search-label">全站搜索</div>
-    <h1 class="search-title">在三位大神的思想中寻找</h1>
+    <h1 class="search-title">在大神们的思想中寻找</h1>
     <div class="search-box-wrap">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -363,7 +379,7 @@
 <script src="data/articles.js"></script>
 <script>
 // ── 人物名称映射 ──
-const PERSON_NAMES = { munger: '芒格', naval: '纳瓦尔', buffett: '巴菲特' };
+const PERSON_NAMES = { munger: '芒格', naval: '纳瓦尔', buffett: '巴菲特', musk: '马斯克', jobs: '乔布斯', taleb: '塔勒布' };
 const TYPE_LABELS  = { concept: '概念', quote: '语录', book: '书单', article: '文章' };
 const TYPE_ICONS   = {
   concept: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,

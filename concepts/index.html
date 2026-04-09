@@ -147,15 +147,28 @@
 
 <nav class="nav">
   <a href="../index.html" class="nav-logo"><span class="dot"></span>Wisdom Vault</a>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="../index.html">首页</a></li>
-    <li><a href="../people/munger.html">芒格</a></li>
-    <li><a href="../people/naval.html">纳瓦尔</a></li>
-    <li><a href="../people/buffett.html">巴菲特</a></li>
+    <li class="nav-dropdown">
+      <span class="nav-dropdown-trigger">
+        大神们
+        <svg class="nav-dropdown-arrow" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,3 5,7 8,3"/></svg>
+      </span>
+      <div class="nav-dropdown-menu">
+        <a href="../people/munger.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--munger)"></span>查理·芒格</a>
+        <a href="../people/naval.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--naval)"></span>纳瓦尔</a>
+        <a href="../people/buffett.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--buffett)"></span>沃伦·巴菲特</a>
+        <a href="../people/musk.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--musk)"></span>埃隆·马斯克</a>
+        <a href="../people/jobs.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--jobs)"></span>史蒂夫·乔布斯</a>
+        <a href="../people/taleb.html" class="nav-dropdown-item"><span class="nav-dropdown-dot" style="background:var(--taleb)"></span>纳西姆·塔勒布</a>
+      </div>
+    </li>
+    <li><a href="../concepts/index.html">概念库</a></li>
     <li><a href="../quotes/index.html">语录库</a></li>
     <li><a href="../articles/index.html">书单</a></li>
-    <li><a href="index.html" class="active">概念</a></li>
-    <li><a href="../graph.html">图谱</a></li>
+    <li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+    <li><a href="../search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
   </ul>
 </nav>
 

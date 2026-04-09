@@ -266,6 +266,102 @@ window.WV_CONCEPTS = [
     people: ["taleb"],
     relatedConcepts: ["accountability", "leverage", "margin-of-safety"],
     quoteCount: 5
+  },
+
+  // ── 马斯克补充概念 ──────────────────────────────────────────
+  {
+    id: "idiot-index",
+    name: "白痴指数",
+    nameEn: "Idiot Index",
+    desc: "马斯克发明的成本审查工具：零件成本与原材料成本之比。比值越高，说明制造过程越低效。马斯克用它来识别供应链中的浪费，倒逼工程师重新设计。",
+    tags: ["工程", "成本", "效率"],
+    people: ["musk"],
+    relatedConcepts: ["first-principles", "iteration"],
+    quoteCount: 3
+  },
+  {
+    id: "algorithm",
+    name: "马斯克五步算法",
+    nameEn: "The Algorithm",
+    desc: "马斯克的工程优化五步法：①质疑每个需求；②删除所有不必要的部分；③简化和优化；④加速循环；⑤自动化。顺序不能颠倒——自动化一个不必要的流程只会更快地犯错。",
+    tags: ["工程", "流程", "效率"],
+    people: ["musk"],
+    relatedConcepts: ["first-principles", "iteration", "simplicity"],
+    quoteCount: 4
+  },
+  {
+    id: "mission-driven",
+    name: "使命驱动",
+    nameEn: "Mission-Driven",
+    desc: "马斯克认为，伟大的公司必须有超越盈利的使命。SpaceX 的使命是让人类成为多星球物种，Tesla 的使命是加速可持续能源转型。使命是吸引顶尖人才、穿越低谷的核心动力。",
+    tags: ["使命", "创业", "领导力"],
+    people: ["musk"],
+    relatedConcepts: ["long-term", "first-principles", "accountability"],
+    quoteCount: 5
+  },
+
+  // ── 乔布斯补充概念 ──────────────────────────────────────────
+  {
+    id: "reality-distortion",
+    name: "现实扭曲力场",
+    nameEn: "Reality Distortion Field",
+    desc: "乔布斯的同事用来描述他的一种能力：通过极度自信和感染力，让人相信不可能的事情是可能的，从而激发团队超越自我认知的极限。这既是领导力，也是一种危险的操控。",
+    tags: ["领导力", "创新", "心理"],
+    people: ["jobs"],
+    relatedConcepts: ["product-craft", "simplicity", "specific-knowledge"],
+    quoteCount: 3
+  },
+  {
+    id: "intersection",
+    name: "技术与人文的交叉",
+    nameEn: "Intersection of Technology and Humanities",
+    desc: "乔布斯最核心的信念：最好的产品诞生于技术与人文艺术的交叉点。苹果的差异化不在于技术领先，而在于技术与人性洞察的结合。",
+    tags: ["产品", "设计", "创新"],
+    people: ["jobs"],
+    relatedConcepts: ["product-craft", "simplicity", "specific-knowledge"],
+    quoteCount: 4
+  },
+  {
+    id: "focus",
+    name: "专注的力量",
+    nameEn: "Power of Focus",
+    desc: "乔布斯回归苹果后做的第一件事是砍掉 70% 的产品线。他认为，专注意味着对一千件好事说「不」，只做最重要的那一件。苹果的成功很大程度上来自于它拒绝做什么。",
+    tags: ["战略", "产品", "决策"],
+    people: ["jobs"],
+    relatedConcepts: ["simplicity", "product-craft", "inversion"],
+    quoteCount: 5
+  },
+
+  // ── 塔勒布补充概念 ──────────────────────────────────────────
+  {
+    id: "via-negativa",
+    name: "否定之路",
+    nameEn: "Via Negativa",
+    desc: "塔勒布从古典哲学借来的概念：通过减法而非加法来改善。不要问「我应该做什么」，而要问「我应该停止做什么」。医学、饮食、决策都适用：少干预往往比多干预更好。",
+    tags: ["哲学", "决策", "健康"],
+    people: ["taleb"],
+    relatedConcepts: ["inversion", "antifragile", "margin-of-safety"],
+    quoteCount: 3
+  },
+  {
+    id: "barbell-strategy",
+    name: "杠铃策略",
+    nameEn: "Barbell Strategy",
+    desc: "塔勒布的风险管理框架：将资产分配在两个极端——极度安全（如国债）和极度激进（如期权）——避开中间地带。这样既能抵御黑天鹅，又能从极端事件中获益。",
+    tags: ["投资", "风险", "策略"],
+    people: ["taleb"],
+    relatedConcepts: ["antifragile", "black-swan", "margin-of-safety"],
+    quoteCount: 4
+  },
+  {
+    id: "lindy-effect",
+    name: "林迪效应",
+    nameEn: "Lindy Effect",
+    desc: "塔勒布推广的概念：对于非易腐事物（书籍、技术、思想），已经存在的时间越长，预期还能存在的时间就越长。一本书存在了100年，很可能还能再存在100年。",
+    tags: ["时间", "预测", "哲学"],
+    people: ["taleb"],
+    relatedConcepts: ["antifragile", "long-term", "compounding"],
+    quoteCount: 3
   }
 ];
 

@@ -537,5 +537,262 @@ window.WV_ARTICLES = [
     concepts: ["antifragile", "mental-models", "first-principles"],
     tags: ["哲学", "格言", "思维"],
     url: ""
+  },
+
+  // ── 埃隆·马斯克 推荐书单 ──────────────────────────────────
+  {
+    id: "book-musk-01",
+    type: "book",
+    person: "musk",
+    title: "银河系漫游指南",
+    titleEn: "The Hitchhiker's Guide to the Galaxy",
+    author: "Douglas Adams",
+    year: 1979,
+    desc: "马斯克最喜欢的书之一。他说这本书教会他：「提出正确的问题比找到答案更难。」这也是他创业哲学的核心——重新定义问题本身。",
+    concepts: ["first-principles", "long-term"],
+    tags: ["科幻", "哲学", "必读"],
+    url: ""
+  },
+  {
+    id: "book-musk-02",
+    type: "book",
+    person: "musk",
+    title: "基地",
+    titleEn: "Foundation",
+    author: "Isaac Asimov",
+    year: 1951,
+    desc: "阿西莫夫的科幻经典，马斯克青少年时期的启蒙读物。书中「保存人类文明」的主题直接影响了他创立 SpaceX 的动机——让人类成为多星球物种。",
+    concepts: ["long-term", "mission-driven"],
+    tags: ["科幻", "文明", "必读"],
+    url: ""
+  },
+  {
+    id: "book-musk-03",
+    type: "book",
+    person: "musk",
+    title: "超级智能",
+    titleEn: "Superintelligence",
+    author: "Nick Bostrom",
+    year: 2014,
+    desc: "马斯克强烈推荐，也是他创立 OpenAI 的重要背景读物。探讨超级人工智能的潜在风险，以及人类如何确保 AI 的发展方向与人类利益一致。",
+    concepts: ["long-term", "first-principles"],
+    tags: ["AI", "风险", "未来"],
+    url: ""
+  },
+  {
+    id: "book-musk-04",
+    type: "book",
+    person: "musk",
+    title: "火星上的人类",
+    titleEn: "The Case for Mars",
+    author: "Robert Zubrin",
+    year: 1996,
+    desc: "SpaceX 工程师的必读书目，马斯克亲自推荐。详细论证了人类移民火星的技术可行性和路线图，对 SpaceX 的技术路线产生了深远影响。",
+    concepts: ["long-term", "first-principles", "mission-driven"],
+    tags: ["SpaceX", "工程", "未来"],
+    url: ""
+  },
+  {
+    id: "book-musk-05",
+    type: "book",
+    person: "musk",
+    title: "埃隆·马斯克传",
+    titleEn: "Elon Musk",
+    author: "Walter Isaacson",
+    year: 2023,
+    desc: "Isaacson 跟踪采访马斯克两年写成的授权传记。详细记录了 SpaceX、Tesla、Twitter 收购等重大决策背后的思维过程，是理解马斯克第一性原理思维的最佳读本。",
+    concepts: ["first-principles", "iteration", "mission-driven"],
+    tags: ["传记", "必读", "创业"],
+    url: ""
+  },
+
+  // ── 史蒂夫·乔布斯 推荐书单 ──────────────────────────────────
+  {
+    id: "book-jobs-01",
+    type: "book",
+    person: "jobs",
+    title: "史蒂夫·乔布斯传",
+    titleEn: "Steve Jobs",
+    author: "Walter Isaacson",
+    year: 2011,
+    desc: "乔布斯唯一授权传记，基于40多次深度访谈写成。完整呈现了乔布斯的产品哲学、管理风格和人生轨迹，是理解苹果设计文化的必读之作。",
+    concepts: ["product-craft", "simplicity", "focus"],
+    tags: ["传记", "必读", "产品"],
+    url: ""
+  },
+  {
+    id: "book-jobs-02",
+    type: "book",
+    person: "jobs",
+    title: "禅与摩托车维修艺术",
+    titleEn: "Zen and the Art of Motorcycle Maintenance",
+    author: "Robert Pirsig",
+    year: 1974,
+    desc: "乔布斯青年时期深受影响的书。探讨「质量」的本质——不是外在标准，而是内在的卓越追求。这种对品质的执念贯穿了乔布斯的整个职业生涯。",
+    concepts: ["product-craft", "simplicity"],
+    tags: ["哲学", "工艺", "经典"],
+    url: ""
+  },
+  {
+    id: "book-jobs-03",
+    type: "book",
+    person: "jobs",
+    title: "创新者的窘境",
+    titleEn: "The Innovator's Dilemma",
+    author: "Clayton Christensen",
+    year: 1997,
+    desc: "乔布斯强烈推荐的商业经典。解释为什么优秀的大公司会被颠覆性创新打败，以及如何在自我颠覆和维护现有业务之间取得平衡。",
+    concepts: ["product-craft", "long-term", "specific-knowledge"],
+    tags: ["商业", "创新", "战略"],
+    url: ""
+  },
+  {
+    id: "book-jobs-04",
+    type: "book",
+    person: "jobs",
+    title: "Make Something Wonderful",
+    titleEn: "Make Something Wonderful",
+    author: "Steve Jobs（遗著）",
+    year: 2023,
+    desc: "乔布斯去世后由家人整理出版的演讲、访谈和信件集。包含他对产品、设计、人生的最直接表达，是理解乔布斯思想的一手资料。",
+    concepts: ["product-craft", "simplicity", "intersection"],
+    tags: ["传记", "必读", "设计"],
+    url: "https://book.stevejobsarchive.com/"
+  },
+  {
+    id: "article-jobs-01",
+    type: "article",
+    person: "jobs",
+    title: "斯坦福大学毕业典礼演讲",
+    titleEn: "Stanford Commencement Address",
+    author: "Steve Jobs",
+    year: 2005,
+    desc: "乔布斯最著名的演讲，讲述了三个故事：连接点、爱与失去、死亡。「Stay hungry, stay foolish」成为一代创业者的座右铭。",
+    concepts: ["product-craft", "specific-knowledge", "desire-management"],
+    tags: ["演讲", "必读", "人生"],
+    url: "https://news.stanford.edu/2005/06/14/jobs-061505/"
+  },
+
+  // ── 纳瓦尔 补充书单 ──────────────────────────────────────────
+  {
+    id: "book-naval-04",
+    type: "book",
+    person: "naval",
+    title: "纳瓦尔宝典",
+    titleEn: "The Almanack of Naval Ravikant",
+    author: "Eric Jorgenson（编）",
+    year: 2020,
+    desc: "纳瓦尔关于财富和幸福的思想精华集。免费开放获取，是理解纳瓦尔「如何不靠运气致富」和「如何获得幸福」的最佳入门读物。",
+    concepts: ["specific-knowledge", "leverage", "wealth", "happiness"],
+    tags: ["必读", "财富", "人生"],
+    url: "https://www.navalmanack.com/"
+  },
+  {
+    id: "article-naval-01",
+    type: "article",
+    person: "naval",
+    title: "如何不靠运气致富",
+    titleEn: "How to Get Rich (without getting lucky)",
+    author: "Naval Ravikant",
+    year: 2018,
+    desc: "纳瓦尔在 Twitter 上发布的一系列推文，后整理成文章。系统阐述了特定知识、杠杆、问责制等财富创造原则，是互联网上被引用最多的财富哲学文章之一。",
+    concepts: ["specific-knowledge", "leverage", "accountability", "wealth"],
+    tags: ["必读", "财富", "创业"],
+    url: "https://nav.al/rich"
+  },
+  {
+    id: "article-naval-02",
+    type: "article",
+    person: "naval",
+    title: "幸福是一种技能",
+    titleEn: "Happiness Is a Skill",
+    author: "Naval Ravikant",
+    year: 2020,
+    desc: "纳瓦尔关于幸福的深度访谈整理。他认为幸福不是天生的，而是可以通过冥想、减少欲望、活在当下来培养的技能。",
+    concepts: ["happiness", "desire-management"],
+    tags: ["幸福", "冥想", "人生"],
+    url: "https://nav.al/happiness"
+  },
+
+  // ── 巴菲特 补充书单 ──────────────────────────────────────────
+  {
+    id: "book-buffett-04",
+    type: "book",
+    person: "buffett",
+    title: "聪明的投资者",
+    titleEn: "The Intelligent Investor",
+    author: "Benjamin Graham",
+    year: 1949,
+    desc: "巴菲特称之为「有史以来最好的投资书」。格雷厄姆的价值投资圣经，奠定了巴菲特整个投资哲学的基础。安全边际、市场先生等核心概念均出自此书。",
+    concepts: ["margin-of-safety", "circle-of-competence", "patience"],
+    tags: ["投资", "必读", "经典"],
+    url: ""
+  },
+  {
+    id: "book-buffett-05",
+    type: "book",
+    person: "buffett",
+    title: "证券分析",
+    titleEn: "Security Analysis",
+    author: "Benjamin Graham & David Dodd",
+    year: 1934,
+    desc: "价值投资的奠基之作，巴菲特在哥伦比亚大学师从格雷厄姆时的教材。系统阐述了如何通过基本面分析评估企业内在价值。",
+    concepts: ["margin-of-safety", "circle-of-competence"],
+    tags: ["投资", "经典", "分析"],
+    url: ""
+  },
+  {
+    id: "article-buffett-01",
+    type: "article",
+    person: "buffett",
+    title: "伯克希尔·哈撒韦年度股东信",
+    titleEn: "Berkshire Hathaway Annual Letters",
+    author: "Warren Buffett",
+    year: 1965,
+    desc: "巴菲特从1965年开始每年撰写的股东信，是投资界最重要的年度读物。用平实的语言解释复杂的商业和投资原则，免费公开，是学习巴菲特思想的第一手资料。",
+    concepts: ["moat", "compounding", "long-term", "circle-of-competence"],
+    tags: ["必读", "投资", "商业"],
+    url: "https://www.berkshirehathaway.com/letters/letters.html"
+  },
+
+  // ── 芒格 补充书单 ──────────────────────────────────────────
+  {
+    id: "book-munger-06",
+    type: "book",
+    person: "munger",
+    title: "查理·芒格传",
+    titleEn: "Damn Right!",
+    author: "Janet Lowe",
+    year: 2000,
+    desc: "芒格的第一本传记，记录了他从律师到投资人的转变历程，以及他如何建立起跨学科思维体系。",
+    concepts: ["mental-models", "lifelong-learning", "circle-of-competence"],
+    tags: ["传记", "投资", "思维"],
+    url: ""
+  },
+  {
+    id: "book-munger-07",
+    type: "book",
+    person: "munger",
+    title: "人类行为的误判",
+    titleEn: "The Psychology of Human Misjudgment",
+    author: "Charlie Munger",
+    year: 1995,
+    desc: "芒格在哈佛法学院的演讲，系统列举了25种人类认知偏误。这是他最重要的单篇作品，也是《穷查理宝典》的核心章节。",
+    concepts: ["cognitive-bias", "mental-models", "lollapalooza"],
+    tags: ["必读", "心理", "决策"],
+    url: ""
+  },
+  {
+    id: "article-munger-01",
+    type: "article",
+    person: "munger",
+    title: "普世智慧的基本原则",
+    titleEn: "A Lesson on Elementary, Worldly Wisdom",
+    author: "Charlie Munger",
+    year: 1994,
+    desc: "芒格在南加州大学商学院的演讲，首次系统阐述了他的「心智模型」理论。他认为，真正的智慧来自于掌握各学科的核心规律，并将它们编织成思维网格。",
+    concepts: ["mental-models", "circle-of-competence", "lifelong-learning"],
+    tags: ["必读", "思维", "演讲"],
+    url: ""
   }
 ];
