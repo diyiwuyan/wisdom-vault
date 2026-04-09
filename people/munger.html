@@ -705,11 +705,13 @@ function switchTab(name, btn) {
   const el = document.getElementById('munger-books-sidebar');
   if (!el) return;
   el.innerHTML = books.map(b => `
-    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+    <a href="${b.url || '../articles/index.html?person=munger'}" ${b.url ? 'target="_blank"' : ''} style="display:block;padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--border-bright)'" onmouseout="this.style.borderColor='var(--border)'">
       <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
       <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
-    </div>
+    </a>
   `).join('');
+  // 底部「查看全部」链接
+  el.innerHTML += `<a href="../articles/index.html" style="display:block;text-align:center;padding:8px;font-size:12px;color:var(--text-muted);text-decoration:none;border-radius:6px;border:1px dashed var(--border);transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-secondary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">查看全部书单 →</a>`;
 })();
 </script>
 </body>

@@ -579,12 +579,12 @@ function switchTab(name, btn) {
   const books = WV_ARTICLES.filter(a => a.person === 'jobs' && a.type === 'book').slice(0, 4);
   const el = document.getElementById('jobs-books-sidebar');
   if (!el) return;
-  el.innerHTML = books.map(b => `
-    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
-      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
-      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
-    </div>
-  `).join('');
+el.innerHTML = books.map(b => `
+<a href="${b.url || '../articles/index.html'}" ${b.url ? 'target="_blank"' : ''} style="display:block;padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--border-bright)'" onmouseout="this.style.borderColor='var(--border)'">
+<div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+<div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+</a>
+`).join('');
 })();
 </script>
 </body>

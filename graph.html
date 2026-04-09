@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -11,188 +11,71 @@
       text-align: center;
       border-bottom: 1px solid var(--border);
     }
+    .graph-hero h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .graph-hero p { font-size: 16px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; }
 
-    .graph-hero h1 {
-      font-size: 42px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .graph-hero p {
-      font-size: 16px;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    .graph-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 40px 80px;
-    }
+    .graph-container { max-width: 1200px; margin: 0 auto; padding: 48px 40px 80px; }
 
     /* ── 概念地图 ── */
     .concept-map {
-      position: relative;
-      width: 100%;
-      height: 520px;
-      margin-bottom: 60px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+      position: relative; width: 100%; height: 560px; margin-bottom: 60px;
+      border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
       background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 70%);
     }
-
-    .concept-map svg {
-      width: 100%;
-      height: 100%;
-    }
+    .concept-map svg { width: 100%; height: 100%; }
 
     /* ── 共鸣矩阵 ── */
-    .section-title {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .section-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-    }
+    .section-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 28px; }
 
     .resonance-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 60px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px; margin-bottom: 60px;
     }
-
     .resonance-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      transition: border-color 0.2s;
+      background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 24px; transition: border-color 0.2s;
     }
-
-    .resonance-card:hover {
-      border-color: var(--border-bright);
-    }
-
-    .resonance-pair {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .person-tag {
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .resonance-topic {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .resonance-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
+    .resonance-card:hover { border-color: var(--border-bright); }
+    .resonance-pair { display: flex; align-items: center; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+    .person-tag { padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+    .resonance-topic { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .resonance-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
 
     /* ── 分歧矩阵 ── */
-    .diverge-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 60px;
-      font-size: 14px;
-    }
-
+    .diverge-table { width: 100%; border-collapse: collapse; margin-bottom: 60px; font-size: 13px; }
     .diverge-table th {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+      padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted);
       border-bottom: 1px solid var(--border);
     }
-
     .diverge-table td {
-      padding: 16px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      line-height: 1.6;
-      color: var(--text-secondary);
+      padding: 14px 12px; border-bottom: 1px solid var(--border);
+      vertical-align: top; line-height: 1.6; color: var(--text-secondary);
     }
-
     .diverge-table tr:last-child td { border-bottom: none; }
-
-    .diverge-table td:first-child {
-      font-weight: 600;
-      color: var(--text-primary);
-      white-space: nowrap;
-    }
-
+    .diverge-table td:first-child { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
     .diverge-table td.munger { color: var(--munger); }
     .diverge-table td.naval { color: var(--naval); }
     .diverge-table td.buffett { color: var(--buffett); }
+    .diverge-table td.musk { color: var(--musk); }
+    .diverge-table td.jobs { color: var(--jobs); }
+    .diverge-table td.taleb { color: var(--taleb); }
 
     /* ── 核心概念云 ── */
-    .concept-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 60px;
-    }
-
+    .concept-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 60px; }
     .concept-tag {
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      border: 1px solid;
-      cursor: default;
-      transition: all 0.2s;
+      padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;
+      border: 1px solid; cursor: default; transition: all 0.2s;
     }
-
-    .concept-tag:hover {
-      transform: translateY(-2px);
-    }
-
-    .concept-tag.munger {
-      background: rgba(240,165,0,0.06);
-      border-color: rgba(240,165,0,0.2);
-      color: var(--munger);
-    }
-
-    .concept-tag.naval {
-      background: rgba(0,201,167,0.06);
-      border-color: rgba(0,201,167,0.2);
-      color: var(--naval);
-    }
-
-    .concept-tag.buffett {
-      background: rgba(224,92,92,0.06);
-      border-color: rgba(224,92,92,0.2);
-      color: var(--buffett);
-    }
-
-    .concept-tag.shared {
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(255,255,255,0.15);
-      color: var(--text-primary);
-    }
-
+    .concept-tag:hover { transform: translateY(-2px); }
+    .concept-tag.munger { background: rgba(240,165,0,0.06); border-color: rgba(240,165,0,0.2); color: var(--munger); }
+    .concept-tag.naval { background: rgba(0,201,167,0.06); border-color: rgba(0,201,167,0.2); color: var(--naval); }
+    .concept-tag.buffett { background: rgba(224,92,92,0.06); border-color: rgba(224,92,92,0.2); color: var(--buffett); }
+    .concept-tag.musk { background: rgba(0,180,255,0.06); border-color: rgba(0,180,255,0.2); color: var(--musk); }
+    .concept-tag.jobs { background: rgba(200,160,255,0.06); border-color: rgba(200,160,255,0.2); color: var(--jobs); }
+    .concept-tag.taleb { background: rgba(255,100,80,0.06); border-color: rgba(255,100,80,0.2); color: var(--taleb); }
+    .concept-tag.shared { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); color: var(--text-primary); }
     .concept-tag.size-lg { font-size: 15px; padding: 10px 20px; }
     .concept-tag.size-sm { font-size: 11px; padding: 6px 12px; }
 
@@ -202,23 +85,26 @@
       .graph-container { padding: 24px 20px 60px; }
       .resonance-grid { grid-template-columns: 1fr; }
       .concept-map { height: 360px; }
+      .diverge-table { font-size: 11px; }
+      .diverge-table th, .diverge-table td { padding: 8px 6px; }
     }
   </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a href="index.html" class="nav-logo">
-    <span class="dot"></span>
-    Wisdom Vault
-  </a>
+  <a href="index.html" class="nav-logo"><span class="dot"></span>Wisdom Vault</a>
   <ul class="nav-links">
     <li><a href="index.html">首页</a></li>
     <li><a href="people/munger.html">芒格</a></li>
     <li><a href="people/naval.html">纳瓦尔</a></li>
     <li><a href="people/buffett.html">巴菲特</a></li>
+    <li><a href="people/musk.html">马斯克</a></li>
+    <li><a href="people/jobs.html">乔布斯</a></li>
+    <li><a href="people/taleb.html">塔勒布</a></li>
     <li><a href="collision/index.html">思想碰撞</a></li>
     <li><a href="graph.html" class="active">知识图谱</a></li>
+    <li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
   </ul>
 </nav>
 
@@ -226,160 +112,177 @@
 
   <div class="graph-hero fade-in">
     <h1>🕸️ 知识图谱</h1>
-    <p>三位大神的思想如何交织、共鸣与分歧。看见认知的结构，发现思维的连接。</p>
+    <p>六位大神的思想如何交织、共鸣与分歧。看见认知的结构，发现思维的连接。</p>
   </div>
 
   <div class="graph-container">
 
-    <!-- 概念关系图 (SVG) -->
+    <!-- 概念关系图 (SVG) — 六人六边形布局 -->
     <div class="concept-map fade-in">
-      <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="glow-munger" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#F0A500" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#F0A500" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#F0A500" stop-opacity="0.25"/><stop offset="100%" stop-color="#F0A500" stop-opacity="0"/>
           </radialGradient>
           <radialGradient id="glow-naval" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.25"/><stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
           </radialGradient>
           <radialGradient id="glow-buffett" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#E05C5C" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#E05C5C" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#E05C5C" stop-opacity="0.25"/><stop offset="100%" stop-color="#E05C5C" stop-opacity="0"/>
           </radialGradient>
-          <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.15)"/>
-          </marker>
+          <radialGradient id="glow-musk" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00B4FF" stop-opacity="0.25"/><stop offset="100%" stop-color="#00B4FF" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="glow-jobs" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#C8A0FF" stop-opacity="0.25"/><stop offset="100%" stop-color="#C8A0FF" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="glow-taleb" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FF6450" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF6450" stop-opacity="0"/>
+          </radialGradient>
         </defs>
 
-        <!-- 背景光晕 -->
-        <ellipse cx="200" cy="250" rx="120" ry="120" fill="url(#glow-munger)"/>
-        <ellipse cx="500" cy="250" rx="120" ry="120" fill="url(#glow-naval)"/>
-        <ellipse cx="800" cy="250" rx="120" ry="120" fill="url(#glow-buffett)"/>
+        <!-- 背景光晕 — 六边形布局 -->
+        <!-- 上排：芒格(左) 纳瓦尔(中) 巴菲特(右) -->
+        <!-- 下排：马斯克(左) 乔布斯(中) 塔勒布(右) -->
+        <ellipse cx="170" cy="180" rx="90" ry="90" fill="url(#glow-munger)"/>
+        <ellipse cx="500" cy="130" rx="90" ry="90" fill="url(#glow-naval)"/>
+        <ellipse cx="830" cy="180" rx="90" ry="90" fill="url(#glow-buffett)"/>
+        <ellipse cx="170" cy="380" rx="90" ry="90" fill="url(#glow-musk)"/>
+        <ellipse cx="500" cy="420" rx="90" ry="90" fill="url(#glow-jobs)"/>
+        <ellipse cx="830" cy="380" rx="90" ry="90" fill="url(#glow-taleb)"/>
 
         <!-- 连接线：共同概念 -->
-        <!-- 自由 -->
-        <line x1="200" y1="250" x2="500" y2="130" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
-        <line x1="500" y1="130" x2="800" y2="250" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
-        <!-- 护城河 -->
-        <line x1="200" y1="250" x2="800" y2="250" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4,4"/>
-        <!-- 复利 -->
-        <line x1="200" y1="250" x2="500" y2="370" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
-        <line x1="500" y1="370" x2="800" y2="250" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 自由：芒格-纳瓦尔-巴菲特 -->
+        <line x1="170" y1="180" x2="500" y2="130" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <line x1="500" y1="130" x2="830" y2="180" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 复利：巴菲特-乔布斯-纳瓦尔 -->
+        <line x1="830" y1="180" x2="500" y2="420" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 第一性原理：马斯克-芒格 -->
+        <line x1="170" y1="380" x2="170" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 反脆弱/风险：塔勒布-纳瓦尔 -->
+        <line x1="830" y1="380" x2="500" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 护城河：芒格-巴菲特 -->
+        <line x1="170" y1="180" x2="830" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 创新：乔布斯-马斯克 -->
+        <line x1="500" y1="420" x2="170" y2="380" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 长期主义：巴菲特-塔勒布 -->
+        <line x1="830" y1="180" x2="830" y2="380" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4,4"/>
 
         <!-- 人物节点 -->
         <!-- 芒格 -->
-        <circle cx="200" cy="250" r="52" fill="rgba(240,165,0,0.08)" stroke="#F0A500" stroke-width="1.5"/>
-        <text x="200" y="244" text-anchor="middle" fill="#F0A500" font-size="22">🦁</text>
-        <text x="200" y="268" text-anchor="middle" fill="#F0A500" font-size="13" font-weight="600">芒格</text>
+        <circle cx="170" cy="180" r="48" fill="rgba(240,165,0,0.08)" stroke="#F0A500" stroke-width="1.5"/>
+        <text x="170" y="174" text-anchor="middle" fill="#F0A500" font-size="20">🦁</text>
+        <text x="170" y="196" text-anchor="middle" fill="#F0A500" font-size="12" font-weight="600">芒格</text>
 
         <!-- 纳瓦尔 -->
-        <circle cx="500" cy="250" r="52" fill="rgba(0,201,167,0.08)" stroke="#00C9A7" stroke-width="1.5"/>
-        <text x="500" y="244" text-anchor="middle" fill="#00C9A7" font-size="22">⚡</text>
-        <text x="500" y="268" text-anchor="middle" fill="#00C9A7" font-size="13" font-weight="600">纳瓦尔</text>
+        <circle cx="500" cy="130" r="48" fill="rgba(0,201,167,0.08)" stroke="#00C9A7" stroke-width="1.5"/>
+        <text x="500" y="124" text-anchor="middle" fill="#00C9A7" font-size="20">⚡</text>
+        <text x="500" y="146" text-anchor="middle" fill="#00C9A7" font-size="12" font-weight="600">纳瓦尔</text>
 
         <!-- 巴菲特 -->
-        <circle cx="800" cy="250" r="52" fill="rgba(224,92,92,0.08)" stroke="#E05C5C" stroke-width="1.5"/>
-        <text x="800" y="244" text-anchor="middle" fill="#E05C5C" font-size="22">🏛️</text>
-        <text x="800" y="268" text-anchor="middle" fill="#E05C5C" font-size="13" font-weight="600">巴菲特</text>
+        <circle cx="830" cy="180" r="48" fill="rgba(224,92,92,0.08)" stroke="#E05C5C" stroke-width="1.5"/>
+        <text x="830" y="174" text-anchor="middle" fill="#E05C5C" font-size="20">🏛️</text>
+        <text x="830" y="196" text-anchor="middle" fill="#E05C5C" font-size="12" font-weight="600">巴菲特</text>
+
+        <!-- 马斯克 -->
+        <circle cx="170" cy="380" r="48" fill="rgba(0,180,255,0.08)" stroke="#00B4FF" stroke-width="1.5"/>
+        <text x="170" y="374" text-anchor="middle" fill="#00B4FF" font-size="20">🚀</text>
+        <text x="170" y="396" text-anchor="middle" fill="#00B4FF" font-size="12" font-weight="600">马斯克</text>
+
+        <!-- 乔布斯 -->
+        <circle cx="500" cy="420" r="48" fill="rgba(200,160,255,0.08)" stroke="#C8A0FF" stroke-width="1.5"/>
+        <text x="500" y="414" text-anchor="middle" fill="#C8A0FF" font-size="20">🍎</text>
+        <text x="500" y="436" text-anchor="middle" fill="#C8A0FF" font-size="12" font-weight="600">乔布斯</text>
+
+        <!-- 塔勒布 -->
+        <circle cx="830" cy="380" r="48" fill="rgba(255,100,80,0.08)" stroke="#FF6450" stroke-width="1.5"/>
+        <text x="830" y="374" text-anchor="middle" fill="#FF6450" font-size="20">🦢</text>
+        <text x="830" y="396" text-anchor="middle" fill="#FF6450" font-size="12" font-weight="600">塔勒布</text>
 
         <!-- 共同概念节点 -->
-        <!-- 自由 (顶部) -->
-        <circle cx="500" cy="110" r="32" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <text x="500" y="106" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11">自由</text>
-        <text x="500" y="120" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10">Freedom</text>
+        <!-- 自由 (顶部中央) -->
+        <circle cx="500" cy="50" r="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="500" y="46" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11">自由</text>
+        <text x="500" y="59" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9">Freedom</text>
+        <line x1="500" y1="78" x2="500" y2="102" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
 
-        <!-- 护城河 (中部) -->
-        <circle cx="500" cy="250" r="0"/>
-        <rect x="420" y="230" width="160" height="0" rx="4" fill="none"/>
+        <!-- 护城河 (左上) -->
+        <circle cx="330" cy="200" r="26" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="330" y="196" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">护城河</text>
+        <text x="330" y="208" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9">Moat</text>
 
-        <!-- 复利 (底部) -->
-        <circle cx="500" cy="390" r="32" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <text x="500" y="386" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11">复利</text>
-        <text x="500" y="400" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10">Compounding</text>
+        <!-- 复利 (右上) -->
+        <circle cx="670" cy="200" r="26" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="670" y="196" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">复利</text>
+        <text x="670" y="208" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9">Compounding</text>
 
-        <!-- 芒格专属概念 -->
-        <circle cx="80" cy="140" r="28" fill="rgba(240,165,0,0.04)" stroke="rgba(240,165,0,0.2)" stroke-width="1"/>
-        <text x="80" y="136" text-anchor="middle" fill="rgba(240,165,0,0.7)" font-size="10">心智模型</text>
-        <text x="80" y="148" text-anchor="middle" fill="rgba(240,165,0,0.4)" font-size="9">Mental Models</text>
-        <line x1="200" y1="250" x2="100" y2="160" stroke="rgba(240,165,0,0.15)" stroke-width="1"/>
+        <!-- 第一性原理 (左下) -->
+        <circle cx="330" cy="360" r="26" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="330" y="356" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">第一原理</text>
+        <text x="330" y="368" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9">First Principles</text>
 
-        <circle cx="80" cy="360" r="28" fill="rgba(240,165,0,0.04)" stroke="rgba(240,165,0,0.2)" stroke-width="1"/>
-        <text x="80" y="356" text-anchor="middle" fill="rgba(240,165,0,0.7)" font-size="10">逆向思考</text>
-        <text x="80" y="368" text-anchor="middle" fill="rgba(240,165,0,0.4)" font-size="9">Inversion</text>
-        <line x1="200" y1="250" x2="100" y2="340" stroke="rgba(240,165,0,0.15)" stroke-width="1"/>
+        <!-- 反脆弱 (右下) -->
+        <circle cx="670" cy="360" r="26" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="670" y="356" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">反脆弱</text>
+        <text x="670" y="368" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9">Antifragile</text>
 
-        <!-- 纳瓦尔专属概念 -->
-        <circle cx="370" cy="250" r="28" fill="rgba(0,201,167,0.04)" stroke="rgba(0,201,167,0.2)" stroke-width="1"/>
-        <text x="370" y="246" text-anchor="middle" fill="rgba(0,201,167,0.7)" font-size="10">特定知识</text>
-        <text x="370" y="258" text-anchor="middle" fill="rgba(0,201,167,0.4)" font-size="9">Specific Knowledge</text>
-        <line x1="500" y1="250" x2="398" y2="250" stroke="rgba(0,201,167,0.15)" stroke-width="1"/>
-
-        <circle cx="630" cy="250" r="28" fill="rgba(0,201,167,0.04)" stroke="rgba(0,201,167,0.2)" stroke-width="1"/>
-        <text x="630" y="246" text-anchor="middle" fill="rgba(0,201,167,0.7)" font-size="10">杠杆</text>
-        <text x="630" y="258" text-anchor="middle" fill="rgba(0,201,167,0.4)" font-size="9">Leverage</text>
-        <line x1="500" y1="250" x2="602" y2="250" stroke="rgba(0,201,167,0.15)" stroke-width="1"/>
-
-        <!-- 巴菲特专属概念 -->
-        <circle cx="920" cy="140" r="28" fill="rgba(224,92,92,0.04)" stroke="rgba(224,92,92,0.2)" stroke-width="1"/>
-        <text x="920" y="136" text-anchor="middle" fill="rgba(224,92,92,0.7)" font-size="10">能力圈</text>
-        <text x="920" y="148" text-anchor="middle" fill="rgba(224,92,92,0.4)" font-size="9">Circle of Competence</text>
-        <line x1="800" y1="250" x2="900" y2="160" stroke="rgba(224,92,92,0.15)" stroke-width="1"/>
-
-        <circle cx="920" cy="360" r="28" fill="rgba(224,92,92,0.04)" stroke="rgba(224,92,92,0.2)" stroke-width="1"/>
-        <text x="920" y="356" text-anchor="middle" fill="rgba(224,92,92,0.7)" font-size="10">安全边际</text>
-        <text x="920" y="368" text-anchor="middle" fill="rgba(224,92,92,0.4)" font-size="9">Margin of Safety</text>
-        <line x1="800" y1="250" x2="900" y2="340" stroke="rgba(224,92,92,0.15)" stroke-width="1"/>
+        <!-- 底部：终身学习 -->
+        <circle cx="500" cy="510" r="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="500" y="506" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11">终身学习</text>
+        <text x="500" y="519" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9">Lifelong Learning</text>
+        <line x1="500" y1="468" x2="500" y2="482" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
       </svg>
     </div>
 
     <!-- 共鸣矩阵 -->
     <div class="fade-in">
       <div class="section-title">🤝 思想共鸣</div>
-      <div class="section-desc">三位大神在哪些核心议题上，不约而同地得出了相似的结论？</div>
+      <div class="section-desc">六位大神在哪些核心议题上，不约而同地得出了相似的结论？</div>
 
       <div class="resonance-grid">
 
         <div class="resonance-card">
           <div class="resonance-pair">
             <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+            <span class="person-tag" style="background:rgba(0,180,255,0.1);color:var(--musk)">马斯克</span>
+            <span class="person-tag" style="background:rgba(200,160,255,0.1);color:var(--jobs)">乔布斯</span>
+            <span class="person-tag" style="background:rgba(255,100,80,0.1);color:var(--taleb)">塔勒布</span>
           </div>
           <div class="resonance-topic">财富的终极价值是自由</div>
-          <div class="resonance-desc">三人对财富的定义，表面不同，深层一致：财富不是数字，而是不需要做你不想做的事的能力。</div>
+          <div class="resonance-desc">六人对财富的定义，表面不同，深层一致：财富不是数字，而是不需要做你不想做的事的能力。</div>
         </div>
 
         <div class="resonance-card">
           <div class="resonance-pair">
             <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+            <span class="person-tag" style="background:rgba(0,180,255,0.1);color:var(--musk)">马斯克</span>
+            <span class="person-tag" style="background:rgba(200,160,255,0.1);color:var(--jobs)">乔布斯</span>
+            <span class="person-tag" style="background:rgba(255,100,80,0.1);color:var(--taleb)">塔勒布</span>
           </div>
           <div class="resonance-topic">逃离竞争，而非赢得竞争</div>
-          <div class="resonance-desc">芒格用护城河，纳瓦尔用特定知识，巴菲特用能力圈——三种方式，同一个目标：让竞争变得无关紧要。</div>
+          <div class="resonance-desc">芒格用护城河，纳瓦尔用特定知识，巴菲特用能力圈，马斯克用使命，乔布斯用创新，塔勒布用非线性领域——六种方式，同一个目标。</div>
         </div>
 
         <div class="resonance-card">
           <div class="resonance-pair">
             <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+            <span class="person-tag" style="background:rgba(0,180,255,0.1);color:var(--musk)">马斯克</span>
+            <span class="person-tag" style="background:rgba(200,160,255,0.1);color:var(--jobs)">乔布斯</span>
+            <span class="person-tag" style="background:rgba(255,100,80,0.1);color:var(--taleb)">塔勒布</span>
           </div>
           <div class="resonance-topic">终身学习是核心竞争力</div>
-          <div class="resonance-desc">三人都是终身学习者，都把阅读和思考视为最重要的日常活动，都认为学习的复利效应超过任何其他投资。</div>
+          <div class="resonance-desc">六人都是终身学习者，都把阅读和思考视为最重要的日常活动，都认为学习的复利效应超过任何其他投资。</div>
         </div>
 
         <div class="resonance-card">
           <div class="resonance-pair">
             <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
           </div>
           <div class="resonance-topic">护城河是投资的核心标准</div>
@@ -388,8 +291,25 @@
 
         <div class="resonance-card">
           <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(0,180,255,0.1);color:var(--musk)">马斯克</span>
+            <span class="person-tag" style="background:rgba(200,160,255,0.1);color:var(--jobs)">乔布斯</span>
+          </div>
+          <div class="resonance-topic">使命感驱动极致产品</div>
+          <div class="resonance-desc">两人都相信：只有真正相信自己在改变世界，才能做出改变世界的产品。使命感不是口号，而是决策的过滤器。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
+            <span class="person-tag" style="background:rgba(255,100,80,0.1);color:var(--taleb)">塔勒布</span>
+          </div>
+          <div class="resonance-topic">切身利益是诚信的基础</div>
+          <div class="resonance-desc">纳瓦尔说「责任感是财富的前提」，塔勒布说「没有切身利益的建议是危险的」。两人都认为：只有承担自己建议的后果，才有资格给出建议。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
             <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
           </div>
           <div class="resonance-topic">减少欲望，提高判断质量</div>
@@ -398,8 +318,16 @@
 
         <div class="resonance-card">
           <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(0,180,255,0.1);color:var(--musk)">马斯克</span>
+            <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
+          </div>
+          <div class="resonance-topic">第一性原理超越类比推理</div>
+          <div class="resonance-desc">马斯克用第一性原理重新定义火箭成本，芒格用跨学科心智模型打破行业惯性。两人都拒绝「别人是这么做的」这种思维方式。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
             <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
-            <span style="color:var(--text-muted);font-size:12px">+</span>
             <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
           </div>
           <div class="resonance-topic">复利是最强大的力量</div>
@@ -412,8 +340,9 @@
     <!-- 分歧矩阵 -->
     <div class="fade-in">
       <div class="section-title">⚡ 思想分歧</div>
-      <div class="section-desc">在哪些核心问题上，三位大神的答案截然不同？</div>
+      <div class="section-desc">在哪些核心问题上，六位大神的答案截然不同？</div>
 
+      <div style="overflow-x:auto">
       <table class="diverge-table">
         <thead>
           <tr>
@@ -421,62 +350,84 @@
             <th style="color:var(--munger)">🦁 芒格</th>
             <th style="color:var(--naval)">⚡ 纳瓦尔</th>
             <th style="color:var(--buffett)">🏛️ 巴菲特</th>
+            <th style="color:var(--musk)">🚀 马斯克</th>
+            <th style="color:var(--jobs)">🍎 乔布斯</th>
+            <th style="color:var(--taleb)">🦢 塔勒布</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>如何学习</td>
-            <td class="munger">系统性构建跨学科心智模型网格</td>
-            <td class="naval">跟随好奇心，寻找特定知识</td>
-            <td class="buffett">深度专注，在一个领域读到极深</td>
+            <td class="munger">跨学科心智模型网格</td>
+            <td class="naval">跟随好奇心，特定知识</td>
+            <td class="buffett">深度专注，一个领域读到极深</td>
+            <td class="musk">第一性原理，理解推导过程</td>
+            <td class="jobs">跨界连接，点与点之间的联系</td>
+            <td class="taleb">实践优先，皮肤上的伤疤</td>
           </tr>
           <tr>
             <td>如何对待失败</td>
             <td class="munger">逆向预防，更新愚蠢清单</td>
             <td class="naval">重构产生问题的系统</td>
             <td class="buffett">承认、学习、快速翻篇</td>
+            <td class="musk">快速失败，失败是迭代数据</td>
+            <td class="jobs">失败带来自由，是创造力来源</td>
+            <td class="taleb">设计失败，让失败成为反脆弱燃料</td>
           </tr>
           <tr>
             <td>时间观</td>
             <td class="munger">耐心等待，不做无把握的事</td>
             <td class="naval">当下即永恒，减少对未来的焦虑</td>
             <td class="buffett">长期主义，时间是最重要的原材料</td>
+            <td class="musk">压缩时间，用速度创造优势</td>
+            <td class="jobs">活在当下，每天都可能是最后一天</td>
+            <td class="taleb">非线性时间，黑天鹅改变一切</td>
           </tr>
           <tr>
             <td>对科技的态度</td>
             <td class="munger">谨慎，科技公司护城河难以评估</td>
             <td class="naval">拥抱，科技是最强大的杠杆</td>
             <td class="buffett">从保守到接受，晚年投资苹果</td>
+            <td class="musk">科技是使命的工具，必须掌握</td>
+            <td class="jobs">科技与人文的交叉点才有价值</td>
+            <td class="taleb">警惕，复杂系统的脆弱性被低估</td>
           </tr>
           <tr>
-            <td>人际关系策略</td>
-            <td class="munger">只和你尊重的人合作，宁愿少赚</td>
-            <td class="naval">减少义务性关系，保持时间自由</td>
-            <td class="buffett">与优秀的人为伍，性格比智力更重要</td>
+            <td>决策方式</td>
+            <td class="munger">逆向思考，三筐分类法</td>
+            <td class="naval">重新定义问题，纠结即否定</td>
+            <td class="buffett">耐心等待甜蜜区，减少决策频率</td>
+            <td class="musk">第一性原理推导，快速迭代验证</td>
+            <td class="jobs">直觉优先，跟随内心声音</td>
+            <td class="taleb">杠铃策略，极保守+极激进</td>
           </tr>
           <tr>
             <td>创业 vs 投资</td>
             <td class="munger">偏好投资，不喜欢运营复杂性</td>
-            <td class="naval">创业是最好的杠杆，投资是次优选择</td>
-            <td class="buffett">投资为主，但欣赏优秀的创业者</td>
+            <td class="naval">创业是最好的杠杆，投资是次优</td>
+            <td class="buffett">投资为主，但欣赏优秀创业者</td>
+            <td class="musk">创业是唯一选择，投资是副业</td>
+            <td class="jobs">创业是艺术，产品是作品</td>
+            <td class="taleb">两者都要有切身利益，否则无效</td>
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <!-- 核心概念云 -->
     <div class="fade-in">
       <div class="section-title">💡 核心概念全景</div>
-      <div class="section-desc">三位大神的核心概念汇总。颜色代表归属，大小代表重要程度。</div>
+      <div class="section-desc">六位大神的核心概念汇总。颜色代表归属，大小代表重要程度。</div>
 
       <div class="concept-cloud">
         <!-- 共同概念 -->
         <span class="concept-tag shared size-lg">自由</span>
         <span class="concept-tag shared size-lg">复利</span>
-        <span class="concept-tag shared size-lg">护城河</span>
-        <span class="concept-tag shared">终身学习</span>
+        <span class="concept-tag shared size-lg">终身学习</span>
         <span class="concept-tag shared">长期主义</span>
         <span class="concept-tag shared">能力边界</span>
+        <span class="concept-tag shared">逃离竞争</span>
 
         <!-- 芒格 -->
         <span class="concept-tag munger size-lg">心智模型</span>
@@ -484,32 +435,56 @@
         <span class="concept-tag munger">跨学科思维</span>
         <span class="concept-tag munger">认知偏误</span>
         <span class="concept-tag munger">Lollapalooza效应</span>
-        <span class="concept-tag munger">愚蠢清单</span>
+        <span class="concept-tag munger size-sm">愚蠢清单</span>
         <span class="concept-tag munger size-sm">达尔文协议</span>
         <span class="concept-tag munger size-sm">三筐分类法</span>
-        <span class="concept-tag munger size-sm">激励结构</span>
 
         <!-- 纳瓦尔 -->
         <span class="concept-tag naval size-lg">特定知识</span>
         <span class="concept-tag naval size-lg">杠杆</span>
         <span class="concept-tag naval">欲望管理</span>
         <span class="concept-tag naval">无需许可</span>
-        <span class="concept-tag naval">重新定义</span>
         <span class="concept-tag naval">纠结即否定</span>
         <span class="concept-tag naval size-sm">代码与媒体</span>
         <span class="concept-tag naval size-sm">时间自由</span>
         <span class="concept-tag naval size-sm">当下即永恒</span>
 
         <!-- 巴菲特 -->
+        <span class="concept-tag buffett size-lg">护城河</span>
         <span class="concept-tag buffett size-lg">能力圈</span>
-        <span class="concept-tag buffett size-lg">安全边际</span>
+        <span class="concept-tag buffett">安全边际</span>
         <span class="concept-tag buffett">内在价值</span>
         <span class="concept-tag buffett">Mr. Market</span>
-        <span class="concept-tag buffett">甜蜜区</span>
-        <span class="concept-tag buffett">性格优先</span>
-        <span class="concept-tag buffett size-sm">报纸测试</span>
+        <span class="concept-tag buffett size-sm">甜蜜区</span>
         <span class="concept-tag buffett size-sm">20槽规则</span>
-        <span class="concept-tag buffett size-sm">护城河加宽</span>
+        <span class="concept-tag buffett size-sm">性格优先</span>
+
+        <!-- 马斯克 -->
+        <span class="concept-tag musk size-lg">第一性原理</span>
+        <span class="concept-tag musk size-lg">快速迭代</span>
+        <span class="concept-tag musk">垂直整合</span>
+        <span class="concept-tag musk">白痴指数</span>
+        <span class="concept-tag musk">五步算法</span>
+        <span class="concept-tag musk size-sm">使命驱动</span>
+        <span class="concept-tag musk size-sm">多星球文明</span>
+
+        <!-- 乔布斯 -->
+        <span class="concept-tag jobs size-lg">极致简洁</span>
+        <span class="concept-tag jobs size-lg">连接点</span>
+        <span class="concept-tag jobs">产品工艺</span>
+        <span class="concept-tag jobs">现实扭曲力场</span>
+        <span class="concept-tag jobs">人文与科技</span>
+        <span class="concept-tag jobs size-sm">Stay Hungry</span>
+        <span class="concept-tag jobs size-sm">Think Different</span>
+
+        <!-- 塔勒布 -->
+        <span class="concept-tag taleb size-lg">反脆弱</span>
+        <span class="concept-tag taleb size-lg">黑天鹅</span>
+        <span class="concept-tag taleb">切身利益</span>
+        <span class="concept-tag taleb">杠铃策略</span>
+        <span class="concept-tag taleb">尾部风险</span>
+        <span class="concept-tag taleb size-sm">普罗克鲁斯忒斯之床</span>
+        <span class="concept-tag taleb size-sm">随机漫步</span>
       </div>
     </div>
 
