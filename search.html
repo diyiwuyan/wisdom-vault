@@ -375,11 +375,12 @@
 </footer>
 
 <script src="data/concepts.js"></script>
+<script src="data/people.js"></script>
 <script src="data/quotes.js"></script>
 <script src="data/articles.js"></script>
 <script>
-// ── 人物名称映射 ──
-const PERSON_NAMES = { munger: '芒格', naval: '纳瓦尔', buffett: '巴菲特', musk: '马斯克', jobs: '乔布斯', taleb: '塔勒布' };
+// ── 人物名称映射（从 WV_PEOPLE 动态生成，无需手动维护）──
+const PERSON_NAMES = Object.fromEntries(WV_PEOPLE.map(p => [p.id, p.nameShort]));
 const TYPE_LABELS  = { concept: '概念', quote: '语录', book: '书单', article: '文章' };
 const TYPE_ICONS   = {
   concept: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,

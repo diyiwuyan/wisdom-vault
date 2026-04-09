@@ -310,18 +310,7 @@
 
     <div class="sidebar-section">
       <div class="sidebar-label">人物</div>
-      <button class="filter-btn" onclick="filterBy('person','munger',this)">
-        <span class="dot" style="background:var(--munger)"></span>
-        <span>芒格推荐</span><span class="count" id="count-munger"></span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','naval',this)">
-        <span class="dot" style="background:var(--naval)"></span>
-        <span>纳瓦尔推荐</span><span class="count" id="count-naval"></span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','buffett',this)">
-        <span class="dot" style="background:var(--buffett)"></span>
-        <span>巴菲特推荐</span><span class="count" id="count-buffett"></span>
-      </button>
+      <div id="person-filters"><!-- 由 JS 动态生成 --></div>
     </div>
 
     <div class="sidebar-section">
@@ -366,14 +355,14 @@
   </main>
 </div>
 
+<script src="../data/people.js"></script>
 <script src="../data/concepts.js"></script>
 <script src="../data/articles.js"></script>
 <script>
-const PERSON_CONFIG = {
-  munger:  { name: '芒格推荐', color: 'var(--munger)' },
-  naval:   { name: '纳瓦尔推荐', color: 'var(--naval)' },
-  buffett: { name: '巴菲特推荐', color: 'var(--buffett)' }
-};
+// PERSON_CONFIG 从 WV_PEOPLE 动态生成
+const PERSON_CONFIG = Object.fromEntries(
+  WV_PEOPLE.map(p => [p.id, { name: p.nameShort + '推荐', color: p.color }])
+);
 
 const TYPE_ICONS = {
   book: '📚',
@@ -491,16 +480,25 @@ function render() {
   }
 }
 
+function renderPersonFilters() {
+  const container = document.getElementById('person-filters');
+  if (!container) return;
+  container.innerHTML = WV_PEOPLE.map(p => `
+    <button class="filter-btn" id="filter-${p.id}" onclick="filterBy('person','${p.id}',this)">
+      <span class="dot" style="background:${p.color}"></span>
+      <span>${p.nameShort}推荐</span>
+      <span class="count" id="count-${p.id}">${WV_ARTICLES.filter(a => a.person === p.id).length}</span>
+    </button>
+  `).join('');
+}
+
 function updateCounts() {
   document.getElementById('count-all').textContent = WV_ARTICLES.length;
   document.getElementById('count-book').textContent = WV_ARTICLES.filter(a => a.type === 'book').length;
   document.getElementById('count-article').textContent = WV_ARTICLES.filter(a => a.type === 'article').length;
-  ['munger','naval','buffett'].forEach(p => {
-    const el = document.getElementById('count-' + p);
-    if (el) el.textContent = WV_ARTICLES.filter(a => a.person === p).length;
-  });
 }
 
+renderPersonFilters();
 updateCounts();
 render();
 </script>

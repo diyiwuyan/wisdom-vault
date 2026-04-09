@@ -306,17 +306,23 @@
   </aside>
 </div>
 
+<script src="../data/people.js"></script>
 <script src="../data/concepts.js"></script>
 <script src="../data/quotes.js"></script>
 <script>
 // 从URL获取概念ID（文件名）
 const conceptId = location.pathname.split('/').pop().replace('.html','');
 
-const PERSON_CONFIG = {
-  munger:  { name: '查理·芒格', emoji: '🦁', color: 'var(--munger)', bg: 'rgba(240,165,0,0.1)', path: '../people/munger.html' },
-  naval:   { name: '纳瓦尔',    emoji: '⚡', color: 'var(--naval)',   bg: 'rgba(0,201,167,0.1)', path: '../people/naval.html' },
-  buffett: { name: '沃伦·巴菲特', emoji: '🏛️', color: 'var(--buffett)', bg: 'rgba(224,92,92,0.1)', path: '../people/buffett.html' }
-};
+const PERSON_CONFIG = Object.fromEntries(
+  WV_PEOPLE.map(p => [p.id, {
+    name: p.name,
+    nameShort: p.nameShort,
+    emoji: p.emoji,
+    color: p.color,
+    bg: 'rgba(128,128,128,0.1)',
+    path: '../' + p.url
+  }])
+);
 
 function init() {
   const concept = WV_CONCEPTS.find(c => c.id === conceptId);

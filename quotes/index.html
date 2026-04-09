@@ -280,40 +280,7 @@
   <aside class="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-label">人物</div>
-      <button class="filter-btn active" onclick="filterBy('person','all',this)">
-        <span>全部</span>
-        <span class="count" id="count-all">36</span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','munger',this)">
-        <span class="dot" style="background:var(--munger)"></span>
-        <span>查理·芒格</span>
-        <span class="count" id="count-munger">12</span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','naval',this)">
-        <span class="dot" style="background:var(--naval)"></span>
-        <span>纳瓦尔</span>
-        <span class="count" id="count-naval">12</span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','buffett',this)">
-        <span class="dot" style="background:var(--buffett)"></span>
-        <span>沃伦·巴菲特</span>
-        <span class="count" id="count-buffett">12</span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','musk',this)">
-        <span class="dot" style="background:var(--musk)"></span>
-        <span>埃隆·马斯克</span>
-        <span class="count" id="count-musk">0</span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','jobs',this)">
-        <span class="dot" style="background:var(--jobs)"></span>
-        <span>史蒂夫·乔布斯</span>
-        <span class="count" id="count-jobs">0</span>
-      </button>
-      <button class="filter-btn" onclick="filterBy('person','taleb',this)">
-        <span class="dot" style="background:var(--taleb)"></span>
-        <span>纳西姆·塔勒布</span>
-        <span class="count" id="count-taleb">0</span>
-      </button>
+      <div id="person-filters"><!-- 由 JS 动态生成 --></div>
     </div>
 
     <div class="sidebar-section">
@@ -390,17 +357,14 @@
   </main>
 </div>
 
+<script src="../data/people.js"></script>
 <script src="../data/concepts.js"></script>
 <script src="../data/quotes.js"></script>
 <script>
-const PERSON_CONFIG = {
-  munger:  { name: '查理·芒格',    emoji: '🦁', color: 'var(--munger)'  },
-  naval:   { name: '纳瓦尔',       emoji: '⚡', color: 'var(--naval)'   },
-  buffett: { name: '沃伦·巴菲特', emoji: '🏛️', color: 'var(--buffett)' },
-  musk:    { name: '埃隆·马斯克', emoji: '🚀', color: 'var(--musk)'    },
-  jobs:    { name: '史蒂夫·乔布斯', emoji: '🍎', color: 'var(--jobs)'   },
-  taleb:   { name: '纳西姆·塔勒布', emoji: '🎲', color: 'var(--taleb)'  }
-};
+// PERSON_CONFIG 从 WV_PEOPLE 动态生成，无需手动维护
+const PERSON_CONFIG = Object.fromEntries(
+  WV_PEOPLE.map(p => [p.id, { name: p.name, emoji: p.emoji, color: p.color }])
+);
 
 let currentFilter = { type: 'person', value: 'all' };
 let searchQuery = '';
@@ -495,17 +459,28 @@ function render() {
   }
 }
 
-// 更新侧边栏计数
-function updateCounts() {
-  ['munger','naval','buffett','musk','jobs','taleb'].forEach(p => {
-    const el = document.getElementById('count-' + p);
-    if (el) el.textContent = WV_QUOTES.filter(q => q.person === p).length;
-  });
-  document.getElementById('count-all').textContent = WV_QUOTES.length;
+// 动态渲染人物筛选按钮（从 WV_PEOPLE 读取，无需手动维护）
+function renderPersonFilters() {
+  const container = document.getElementById('person-filters');
+  if (!container) return;
+  const allCount = WV_QUOTES.length;
+  container.innerHTML = `
+    <button class="filter-btn active" id="filter-all" onclick="filterBy('person','all',this)">
+      <span>全部</span>
+      <span class="count" id="count-all">${allCount}</span>
+    </button>
+    ${WV_PEOPLE.map(p => `
+      <button class="filter-btn" id="filter-${p.id}" onclick="filterBy('person','${p.id}',this)">
+        <span class="dot" style="background:${p.color}"></span>
+        <span>${p.name}</span>
+        <span class="count" id="count-${p.id}">${WV_QUOTES.filter(q => q.person === p.id).length}</span>
+      </button>
+    `).join('')}
+  `;
 }
 
 // 初始化
-updateCounts();
+renderPersonFilters();
 render();
 </script>
 </body>
