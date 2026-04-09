@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识图谱 · 大神认知知识库</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    .graph-hero {
+      padding: 80px 40px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .graph-hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .graph-hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .graph-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+    }
+
+    /* ── 概念地图 ── */
+    .concept-map {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      margin-bottom: 60px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 70%);
+    }
+
+    .concept-map svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── 共鸣矩阵 ── */
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .resonance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .resonance-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .resonance-card:hover {
+      border-color: var(--border-bright);
+    }
+
+    .resonance-pair {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .person-tag {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .resonance-topic {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .resonance-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── 分歧矩阵 ── */
+    .diverge-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 60px;
+      font-size: 14px;
+    }
+
+    .diverge-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diverge-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .diverge-table tr:last-child td { border-bottom: none; }
+
+    .diverge-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .diverge-table td.munger { color: var(--munger); }
+    .diverge-table td.naval { color: var(--naval); }
+    .diverge-table td.buffett { color: var(--buffett); }
+
+    /* ── 核心概念云 ── */
+    .concept-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 60px;
+    }
+
+    .concept-tag {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid;
+      cursor: default;
+      transition: all 0.2s;
+    }
+
+    .concept-tag:hover {
+      transform: translateY(-2px);
+    }
+
+    .concept-tag.munger {
+      background: rgba(240,165,0,0.06);
+      border-color: rgba(240,165,0,0.2);
+      color: var(--munger);
+    }
+
+    .concept-tag.naval {
+      background: rgba(0,201,167,0.06);
+      border-color: rgba(0,201,167,0.2);
+      color: var(--naval);
+    }
+
+    .concept-tag.buffett {
+      background: rgba(224,92,92,0.06);
+      border-color: rgba(224,92,92,0.2);
+      color: var(--buffett);
+    }
+
+    .concept-tag.shared {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.15);
+      color: var(--text-primary);
+    }
+
+    .concept-tag.size-lg { font-size: 15px; padding: 10px 20px; }
+    .concept-tag.size-sm { font-size: 11px; padding: 6px 12px; }
+
+    @media (max-width: 768px) {
+      .graph-hero { padding: 60px 24px 36px; }
+      .graph-hero h1 { font-size: 28px; }
+      .graph-container { padding: 24px 20px 60px; }
+      .resonance-grid { grid-template-columns: 1fr; }
+      .concept-map { height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="people/munger.html">芒格</a></li>
+    <li><a href="people/naval.html">纳瓦尔</a></li>
+    <li><a href="people/buffett.html">巴菲特</a></li>
+    <li><a href="collision/index.html">思想碰撞</a></li>
+    <li><a href="graph.html" class="active">知识图谱</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <div class="graph-hero fade-in">
+    <h1>🕸️ 知识图谱</h1>
+    <p>三位大神的思想如何交织、共鸣与分歧。看见认知的结构，发现思维的连接。</p>
+  </div>
+
+  <div class="graph-container">
+
+    <!-- 概念关系图 (SVG) -->
+    <div class="concept-map fade-in">
+      <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="glow-munger" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F0A500" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#F0A500" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="glow-naval" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="glow-buffett" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E05C5C" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#E05C5C" stop-opacity="0"/>
+          </radialGradient>
+          <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.15)"/>
+          </marker>
+        </defs>
+
+        <!-- 背景光晕 -->
+        <ellipse cx="200" cy="250" rx="120" ry="120" fill="url(#glow-munger)"/>
+        <ellipse cx="500" cy="250" rx="120" ry="120" fill="url(#glow-naval)"/>
+        <ellipse cx="800" cy="250" rx="120" ry="120" fill="url(#glow-buffett)"/>
+
+        <!-- 连接线：共同概念 -->
+        <!-- 自由 -->
+        <line x1="200" y1="250" x2="500" y2="130" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <line x1="500" y1="130" x2="800" y2="250" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 护城河 -->
+        <line x1="200" y1="250" x2="800" y2="250" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <!-- 复利 -->
+        <line x1="200" y1="250" x2="500" y2="370" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <line x1="500" y1="370" x2="800" y2="250" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+        <!-- 人物节点 -->
+        <!-- 芒格 -->
+        <circle cx="200" cy="250" r="52" fill="rgba(240,165,0,0.08)" stroke="#F0A500" stroke-width="1.5"/>
+        <text x="200" y="244" text-anchor="middle" fill="#F0A500" font-size="22">🦁</text>
+        <text x="200" y="268" text-anchor="middle" fill="#F0A500" font-size="13" font-weight="600">芒格</text>
+
+        <!-- 纳瓦尔 -->
+        <circle cx="500" cy="250" r="52" fill="rgba(0,201,167,0.08)" stroke="#00C9A7" stroke-width="1.5"/>
+        <text x="500" y="244" text-anchor="middle" fill="#00C9A7" font-size="22">⚡</text>
+        <text x="500" y="268" text-anchor="middle" fill="#00C9A7" font-size="13" font-weight="600">纳瓦尔</text>
+
+        <!-- 巴菲特 -->
+        <circle cx="800" cy="250" r="52" fill="rgba(224,92,92,0.08)" stroke="#E05C5C" stroke-width="1.5"/>
+        <text x="800" y="244" text-anchor="middle" fill="#E05C5C" font-size="22">🏛️</text>
+        <text x="800" y="268" text-anchor="middle" fill="#E05C5C" font-size="13" font-weight="600">巴菲特</text>
+
+        <!-- 共同概念节点 -->
+        <!-- 自由 (顶部) -->
+        <circle cx="500" cy="110" r="32" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="500" y="106" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11">自由</text>
+        <text x="500" y="120" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10">Freedom</text>
+
+        <!-- 护城河 (中部) -->
+        <circle cx="500" cy="250" r="0"/>
+        <rect x="420" y="230" width="160" height="0" rx="4" fill="none"/>
+
+        <!-- 复利 (底部) -->
+        <circle cx="500" cy="390" r="32" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="500" y="386" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11">复利</text>
+        <text x="500" y="400" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10">Compounding</text>
+
+        <!-- 芒格专属概念 -->
+        <circle cx="80" cy="140" r="28" fill="rgba(240,165,0,0.04)" stroke="rgba(240,165,0,0.2)" stroke-width="1"/>
+        <text x="80" y="136" text-anchor="middle" fill="rgba(240,165,0,0.7)" font-size="10">心智模型</text>
+        <text x="80" y="148" text-anchor="middle" fill="rgba(240,165,0,0.4)" font-size="9">Mental Models</text>
+        <line x1="200" y1="250" x2="100" y2="160" stroke="rgba(240,165,0,0.15)" stroke-width="1"/>
+
+        <circle cx="80" cy="360" r="28" fill="rgba(240,165,0,0.04)" stroke="rgba(240,165,0,0.2)" stroke-width="1"/>
+        <text x="80" y="356" text-anchor="middle" fill="rgba(240,165,0,0.7)" font-size="10">逆向思考</text>
+        <text x="80" y="368" text-anchor="middle" fill="rgba(240,165,0,0.4)" font-size="9">Inversion</text>
+        <line x1="200" y1="250" x2="100" y2="340" stroke="rgba(240,165,0,0.15)" stroke-width="1"/>
+
+        <!-- 纳瓦尔专属概念 -->
+        <circle cx="370" cy="250" r="28" fill="rgba(0,201,167,0.04)" stroke="rgba(0,201,167,0.2)" stroke-width="1"/>
+        <text x="370" y="246" text-anchor="middle" fill="rgba(0,201,167,0.7)" font-size="10">特定知识</text>
+        <text x="370" y="258" text-anchor="middle" fill="rgba(0,201,167,0.4)" font-size="9">Specific Knowledge</text>
+        <line x1="500" y1="250" x2="398" y2="250" stroke="rgba(0,201,167,0.15)" stroke-width="1"/>
+
+        <circle cx="630" cy="250" r="28" fill="rgba(0,201,167,0.04)" stroke="rgba(0,201,167,0.2)" stroke-width="1"/>
+        <text x="630" y="246" text-anchor="middle" fill="rgba(0,201,167,0.7)" font-size="10">杠杆</text>
+        <text x="630" y="258" text-anchor="middle" fill="rgba(0,201,167,0.4)" font-size="9">Leverage</text>
+        <line x1="500" y1="250" x2="602" y2="250" stroke="rgba(0,201,167,0.15)" stroke-width="1"/>
+
+        <!-- 巴菲特专属概念 -->
+        <circle cx="920" cy="140" r="28" fill="rgba(224,92,92,0.04)" stroke="rgba(224,92,92,0.2)" stroke-width="1"/>
+        <text x="920" y="136" text-anchor="middle" fill="rgba(224,92,92,0.7)" font-size="10">能力圈</text>
+        <text x="920" y="148" text-anchor="middle" fill="rgba(224,92,92,0.4)" font-size="9">Circle of Competence</text>
+        <line x1="800" y1="250" x2="900" y2="160" stroke="rgba(224,92,92,0.15)" stroke-width="1"/>
+
+        <circle cx="920" cy="360" r="28" fill="rgba(224,92,92,0.04)" stroke="rgba(224,92,92,0.2)" stroke-width="1"/>
+        <text x="920" y="356" text-anchor="middle" fill="rgba(224,92,92,0.7)" font-size="10">安全边际</text>
+        <text x="920" y="368" text-anchor="middle" fill="rgba(224,92,92,0.4)" font-size="9">Margin of Safety</text>
+        <line x1="800" y1="250" x2="900" y2="340" stroke="rgba(224,92,92,0.15)" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- 共鸣矩阵 -->
+    <div class="fade-in">
+      <div class="section-title">🤝 思想共鸣</div>
+      <div class="section-desc">三位大神在哪些核心议题上，不约而同地得出了相似的结论？</div>
+
+      <div class="resonance-grid">
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+          </div>
+          <div class="resonance-topic">财富的终极价值是自由</div>
+          <div class="resonance-desc">三人对财富的定义，表面不同，深层一致：财富不是数字，而是不需要做你不想做的事的能力。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+          </div>
+          <div class="resonance-topic">逃离竞争，而非赢得竞争</div>
+          <div class="resonance-desc">芒格用护城河，纳瓦尔用特定知识，巴菲特用能力圈——三种方式，同一个目标：让竞争变得无关紧要。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+          </div>
+          <div class="resonance-topic">终身学习是核心竞争力</div>
+          <div class="resonance-desc">三人都是终身学习者，都把阅读和思考视为最重要的日常活动，都认为学习的复利效应超过任何其他投资。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+          </div>
+          <div class="resonance-topic">护城河是投资的核心标准</div>
+          <div class="resonance-desc">两人共同发展了护城河理论：品牌、网络效应、转换成本、成本优势——这四种护城河是他们投资决策的核心框架。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(240,165,0,0.1);color:var(--munger)">芒格</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
+          </div>
+          <div class="resonance-topic">减少欲望，提高判断质量</div>
+          <div class="resonance-desc">芒格说「自怜是灾难性的」，纳瓦尔说「欲望是痛苦的契约」。两人都认为减少不必要的欲望，是提高决策质量的关键。</div>
+        </div>
+
+        <div class="resonance-card">
+          <div class="resonance-pair">
+            <span class="person-tag" style="background:rgba(0,201,167,0.1);color:var(--naval)">纳瓦尔</span>
+            <span style="color:var(--text-muted);font-size:12px">+</span>
+            <span class="person-tag" style="background:rgba(224,92,92,0.1);color:var(--buffett)">巴菲特</span>
+          </div>
+          <div class="resonance-topic">复利是最强大的力量</div>
+          <div class="resonance-desc">巴菲特说「复利是世界第八大奇迹」，纳瓦尔说「知识、关系、财富都是复利的」。两人都把复利思维应用到了投资之外的领域。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 分歧矩阵 -->
+    <div class="fade-in">
+      <div class="section-title">⚡ 思想分歧</div>
+      <div class="section-desc">在哪些核心问题上，三位大神的答案截然不同？</div>
+
+      <table class="diverge-table">
+        <thead>
+          <tr>
+            <th>议题</th>
+            <th style="color:var(--munger)">🦁 芒格</th>
+            <th style="color:var(--naval)">⚡ 纳瓦尔</th>
+            <th style="color:var(--buffett)">🏛️ 巴菲特</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>如何学习</td>
+            <td class="munger">系统性构建跨学科心智模型网格</td>
+            <td class="naval">跟随好奇心，寻找特定知识</td>
+            <td class="buffett">深度专注，在一个领域读到极深</td>
+          </tr>
+          <tr>
+            <td>如何对待失败</td>
+            <td class="munger">逆向预防，更新愚蠢清单</td>
+            <td class="naval">重构产生问题的系统</td>
+            <td class="buffett">承认、学习、快速翻篇</td>
+          </tr>
+          <tr>
+            <td>时间观</td>
+            <td class="munger">耐心等待，不做无把握的事</td>
+            <td class="naval">当下即永恒，减少对未来的焦虑</td>
+            <td class="buffett">长期主义，时间是最重要的原材料</td>
+          </tr>
+          <tr>
+            <td>对科技的态度</td>
+            <td class="munger">谨慎，科技公司护城河难以评估</td>
+            <td class="naval">拥抱，科技是最强大的杠杆</td>
+            <td class="buffett">从保守到接受，晚年投资苹果</td>
+          </tr>
+          <tr>
+            <td>人际关系策略</td>
+            <td class="munger">只和你尊重的人合作，宁愿少赚</td>
+            <td class="naval">减少义务性关系，保持时间自由</td>
+            <td class="buffett">与优秀的人为伍，性格比智力更重要</td>
+          </tr>
+          <tr>
+            <td>创业 vs 投资</td>
+            <td class="munger">偏好投资，不喜欢运营复杂性</td>
+            <td class="naval">创业是最好的杠杆，投资是次优选择</td>
+            <td class="buffett">投资为主，但欣赏优秀的创业者</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 核心概念云 -->
+    <div class="fade-in">
+      <div class="section-title">💡 核心概念全景</div>
+      <div class="section-desc">三位大神的核心概念汇总。颜色代表归属，大小代表重要程度。</div>
+
+      <div class="concept-cloud">
+        <!-- 共同概念 -->
+        <span class="concept-tag shared size-lg">自由</span>
+        <span class="concept-tag shared size-lg">复利</span>
+        <span class="concept-tag shared size-lg">护城河</span>
+        <span class="concept-tag shared">终身学习</span>
+        <span class="concept-tag shared">长期主义</span>
+        <span class="concept-tag shared">能力边界</span>
+
+        <!-- 芒格 -->
+        <span class="concept-tag munger size-lg">心智模型</span>
+        <span class="concept-tag munger size-lg">逆向思考</span>
+        <span class="concept-tag munger">跨学科思维</span>
+        <span class="concept-tag munger">认知偏误</span>
+        <span class="concept-tag munger">Lollapalooza效应</span>
+        <span class="concept-tag munger">愚蠢清单</span>
+        <span class="concept-tag munger size-sm">达尔文协议</span>
+        <span class="concept-tag munger size-sm">三筐分类法</span>
+        <span class="concept-tag munger size-sm">激励结构</span>
+
+        <!-- 纳瓦尔 -->
+        <span class="concept-tag naval size-lg">特定知识</span>
+        <span class="concept-tag naval size-lg">杠杆</span>
+        <span class="concept-tag naval">欲望管理</span>
+        <span class="concept-tag naval">无需许可</span>
+        <span class="concept-tag naval">重新定义</span>
+        <span class="concept-tag naval">纠结即否定</span>
+        <span class="concept-tag naval size-sm">代码与媒体</span>
+        <span class="concept-tag naval size-sm">时间自由</span>
+        <span class="concept-tag naval size-sm">当下即永恒</span>
+
+        <!-- 巴菲特 -->
+        <span class="concept-tag buffett size-lg">能力圈</span>
+        <span class="concept-tag buffett size-lg">安全边际</span>
+        <span class="concept-tag buffett">内在价值</span>
+        <span class="concept-tag buffett">Mr. Market</span>
+        <span class="concept-tag buffett">甜蜜区</span>
+        <span class="concept-tag buffett">性格优先</span>
+        <span class="concept-tag buffett size-sm">报纸测试</span>
+        <span class="concept-tag buffett size-sm">20槽规则</span>
+        <span class="concept-tag buffett size-sm">护城河加宽</span>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>史蒂夫·乔布斯 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .jobs-hero {
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(200,160,255,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(200,160,255,0.05) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--jobs);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(200,160,255,0.2);
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--jobs); border-bottom-color: var(--jobs); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .lineage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lineage-item:last-child { border-bottom: none; }
+    .lineage-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(200,160,255,0.08);
+      border: 1px solid rgba(200,160,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .lineage-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .lineage-desc { font-size: 12px; color: var(--text-muted); }
+
+    .dots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .dot-item {
+      padding: 14px;
+      background: rgba(200,160,255,0.03);
+      border: 1px solid rgba(200,160,255,0.1);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .dot-year {
+      font-size: 11px;
+      color: var(--jobs);
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+    .dot-event {
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .dot-insight {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .dots-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="munger.html">芒格</a></li>
+    <li><a href="naval.html">纳瓦尔</a></li>
+    <li><a href="buffett.html">巴菲特</a></li>
+    <li><a href="musk.html">马斯克</a></li>
+    <li><a href="jobs.html" class="active">乔布斯</a></li>
+    <li><a href="taleb.html">塔勒布</a></li>
+    <li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+    <li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="person-hero jobs-hero">
+    <div class="person-hero-content fade-in">
+      <div class="person-avatar" style="border-color: var(--jobs); color: var(--jobs)">🍎</div>
+      <div class="person-name" style="color: var(--jobs)">史蒂夫·乔布斯</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.05em">Steve Jobs · 1955–2011</div>
+      <div class="person-tagline">
+        "Your time is limited, so don't waste it living someone else's life."
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <span class="tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">极致简洁</span>
+        <span class="tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">产品工艺</span>
+        <span class="tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">现实扭曲力场</span>
+        <span class="tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">连接点</span>
+        <span class="tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">专注即说不</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content-grid">
+
+    <!-- 主栏 -->
+    <div>
+
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('models', this)">心智模型</button>
+        <button class="tab-btn" onclick="switchTab('heuristics', this)">决策启发式</button>
+        <button class="tab-btn" onclick="switchTab('quotes', this)">金句库</button>
+        <button class="tab-btn" onclick="switchTab('dots', this)">连接点</button>
+      </div>
+
+      <!-- 心智模型 -->
+      <div id="tab-models" class="tab-panel active">
+        <div class="section-title">6 个核心心智模型</div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.05s">
+          <div class="model-num">MODEL 01</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            极致简洁 · Radical Simplicity
+          </div>
+          <div class="model-oneliner">简单不是缺少什么，而是去掉所有不必要的东西之后剩下的。真正的简单需要深刻的理解。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">乔布斯1998年重返苹果后做的第一件事，是把产品线从350个砍到10个。他说：「专注意味着对一百件好主意说不。」</p>
+            <div class="quote-block" style="border-color: var(--jobs); margin-bottom:16px">
+              "Simple can be harder than complex. You have to work hard to get your thinking clean to make it simple."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>对任何产品、功能、流程，问：如果只能保留一个核心，是什么？然后围绕这个核心，删掉所有不服务于它的东西。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>乔布斯的极致简洁有时走向了「用户无法自定义」的独裁。早期Mac不支持鼠标右键，iPhone初代不支持第三方App——简洁有时是控制欲的包装。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.10s">
+          <div class="model-num">MODEL 02</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            现实扭曲力场 · Reality Distortion Field
+          </div>
+          <div class="model-oneliner">通过极度自信和愿景感染，让团队相信「不可能」是可能的，从而真的做到。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">这个词由苹果工程师Bud Tribble创造，描述乔布斯让人相信任何事情都可以实现的能力。他会告诉工程师「两周内完成」，而工程师明知不可能，却真的做到了。</p>
+            <p style="margin-bottom:12px"><strong>机制：</strong>不是欺骗，而是重新定义「可能」的边界。乔布斯相信，大多数「不可能」只是「没有人真正全力以赴尝试过」。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>现实扭曲力场也导致了乔布斯对自己癌症的延误治疗——他用同样的方式「扭曲」了医疗现实，拒绝手术9个月。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.15s">
+          <div class="model-num">MODEL 03</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            技术与人文的交叉 · Technology × Liberal Arts
+          </div>
+          <div class="model-oneliner">最好的产品诞生在技术能力和人文感知的交叉点。工程师不懂美，设计师不懂技术，都做不出伟大产品。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">乔布斯在每次产品发布会结束时，都会展示一块路牌：「Technology」和「Liberal Arts」的交叉路口。这不是比喻，而是他的招聘标准和产品哲学。</p>
+            <div class="quote-block" style="border-color: var(--jobs); margin-bottom:16px">
+              "It's in Apple's DNA that technology alone is not enough — it's technology married with liberal arts, married with the humanities, that yields us the results that make our heart sing."
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.20s">
+          <div class="model-num">MODEL 04</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            死亡作为工具 · Death as a Tool
+          </div>
+          <div class="model-oneliner">「记住你会死」是消除外部期望、恐惧和骄傲的最有效工具。死亡让真正重要的事情变得清晰。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">乔布斯在2005年斯坦福演讲中完整阐述。他17岁读到一句话：「如果你把每一天都当作生命中的最后一天，总有一天你会是对的。」此后每天早晨照镜子问自己：「如果今天是我生命的最后一天，我还会做今天计划做的事吗？」</p>
+            <div class="quote-block" style="border-color: var(--jobs)">
+              "Remembering that I'll be dead soon is the most important tool I've ever encountered to help me make the big choices in life."
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.25s">
+          <div class="model-num">MODEL 05</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            用户不知道自己想要什么 · Users Don't Know What They Want
+          </div>
+          <div class="model-oneliner">不要问用户想要什么，观察他们在做什么，然后给他们一个更好的方式做同样的事。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">乔布斯从不做焦点小组测试。他说：「很难通过焦点小组设计产品，因为人们不知道自己想要什么，直到你展示给他们看。」</p>
+            <p style="margin-bottom:12px">这不是傲慢，而是对「用户需求」和「用户欲望」的区分。用户知道自己的问题，但不知道最好的解决方案。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>这个模型在消费电子领域极其有效，但在企业软件、医疗、工业等领域，用户往往是领域专家，忽视他们的反馈是危险的。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.30s">
+          <div class="model-num">MODEL 06</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            端到端控制 · End-to-End Control
+          </div>
+          <div class="model-oneliner">控制用户体验的每一个接触点，从硬件到软件到零售店到包装盒。体验是整体的，不能外包。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">苹果自建零售店、自研芯片、封闭生态系统——都是这个模型的体现。乔布斯认为，如果你不控制整个体验，你就无法保证它的质量。</p>
+            <div class="quote-block" style="border-color: var(--jobs)">
+              "Design is not just what it looks like and feels like. Design is how it works."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 决策启发式 -->
+      <div id="tab-heuristics" class="tab-panel">
+        <div class="section-title">8 条决策启发式</div>
+        <div style="display: grid; gap: 12px;">
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🎯</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">1. 专注即说不</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">每次产品评审，乔布斯会问：「这个功能，如果我们不做，用户会怎样？」如果答案是「没什么影响」，就删掉。专注不是做更多，是做更少但做到极致。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"Focus means saying no to the hundred other good ideas."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔍</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">2. A级人才只招A级</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">A级人才招B级，B级招C级，C级招D级——团队质量会指数级下降。乔布斯宁愿一个职位空缺6个月，也不将就招一个B级。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">📦</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">3. 包装是第一次体验</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">乔布斯亲自设计iPhone的包装盒，测试了数十种开盒方式。他认为开箱体验是产品体验的一部分，不能外包给供应链。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔄</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">4. 连接点向后看</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">不要试图预测哪些经历会有用，而是大胆地积累多样化的经历，相信它们会在未来某个时刻连接起来。乔布斯辍学后旁听书法课，10年后成为Mac字体的灵感来源。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🪞</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">5. 每天照镜子问自己</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「如果今天是我生命的最后一天，我还会做今天计划做的事吗？」如果连续多天答案是「不」，说明需要改变什么。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🎨</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">6. 看不见的地方也要做好</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">乔布斯的父亲教他：好的木匠不会在没人看见的地方用劣质木材。Mac内部电路板的布局，乔布斯要求像艺术品一样整洁，即使用户永远看不见。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🌀</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">7. 被炒鱿鱼是礼物</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">1985年被苹果驱逐是乔布斯人生的转折点。他创立了NeXT和Pixar，学会了如何管理创意公司。「被苹果炒鱿鱼是我这辈子最好的事。」</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🏛️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">8. 伟大的艺术家偷窃</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「好的艺术家借鉴，伟大的艺术家偷窃。」Mac的图形界面来自施乐PARC，iPhone的多点触控来自学术研究。乔布斯不发明技术，他发明了把技术变成产品的方式。</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 金句库 -->
+      <div id="tab-quotes" class="tab-panel">
+        <div class="section-title">经典金句</div>
+
+        <div class="search-wrap" style="margin-bottom:24px">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="quote-search" placeholder="搜索金句...">
+        </div>
+
+        <div id="quotes-list">
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma — which is living with the results of other people's thinking."</div>
+            <div class="quote-meta">Stanford Commencement · 2005 · 人生哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"Design is not just what it looks like and feels like. Design is how it works."</div>
+            <div class="quote-meta">New York Times · 2003 · 设计哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"Simple can be harder than complex. You have to work hard to get your thinking clean to make it simple."</div>
+            <div class="quote-meta">BusinessWeek · 1998 · 极致简洁</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"Remembering that I'll be dead soon is the most important tool I've ever encountered to help me make the big choices in life."</div>
+            <div class="quote-meta">Stanford Commencement · 2005 · 死亡哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"We're here to put a dent in the universe. Otherwise why else even be here?"</div>
+            <div class="quote-meta">Interview · 1994 · 使命感</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"Focus means saying no to the hundred other good ideas that there are. You have to pick carefully."</div>
+            <div class="quote-meta">WWDC · 1997 · 专注哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"You can't connect the dots looking forward; you can only connect them looking backwards."</div>
+            <div class="quote-meta">Stanford Commencement · 2005 · 连接点</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--jobs)">
+            <div class="quote-text">"Innovation distinguishes between a leader and a follower."</div>
+            <div class="quote-meta">Steve Jobs Biography · 2011 · 创新</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 连接点 -->
+      <div id="tab-dots" class="tab-panel">
+        <div class="section-title">乔布斯的连接点</div>
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; line-height:1.7">「你无法提前连接点，只能向后看才能连接。」乔布斯人生中那些看似无用的经历，最终都成为了苹果产品的基因。</p>
+
+        <div class="dots-grid">
+          <div class="dot-item">
+            <div class="dot-year">1972</div>
+            <div class="dot-event">辍学旁听书法课</div>
+            <div class="dot-insight">→ Mac成为第一台有精美字体的电脑</div>
+          </div>
+          <div class="dot-item">
+            <div class="dot-year">1974</div>
+            <div class="dot-event">印度朝圣，接触禅宗</div>
+            <div class="dot-insight">→ 极致简洁的设计哲学</div>
+          </div>
+          <div class="dot-item">
+            <div class="dot-item">
+            <div class="dot-year">1979</div>
+            <div class="dot-event">参观施乐PARC</div>
+            <div class="dot-insight">→ 图形界面和鼠标成为Mac核心</div>
+          </div>
+          </div>
+          <div class="dot-item">
+            <div class="dot-year">1985</div>
+            <div class="dot-event">被苹果驱逐</div>
+            <div class="dot-insight">→ 创立NeXT，学会管理创意公司</div>
+          </div>
+          <div class="dot-item">
+            <div class="dot-year">1986</div>
+            <div class="dot-event">收购Pixar</div>
+            <div class="dot-insight">→ 学会讲故事，影响了苹果发布会</div>
+          </div>
+          <div class="dot-item">
+            <div class="dot-year">2003</div>
+            <div class="dot-event">确诊胰腺癌</div>
+            <div class="dot-insight">→ 「死亡作为工具」的哲学成熟</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 20px; margin-top: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <strong style="color: var(--jobs)">核心洞察：</strong>乔布斯的每一个「失败」和「弯路」，都在他的知识体系中留下了一个点。这些点在当时看起来毫无关联，但最终连接成了苹果的DNA。这不是运气，而是他对多样化经历的主动积累，以及对「连接」的深度信任。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside>
+
+      <!-- 身份卡 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">身份卡</div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <p style="margin-bottom:8px">苹果公司联合创始人，Pixar前CEO。</p>
+            <p style="margin-bottom:8px">出生即被遗弃，被工程师家庭收养。里德学院辍学，在雅达利打工，去印度朝圣，回来后和沃兹尼亚克在车库创立苹果。</p>
+            <p>1985年被自己创立的公司驱逐，2011年因胰腺癌辞世，享年56岁。</p>
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border)">
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px">核心信念</div>
+            <div style="font-size:13px; color:var(--text-secondary); font-style:italic">「我们在宇宙中留下一个凹痕。」</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 智识谱系 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">影响了乔布斯的人</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div class="lineage-item">
+            <div class="lineage-avatar">🧘</div>
+            <div>
+              <div class="lineage-name">铃木俊隆（禅师）</div>
+              <div class="lineage-desc">《禅者的初心》塑造了他的简洁哲学</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🎨</div>
+            <div>
+              <div class="lineage-name">包豪斯 / 迪特·拉姆斯</div>
+              <div class="lineage-desc">「好的设计是尽可能少的设计」</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🎵</div>
+            <div>
+              <div class="lineage-name">鲍勃·迪伦</div>
+              <div class="lineage-desc">不断自我颠覆的勇气</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🏛️</div>
+            <div>
+              <div class="lineage-name">埃德温·兰德（宝丽来）</div>
+              <div class="lineage-desc">「技术与人文交叉」的先驱</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 核心概念 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">核心概念</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="jobs-concepts-sidebar"></div>
+      </div>
+
+      <!-- 延伸阅读 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">延伸阅读</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="jobs-books-sidebar"></div>
+        <a href="../articles/index.html" style="display:block;margin-top:10px;font-size:12px;color:var(--text-muted);text-decoration:none;text-align:center">查看完整书单 →</a>
+      </div>
+
+      <!-- 思想碰撞 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">思想碰撞</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">乔布斯 vs 马斯克</div>
+              <div style="font-size:12px; color:var(--text-muted)">设计师 vs 工程师的产品哲学</div>
+            </div>
+          </a>
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">乔布斯 vs 芒格</div>
+              <div style="font-size:12px; color:var(--text-muted)">直觉 vs 系统的决策方式</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 诚实边界 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">诚实边界</div>
+        <div class="card" style="padding: 16px 20px; font-size:12px; color:var(--text-muted); line-height:1.7">
+          <p style="margin-bottom:8px">⚠️ 管理方式极端：公开羞辱员工、情绪化决策，对大多数管理者不可复制。</p>
+          <p style="margin-bottom:8px">⚠️ 现实扭曲力场的代价：延误癌症治疗9个月，可能缩短了他的生命。</p>
+          <p>⚠️ 封闭生态的双刃剑：极致控制带来了卓越体验，也带来了垄断争议。</p>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+(function() {
+  const concepts = WV_CONCEPTS.filter(c => c.people.includes('jobs'));
+  const el = document.getElementById('jobs-concepts-sidebar');
+  if (!el) return;
+  el.innerHTML = concepts.map(c => `
+    <a href="../concepts/${c.id}.html" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:12px;transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+      <span>${c.name}</span><span style="color:var(--text-muted);font-size:11px">${c.nameEn}</span>
+    </a>
+  `).join('');
+})();
+
+(function() {
+  const books = WV_ARTICLES.filter(a => a.person === 'jobs' && a.type === 'book').slice(0, 4);
+  const el = document.getElementById('jobs-books-sidebar');
+  if (!el) return;
+  el.innerHTML = books.map(b => `
+    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+    </div>
+  `).join('');
+})();
+</script>
+</body>
+</html>

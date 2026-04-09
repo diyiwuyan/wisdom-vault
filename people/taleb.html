@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纳西姆·塔勒布 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .taleb-hero {
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(255,100,80,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,100,80,0.05) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--taleb);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,100,80,0.2);
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--taleb); border-bottom-color: var(--taleb); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .lineage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lineage-item:last-child { border-bottom: none; }
+    .lineage-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,100,80,0.08);
+      border: 1px solid rgba(255,100,80,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .lineage-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .lineage-desc { font-size: 12px; color: var(--text-muted); }
+
+    .fragility-spectrum {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .spectrum-item {
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .spectrum-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .spectrum-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .spectrum-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .spectrum-example {
+      font-size: 11px;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .fragility-spectrum { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="munger.html">芒格</a></li>
+    <li><a href="naval.html">纳瓦尔</a></li>
+    <li><a href="buffett.html">巴菲特</a></li>
+    <li><a href="musk.html">马斯克</a></li>
+    <li><a href="jobs.html">乔布斯</a></li>
+    <li><a href="taleb.html" class="active">塔勒布</a></li>
+    <li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+    <li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="person-hero taleb-hero">
+    <div class="person-hero-content fade-in">
+      <div class="person-avatar" style="border-color: var(--taleb); color: var(--taleb)">🦢</div>
+      <div class="person-name" style="color: var(--taleb)">纳西姆·塔勒布</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.05em">Nassim Nicholas Taleb · 1960–</div>
+      <div class="person-tagline">
+        "Antifragility is beyond resilience or robustness. The resilient resists shocks and stays the same; the antifragile gets better."
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <span class="tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">反脆弱</span>
+        <span class="tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">黑天鹅</span>
+        <span class="tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">切身利益</span>
+        <span class="tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">杠铃策略</span>
+        <span class="tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">不确定性</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content-grid">
+
+    <!-- 主栏 -->
+    <div>
+
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('models', this)">心智模型</button>
+        <button class="tab-btn" onclick="switchTab('heuristics', this)">决策启发式</button>
+        <button class="tab-btn" onclick="switchTab('quotes', this)">金句库</button>
+        <button class="tab-btn" onclick="switchTab('spectrum', this)">脆弱性光谱</button>
+      </div>
+
+      <!-- 心智模型 -->
+      <div id="tab-models" class="tab-panel active">
+        <div class="section-title">6 个核心心智模型</div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.05s">
+          <div class="model-num">MODEL 01</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            反脆弱 · Antifragile
+          </div>
+          <div class="model-oneliner">不只是抵抗冲击（韧性），而是从冲击中变得更强。自然界、肌肉、创业都是反脆弱系统。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">塔勒布在2012年《反脆弱》中提出这个原创概念。他发现英语中没有「脆弱」的反义词——「韧性」只是「不脆弱」，而不是「从伤害中获益」。</p>
+            <div class="quote-block" style="border-color: var(--taleb); margin-bottom:16px">
+              "Antifragility is beyond resilience or robustness. The resilient resists shocks and stays the same; the antifragile gets better."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>对任何系统，问：当压力/冲击/波动增加时，它会变弱（脆弱）、保持不变（韧性），还是变强（反脆弱）？然后设计让它向反脆弱方向移动。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>反脆弱需要承受短期痛苦换取长期收益。在政治和组织环境中，短期痛苦往往会让你在看到长期收益之前就被淘汰。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.10s">
+          <div class="model-num">MODEL 02</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            黑天鹅 · Black Swan
+          </div>
+          <div class="model-oneliner">极端罕见、不可预测、事后看来似乎有迹可循的高影响力事件。历史是由黑天鹅驱动的。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">在发现澳大利亚黑天鹅之前，欧洲人认为所有天鹅都是白的。这个比喻揭示了归纳推理的根本局限：过去的观察无法证明未来不会出现例外。</p>
+            <p style="margin-bottom:12px"><strong>三个特征：</strong>极端罕见（超出正常预期）、影响巨大（改变历史走向）、事后可解释（人们会编造理由说「早就知道了」）。</p>
+            <div style="background: rgba(255,100,80,0.04); border: 1px solid rgba(255,100,80,0.12); border-radius: 8px; padding: 14px; font-size: 13px; color: var(--text-secondary)">
+              <strong>正向黑天鹅：</strong>互联网、iPhone、COVID疫苗<br>
+              <strong>负向黑天鹅：</strong>2008金融危机、COVID疫情、9/11<br>
+              <strong>关键洞察：</strong>不要预测黑天鹅，而是让自己处于能从正向黑天鹅获益、不被负向黑天鹅摧毁的位置。
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.15s">
+          <div class="model-num">MODEL 03</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            切身利益 · Skin in the Game
+          </div>
+          <div class="model-oneliner">只有当你承担自己建议的后果时，你的建议才是可信的。没有切身利益的专家是危险的。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">塔勒布认为，现代社会最大的道德问题是「不对称性」：专家给建议，但不承担建议错误的后果。银行家用别人的钱冒险，政客用别人的生命打仗，医生给不会影响自己的建议。</p>
+            <div class="quote-block" style="border-color: var(--taleb); margin-bottom:16px">
+              "Never ask a doctor what he would do if he were in your position. Ask him what he would do for his own family."
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>切身利益有时会导致过度保守——外科医生可能因为害怕手术失败而推荐保守治疗，即使手术是最优选择。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.20s">
+          <div class="model-num">MODEL 04</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            杠铃策略 · Barbell Strategy
+          </div>
+          <div class="model-oneliner">在极端保守和极端激进之间分配，避免中间地带。中间地带看起来安全，实际上最脆弱。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">杠铃的形状：两端重，中间轻。塔勒布认为，在不确定性高的环境中，「中等风险」是最危险的选择，因为它既没有保守策略的安全性，也没有激进策略的上行空间。</p>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong></p>
+            <ul style="padding-left:20px; color: var(--text-secondary); font-size:14px; line-height:2">
+              <li>投资：90%极度安全资产（国债）+ 10%极高风险资产（期权/创业）</li>
+              <li>职业：稳定工作（保底）+ 副业探索（上行）</li>
+              <li>健康：大量低强度运动 + 偶尔高强度冲刺，避免「中等强度」的慢跑</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.25s">
+          <div class="model-num">MODEL 05</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            预防原则 · Precautionary Principle
+          </div>
+          <div class="model-oneliner">对于可能造成不可逆损害的事情，即使概率很低，也要极度谨慎。不对称性决定了保守的合理性。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">塔勒布区分了两类风险：可逆的（可以从中恢复）和不可逆的（无法恢复）。对于不可逆风险，即使概率极低，也应该采取预防措施。</p>
+            <div class="quote-block" style="border-color: var(--taleb)">
+              "If you have more than one reason to do something, don't do it. By invoking more than one reason you are trying to convince yourself."
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.30s">
+          <div class="model-num">MODEL 06</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            林迪效应 · Lindy Effect
+          </div>
+          <div class="model-oneliner">对于非易腐事物，已经存在的时间越长，预期还能存在的时间就越长。时间是最好的过滤器。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">一本书已经存在了100年，预期还能再存在100年。一本刚出版的书，预期寿命只有几年。这个效应适用于技术、思想、制度，但不适用于生物体。</p>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>在选择学习什么、相信什么时，优先选择经过时间检验的东西。新的不一定更好，古老的往往更可靠。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>林迪效应在技术快速迭代的领域失效——互联网时代，10年前的技术可能已经完全过时。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 决策启发式 -->
+      <div id="tab-heuristics" class="tab-panel">
+        <div class="section-title">9 条决策启发式</div>
+        <div style="display: grid; gap: 12px;">
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🎯</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">1. 先检查切身利益</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">在听任何建议之前，先问：这个人如果建议错了，会承担什么后果？如果答案是「没有」，这个建议的可信度大打折扣。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🏋️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">2. 杠铃配置</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">在任何重要决策中，避免「中等风险」。要么极度保守（保护下行），要么极度激进（追求上行）。中间地带是最脆弱的。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🦢</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">3. 为黑天鹅做准备</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">不要预测黑天鹅，而是问：如果发生了我完全没预料到的极端事件，我的处境会怎样？让自己处于能从正向黑天鹅获益、不被负向黑天鹅摧毁的位置。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">📚</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">4. 林迪过滤器</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">在选择学习什么时，优先选择已经存在超过50年的思想和技术。它们已经通过了时间的过滤，比新出现的更可靠。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">亚里士多德的逻辑学 > 上周的管理学畅销书</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🚫</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">5. 不对称否决权</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">少数人的强烈偏好往往会战胜多数人的温和偏好。一个对花生过敏的人会让整桌人都不吃花生。识别这种不对称性，避免被少数极端偏好绑架。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">💪</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">6. 拥抱小波动</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">压制小的波动会积累大的风险。允许系统经历小的失败和压力，是防止大崩溃的最好方式。森林需要小火来防止大火。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🗣️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">7. 说出欺诈</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「如果你看到欺诈，但不说出来，你就是欺诈的一部分。」沉默是共谋。这需要切身利益——你必须愿意承担说出真相的代价。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔢</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">8. 多个理由 = 不确定</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「如果你有超过一个理由做某件事，就不要做。」需要多个理由来说服自己，说明你在自我欺骗。真正好的决策通常只需要一个压倒性的理由。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🏛️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">9. 负面知识优先</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">知道什么是错的，比知道什么是对的更可靠。通过排除已知的错误路径，缩小决策空间。这是塔勒布版本的「逆向思考」。</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 金句库 -->
+      <div id="tab-quotes" class="tab-panel">
+        <div class="section-title">经典金句</div>
+
+        <div class="search-wrap" style="margin-bottom:24px">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="quote-search" placeholder="搜索金句...">
+        </div>
+
+        <div id="quotes-list">
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"Antifragility is beyond resilience or robustness. The resilient resists shocks and stays the same; the antifragile gets better."</div>
+            <div class="quote-meta">Antifragile · 2012 · 核心概念</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"If you see fraud and do not say fraud, you are a fraud."</div>
+            <div class="quote-meta">Skin in the Game · 2018 · 道德原则</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"Never ask a doctor what he would do if he were in your position. Ask him what he would do for his own family."</div>
+            <div class="quote-meta">Skin in the Game · 2018 · 切身利益</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"Don't tell me what you value. Show me your calendar and your bank statement."</div>
+            <div class="quote-meta">Skin in the Game · 2018 · 行动 vs 言辞</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"The most important freedom is the freedom to say no."</div>
+            <div class="quote-meta">Twitter · 2020 · 自由</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"Small volatility is good. It's how systems learn and adapt. Suppressing small volatility leads to large crashes."</div>
+            <div class="quote-meta">Antifragile · 2012 · 系统论</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"Predicting the future is foolish. The smart move is to position yourself to benefit from uncertainty."</div>
+            <div class="quote-meta">Antifragile · 2012 · 不确定性</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--taleb)">
+            <div class="quote-text">"The greatest problem of the modern world is that we mistake complexity for sophistication."</div>
+            <div class="quote-meta">Twitter · 2019 · 复杂性</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 脆弱性光谱 -->
+      <div id="tab-spectrum" class="tab-panel">
+        <div class="section-title">脆弱性光谱</div>
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; line-height:1.7">塔勒布将所有事物分为三类，这是理解反脆弱理论的核心框架。</p>
+
+        <div class="fragility-spectrum">
+          <div class="spectrum-item" style="background: rgba(255,80,80,0.06); border: 1px solid rgba(255,80,80,0.2);">
+            <div class="spectrum-label" style="color: #ff5050">脆弱</div>
+            <div class="spectrum-name">Fragile</div>
+            <div class="spectrum-desc">受到冲击时损失大于收益。讨厌波动和不确定性。</div>
+            <div class="spectrum-example" style="color: #ff5050">玻璃杯、大型银行、过度优化的供应链</div>
+          </div>
+          <div class="spectrum-item" style="background: rgba(150,150,150,0.06); border: 1px solid rgba(150,150,150,0.2);">
+            <div class="spectrum-label" style="color: var(--text-muted)">韧性</div>
+            <div class="spectrum-name">Robust</div>
+            <div class="spectrum-desc">受到冲击时保持不变。对波动中性。</div>
+            <div class="spectrum-example" style="color: var(--text-muted)">岩石、现金、简单的商业模式</div>
+          </div>
+          <div class="spectrum-item" style="background: rgba(80,200,120,0.06); border: 1px solid rgba(80,200,120,0.2);">
+            <div class="spectrum-label" style="color: #50c878">反脆弱</div>
+            <div class="spectrum-name">Antifragile</div>
+            <div class="spectrum-desc">受到冲击时收益大于损失。喜欢适度的波动。</div>
+            <div class="spectrum-example" style="color: #50c878">肌肉、免疫系统、创业生态、科学</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 20px; margin-top: 20px;">
+          <div style="font-size:13px; font-weight:600; color: var(--taleb); margin-bottom:12px">如何让自己更反脆弱？</div>
+          <div style="display: grid; gap: 10px;">
+            <div style="display:flex; gap:12px; font-size:13px; color:var(--text-secondary)">
+              <span style="color: var(--taleb); font-weight:600; flex-shrink:0">01</span>
+              <span>减少对单一来源的依赖（收入、关系、技能）——多样化创造反脆弱性</span>
+            </div>
+            <div style="display:flex; gap:12px; font-size:13px; color:var(--text-secondary)">
+              <span style="color: var(--taleb); font-weight:600; flex-shrink:0">02</span>
+              <span>主动暴露于小的压力和失败——避免「温室效应」</span>
+            </div>
+            <div style="display:flex; gap:12px; font-size:13px; color:var(--text-secondary)">
+              <span style="color: var(--taleb); font-weight:600; flex-shrink:0">03</span>
+              <span>保持选择权（optionality）——不要过早锁定，保留改变方向的能力</span>
+            </div>
+            <div style="display:flex; gap:12px; font-size:13px; color:var(--text-secondary)">
+              <span style="color: var(--taleb); font-weight:600; flex-shrink:0">04</span>
+              <span>减少负债（财务、情感、时间）——负债是脆弱性的来源</span>
+            </div>
+            <div style="display:flex; gap:12px; font-size:13px; color:var(--text-secondary)">
+              <span style="color: var(--taleb); font-weight:600; flex-shrink:0">05</span>
+              <span>建立不对称的上行空间——小的固定损失 + 大的潜在收益</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside>
+
+      <!-- 身份卡 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">身份卡</div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <p style="margin-bottom:8px">黎巴嫩裔美国学者、前期权交易员、风险分析师。</p>
+            <p style="margin-bottom:8px">在华尔街做了20年期权交易，亲历了多次市场崩溃。2007年出版《黑天鹅》，2008年金融危机让他一夜成名。</p>
+            <p>以好斗著称，在Twitter上公开骂人，拒绝接受任何他认为没有切身利益的人的批评。</p>
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border)">
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px">核心信念</div>
+            <div style="font-size:13px; color:var(--text-secondary); font-style:italic">「不确定性不是需要消除的问题，而是需要拥抱的现实。」</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 智识谱系 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">影响了塔勒布的人</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div class="lineage-item">
+            <div class="lineage-avatar">🏛️</div>
+            <div>
+              <div class="lineage-name">塞克斯都·恩披里柯</div>
+              <div class="lineage-desc">古希腊怀疑论，「我们无法确知任何事」</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">📊</div>
+            <div>
+              <div class="lineage-name">贝诺瓦·曼德布罗特</div>
+              <div class="lineage-desc">分形几何，揭示金融市场的胖尾分布</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🔬</div>
+            <div>
+              <div class="lineage-name">卡尔·波普尔</div>
+              <div class="lineage-desc">证伪主义，科学的边界在于可证伪性</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">📖</div>
+            <div>
+              <div class="lineage-name">米歇尔·德·蒙田</div>
+              <div class="lineage-desc">随笔式思考，怀疑一切确定性</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 核心概念 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">核心概念</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="taleb-concepts-sidebar"></div>
+      </div>
+
+      <!-- 延伸阅读 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">延伸阅读</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="taleb-books-sidebar"></div>
+        <a href="../articles/index.html" style="display:block;margin-top:10px;font-size:12px;color:var(--text-muted);text-decoration:none;text-align:center">查看完整书单 →</a>
+      </div>
+
+      <!-- 思想碰撞 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">思想碰撞</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">塔勒布 vs 马斯克</div>
+              <div style="font-size:12px; color:var(--text-muted)">反脆弱保守 vs 激进乐观</div>
+            </div>
+          </a>
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">塔勒布 vs 巴菲特</div>
+              <div style="font-size:12px; color:var(--text-muted)">尾部风险 vs 长期持有</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 诚实边界 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">诚实边界</div>
+        <div class="card" style="padding: 16px 20px; font-size:12px; color:var(--text-muted); line-height:1.7">
+          <p style="margin-bottom:8px">⚠️ 极度好斗：塔勒布在Twitter上公开攻击批评者，有时超出了学术讨论的边界。</p>
+          <p style="margin-bottom:8px">⚠️ 反脆弱理论难以操作化：「让自己反脆弱」在实践中往往比理论更难执行。</p>
+          <p>⚠️ 对预测的极度不信任有时走向了虚无主义——如果什么都不可预测，还有什么值得分析？</p>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+(function() {
+  const concepts = WV_CONCEPTS.filter(c => c.people.includes('taleb'));
+  const el = document.getElementById('taleb-concepts-sidebar');
+  if (!el) return;
+  el.innerHTML = concepts.map(c => `
+    <a href="../concepts/${c.id}.html" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:12px;transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+      <span>${c.name}</span><span style="color:var(--text-muted);font-size:11px">${c.nameEn}</span>
+    </a>
+  `).join('');
+})();
+
+(function() {
+  const books = WV_ARTICLES.filter(a => a.person === 'taleb' && a.type === 'book').slice(0, 4);
+  const el = document.getElementById('taleb-books-sidebar');
+  if (!el) return;
+  el.innerHTML = books.map(b => `
+    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+    </div>
+  `).join('');
+})();
+</script>
+</body>
+</html>

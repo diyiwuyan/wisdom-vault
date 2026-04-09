@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搜索 · 大神认知知识库</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    .search-hero {
+      padding: 64px 40px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .search-label {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .search-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 32px;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    #search-input {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-bright);
+      border-radius: 14px;
+      color: var(--text-primary);
+      font-size: 16px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #search-input:focus {
+      border-color: var(--naval);
+      box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
+    }
+
+    #search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-shortcuts {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .shortcut-tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .shortcut-tag:hover {
+      border-color: var(--border-bright);
+      color: var(--text-secondary);
+    }
+
+    /* 结果区 */
+    .search-results {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    .results-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-meta span {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* 分组标题 */
+    .result-group {
+      margin-bottom: 40px;
+    }
+
+    .result-group-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .result-group-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .result-count-badge {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 2px 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* 结果卡片 */
+    .result-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 8px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .result-card:hover {
+      border-color: var(--border-bright);
+      background: var(--bg-hover);
+    }
+
+    .result-type-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .result-type-icon.concept { background: rgba(167,139,250,0.12); }
+    .result-type-icon.quote   { background: rgba(52,211,153,0.12); }
+    .result-type-icon.article { background: rgba(251,191,36,0.12); }
+
+    .result-body { flex: 1; min-width: 0; }
+
+    .result-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .result-title mark {
+      background: rgba(0,201,167,0.2);
+      color: var(--naval);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    .result-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .result-desc mark {
+      background: rgba(0,201,167,0.15);
+      color: var(--naval);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    .result-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .result-person {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    .result-person.munger  { background: rgba(240,165,0,0.12);  color: var(--munger); }
+    .result-person.naval   { background: rgba(0,201,167,0.12);  color: var(--naval); }
+    .result-person.buffett { background: rgba(224,92,92,0.12);  color: var(--buffett); }
+    .result-person.all     { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+
+    .result-source {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* 空状态 */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.4;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* 初始状态 */
+    .initial-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .initial-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .initial-stat {
+      text-align: center;
+    }
+
+    .initial-stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .initial-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .initial-hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="people/munger.html">芒格</a></li>
+    <li><a href="people/naval.html">纳瓦尔</a></li>
+    <li><a href="people/buffett.html">巴菲特</a></li>
+    <li><a href="concepts/index.html">概念库</a></li>
+    <li><a href="quotes/index.html">语录库</a></li>
+    <li><a href="articles/index.html">书单</a></li>
+    <li><a href="search.html" class="active">搜索</a></li>
+    <li><a href="graph.html">知识图谱</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="search-hero">
+    <div class="search-label">全站搜索</div>
+    <h1 class="search-title">在三位大神的思想中寻找</h1>
+    <div class="search-box-wrap">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="search-input" placeholder="搜索概念、语录、书单…" autocomplete="off" autofocus>
+    </div>
+    <div class="search-shortcuts" id="shortcuts">
+      <span class="shortcut-tag" onclick="setQuery('复利')">复利</span>
+      <span class="shortcut-tag" onclick="setQuery('杠杆')">杠杆</span>
+      <span class="shortcut-tag" onclick="setQuery('逆向')">逆向思考</span>
+      <span class="shortcut-tag" onclick="setQuery('幸福')">幸福</span>
+      <span class="shortcut-tag" onclick="setQuery('阅读')">阅读</span>
+      <span class="shortcut-tag" onclick="setQuery('护城河')">护城河</span>
+      <span class="shortcut-tag" onclick="setQuery('第一性原理')">第一性原理</span>
+      <span class="shortcut-tag" onclick="setQuery('财富')">财富</span>
+    </div>
+  </div>
+
+  <div class="search-results" id="results-container">
+    <!-- 初始状态 -->
+    <div class="initial-state" id="initial-state">
+      <div class="initial-stats">
+        <div class="initial-stat">
+          <div class="initial-stat-num" id="stat-concepts">20</div>
+          <div class="initial-stat-label">个概念</div>
+        </div>
+        <div class="initial-stat">
+          <div class="initial-stat-num" id="stat-quotes">56</div>
+          <div class="initial-stat-label">条语录</div>
+        </div>
+        <div class="initial-stat">
+          <div class="initial-stat-num" id="stat-articles">24</div>
+          <div class="initial-stat-label">篇书单/文章</div>
+        </div>
+      </div>
+      <p class="initial-hint">输入关键词，跨人物搜索所有内容<br>支持中文、英文、标签、来源</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="data/concepts.js"></script>
+<script src="data/quotes.js"></script>
+<script src="data/articles.js"></script>
+<script>
+// ── 人物名称映射 ──
+const PERSON_NAMES = { munger: '芒格', naval: '纳瓦尔', buffett: '巴菲特' };
+const TYPE_LABELS  = { concept: '概念', quote: '语录', book: '书单', article: '文章' };
+const TYPE_ICONS   = {
+  concept: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,
+  quote:   `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  book:    `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+  article: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`
+};
+
+// ── 更新初始统计 ──
+document.getElementById('stat-concepts').textContent = WV_CONCEPTS.length;
+document.getElementById('stat-quotes').textContent   = WV_QUOTES.length;
+document.getElementById('stat-articles').textContent = WV_ARTICLES.length;
+
+// ── 高亮关键词 ──
+function highlight(text, query) {
+  if (!query || !text) return text || '';
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(escaped, 'gi'), m => `<mark>${m}</mark>`);
+}
+
+// ── 搜索核心 ──
+function search(query) {
+  query = query.trim();
+  if (!query) return null;
+  const q = query.toLowerCase();
+
+  const conceptResults = WV_CONCEPTS.filter(c =>
+    c.name.toLowerCase().includes(q) ||
+    (c.nameEn && c.nameEn.toLowerCase().includes(q)) ||
+    c.desc.toLowerCase().includes(q) ||
+    c.tags.some(t => t.toLowerCase().includes(q)) ||
+    c.people.some(p => PERSON_NAMES[p] && PERSON_NAMES[p].includes(q))
+  );
+
+  const quoteResults = WV_QUOTES.filter(qt =>
+    qt.text.toLowerCase().includes(q) ||
+    (qt.textEn && qt.textEn.toLowerCase().includes(q)) ||
+    (qt.source && qt.source.toLowerCase().includes(q)) ||
+    qt.tags.some(t => t.toLowerCase().includes(q)) ||
+    (PERSON_NAMES[qt.person] && PERSON_NAMES[qt.person].includes(q))
+  );
+
+  const articleResults = WV_ARTICLES.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    (a.titleEn && a.titleEn.toLowerCase().includes(q)) ||
+    a.desc.toLowerCase().includes(q) ||
+    (a.author && a.author.toLowerCase().includes(q)) ||
+    a.tags.some(t => t.toLowerCase().includes(q)) ||
+    (PERSON_NAMES[a.person] && PERSON_NAMES[a.person].includes(q))
+  );
+
+  return { conceptResults, quoteResults, articleResults, query };
+}
+
+// ── 渲染结果 ──
+function renderResults(data) {
+  const container = document.getElementById('results-container');
+  document.getElementById('initial-state').style.display = 'none';
+
+  if (!data) {
+    container.innerHTML = '<div class="initial-state" id="initial-state"></div>';
+    return;
+  }
+
+  const { conceptResults, quoteResults, articleResults, query } = data;
+  const total = conceptResults.length + quoteResults.length + articleResults.length;
+
+  if (total === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">◎</div>
+        <p>没有找到「${query}」相关内容<br>试试其他关键词，或者浏览<a href="concepts/index.html" style="color:var(--naval)">概念库</a></p>
+      </div>`;
+    return;
+  }
+
+  let html = `<div class="results-meta">找到 <span>${total}</span> 条结果</div>`;
+
+  // 概念
+  if (conceptResults.length > 0) {
+    html += `<div class="result-group">
+      <div class="result-group-title">概念 <span class="result-count-badge">${conceptResults.length}</span></div>`;
+    conceptResults.forEach(c => {
+      const peopleStr = c.people.map(p => `<span class="result-person ${p}">${PERSON_NAMES[p]}</span>`).join('');
+      html += `<a href="concepts/${c.id}.html" class="result-card">
+        <div class="result-type-icon concept">${TYPE_ICONS.concept}</div>
+        <div class="result-body">
+          <div class="result-title">${highlight(c.name, query)} <span style="font-size:11px;color:var(--text-muted);font-weight:400;margin-left:4px">${highlight(c.nameEn, query)}</span></div>
+          <div class="result-desc">${highlight(c.desc, query)}</div>
+          <div class="result-meta">${peopleStr}</div>
+        </div>
+      </a>`;
+    });
+    html += '</div>';
+  }
+
+  // 语录
+  if (quoteResults.length > 0) {
+    html += `<div class="result-group">
+      <div class="result-group-title">语录 <span class="result-count-badge">${quoteResults.length}</span></div>`;
+    quoteResults.forEach(qt => {
+      html += `<a href="quotes/index.html" class="result-card">
+        <div class="result-type-icon quote">${TYPE_ICONS.quote}</div>
+        <div class="result-body">
+          <div class="result-title">${highlight(qt.text.slice(0, 60) + (qt.text.length > 60 ? '…' : ''), query)}</div>
+          <div class="result-desc">${highlight(qt.textEn || '', query)}</div>
+          <div class="result-meta">
+            <span class="result-person ${qt.person}">${PERSON_NAMES[qt.person]}</span>
+            <span class="result-source">${qt.source}${qt.year ? ' · ' + qt.year : ''}</span>
+          </div>
+        </div>
+      </a>`;
+    });
+    html += '</div>';
+  }
+
+  // 书单/文章
+  if (articleResults.length > 0) {
+    html += `<div class="result-group">
+      <div class="result-group-title">书单 &amp; 文章 <span class="result-count-badge">${articleResults.length}</span></div>`;
+    articleResults.forEach(a => {
+      const typeIcon = TYPE_ICONS[a.type] || TYPE_ICONS.article;
+      const typeClass = a.type === 'book' ? 'article' : 'article';
+      html += `<a href="${a.url || 'articles/index.html'}" ${a.url ? 'target="_blank"' : ''} class="result-card">
+        <div class="result-type-icon ${typeClass}">${typeIcon}</div>
+        <div class="result-body">
+          <div class="result-title">${highlight(a.title, query)}</div>
+          <div class="result-desc">${highlight(a.desc, query)}</div>
+          <div class="result-meta">
+            <span class="result-person ${a.person}">${PERSON_NAMES[a.person]}</span>
+            <span class="result-source">${a.author}${a.year ? ' · ' + a.year : ''}</span>
+            ${a.url ? '<span class="result-source">↗ 外链</span>' : ''}
+          </div>
+        </div>
+      </a>`;
+    });
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+// ── 防抖搜索 ──
+let debounceTimer;
+document.getElementById('search-input').addEventListener('input', function() {
+  clearTimeout(debounceTimer);
+  const q = this.value;
+  if (!q.trim()) {
+    document.getElementById('results-container').innerHTML = `
+      <div class="initial-state" id="initial-state">
+        <div class="initial-stats">
+          <div class="initial-stat"><div class="initial-stat-num">${WV_CONCEPTS.length}</div><div class="initial-stat-label">个概念</div></div>
+          <div class="initial-stat"><div class="initial-stat-num">${WV_QUOTES.length}</div><div class="initial-stat-label">条语录</div></div>
+          <div class="initial-stat"><div class="initial-stat-num">${WV_ARTICLES.length}</div><div class="initial-stat-label">篇书单/文章</div></div>
+        </div>
+        <p class="initial-hint">输入关键词，跨人物搜索所有内容<br>支持中文、英文、标签、来源</p>
+      </div>`;
+    return;
+  }
+  debounceTimer = setTimeout(() => {
+    renderResults(search(q));
+  }, 150);
+});
+
+// ── 快捷标签 ──
+function setQuery(q) {
+  const input = document.getElementById('search-input');
+  input.value = q;
+  input.dispatchEvent(new Event('input'));
+  input.focus();
+}
+
+// ── URL 参数支持（从导航栏跳转） ──
+const urlParams = new URLSearchParams(window.location.search);
+const initQuery = urlParams.get('q');
+if (initQuery) {
+  const input = document.getElementById('search-input');
+  input.value = initQuery;
+  renderResults(search(initQuery));
+}
+</script>
+</body>
+</html>

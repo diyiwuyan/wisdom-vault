@@ -1,0 +1,716 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查理·芒格 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .munger-hero {
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(240,165,0,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(240,165,0,0.06) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--munger);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,165,0,0.2);
+    }
+
+    .bias-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .bias-item {
+      padding: 12px 14px;
+      background: rgba(240,165,0,0.04);
+      border: 1px solid rgba(240,165,0,0.1);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .bias-item .bias-num {
+      font-size: 10px;
+      color: var(--munger);
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+
+    .bias-item .bias-name {
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .bias-item .bias-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .lineage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lineage-item:last-child { border-bottom: none; }
+
+    .lineage-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(240,165,0,0.1);
+      border: 1px solid rgba(240,165,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .lineage-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .lineage-desc { font-size: 12px; color: var(--text-muted); }
+
+    .tab-nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--munger); border-bottom-color: var(--munger); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    @media (max-width: 640px) {
+      .bias-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="munger.html" class="active">芒格</a></li>
+    <li><a href="naval.html">纳瓦尔</a></li>
+    <li><a href="buffett.html">巴菲特</a></li>
+    <li><a href="musk.html">马斯克</a></li>
+    <li><a href="jobs.html">乔布斯</a></li>
+    <li><a href="taleb.html">塔勒布</a></li>
+    <li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+<li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="person-hero munger-hero">
+    <div class="person-hero-content fade-in">
+      <div class="person-avatar" style="border-color: var(--munger); color: var(--munger)">🦁</div>
+      <div class="person-name" style="color: var(--munger)">查理·芒格</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.05em">Charlie Munger · 1924–2023</div>
+      <div class="person-tagline">
+        "It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent."
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <span class="tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">逆向思考</span>
+        <span class="tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">多元思维模型</span>
+        <span class="tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">认知偏误</span>
+        <span class="tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">价值投资</span>
+        <span class="tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">终身学习</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content-grid">
+
+    <!-- 主栏 -->
+    <div>
+
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('models', this)">心智模型</button>
+        <button class="tab-btn" onclick="switchTab('heuristics', this)">决策启发式</button>
+        <button class="tab-btn" onclick="switchTab('quotes', this)">金句库</button>
+        <button class="tab-btn" onclick="switchTab('biases', this)">25种偏误</button>
+      </div>
+
+      <!-- 心智模型 -->
+      <div id="tab-models" class="tab-panel active">
+        <div class="section-title">5 个核心心智模型</div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.05s">
+          <div class="model-num">MODEL 01</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            多元思维模型 · Latticework of Mental Models
+          </div>
+          <div class="model-oneliner">从多个学科提取核心模型，编织成网状决策框架。单一学科必然导致系统性盲区。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">芒格在1994年USC演讲《论基本的普世智慧》中首次完整阐述，此后30年反复提及。</p>
+            <div class="quote-block" style="border-color: var(--munger); margin-bottom:16px">
+              "You can't really know anything if you just remember isolated facts. You must have a latticework of models in your head."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>遇到任何问题时，至少从3个学科视角审视——心理学（人的行为动机）、经济学（激励结构）、物理/数学（系统动力学）。如果只从一个角度看，你在「拿锤子找钉子」。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>芒格的latticework严重偏向传统学科，对网络效应、平台经济等新模型覆盖不足，导致他系统性错过Google、Amazon等科技投资。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.10s">
+          <div class="model-num">MODEL 02</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            逆向思考 · Inversion
+          </div>
+          <div class="model-oneliner">正面解决不了的问题，反过来想。不问「如何成功」，问「如何确保失败，然后避开」。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">源自数学家Carl Jacobi的「Invert, always invert」。芒格1986年哈佛演讲《如何保证人生痛苦》是完整的逆向思考范例。</p>
+            <div class="quote-block" style="border-color: var(--munger); margin-bottom:16px">
+              "All I want to know is where I'm going to die, so I'll never go there."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong></p>
+            <ul style="padding-left:20px; color: var(--text-secondary); font-size:14px; line-height:2">
+              <li>投资：不问「什么是好股票」→ 问「什么一定会让我亏钱」→ 避开那些</li>
+              <li>人生：不问「怎么幸福」→ 问「什么一定让人痛苦」→ 嫉妒、怨恨、自怜</li>
+              <li>产品：不问「用户想要什么」→ 问「什么一定让用户流失」→ 先消灭那些</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 13px; margin-top:12px"><strong>⚠️ 局限：</strong>逆向思考擅长排除错误选项，但不擅长发现全新的可能性。在需要创造性突破的场景中，纯粹的逆向思考会让你陷入「正确但平庸」的选择。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.15s">
+          <div class="model-num">MODEL 03</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            Lollapalooza 效应
+          </div>
+          <div class="model-oneliner">多种心理偏误同时发力、相互强化，产生极端的非线性结果。比单个偏误危险100倍。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">芒格原创术语，首次出现在「人类误判心理学」演讲。是25种认知偏误清单的「终极boss」——第25条。</p>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>当你看到一件事正在迅速升温（市场狂热、舆论一边倒、团队集体乐观），问自己：这里有几种偏误在同时作用？</p>
+            <div style="background: rgba(240,165,0,0.05); border: 1px solid rgba(240,165,0,0.15); border-radius: 8px; padding: 14px; font-size: 13px; color: var(--text-secondary)">
+              社会认同（别人都在买）+ 过度乐观（只涨不跌）+ 被剥夺超级反应（错过就亏了）= <strong style="color: var(--munger)">Lollapalooza</strong>，危险。
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.20s">
+          <div class="model-num">MODEL 04</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            能力圈 + 意见资格制
+          </div>
+          <div class="model-oneliner">知道自己不知道什么，比知道什么更重要。持有意见需要「赚到资格」。</div>
+          <div class="model-body">
+            <div class="quote-block" style="border-color: var(--munger); margin-bottom:16px">
+              "I never allow myself to have an opinion on anything that I don't know the other side's argument better than they do."
+            </div>
+            <p style="margin-bottom:12px"><strong>三筐分类法：</strong>把问题分三筐——Yes（确信）、No（确信不做）、Too Hard（太复杂，放弃）。大部分问题属于第三筐。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>芒格对加密货币和AI的极端否定，恰恰是在能力圈外发表了最激烈的意见。「能力圈」有时会变成「舒适区」的高级借口。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.25s">
+          <div class="model-num">MODEL 05</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            激励机制决定一切
+          </div>
+          <div class="model-oneliner">想理解任何人的行为，先看他的激励结构。不要听他说什么，看他被什么奖励。</div>
+          <div class="model-body">
+            <div class="quote-block" style="border-color: var(--munger); margin-bottom:16px">
+              "Show me the incentive and I'll show you the outcome."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong></p>
+            <ul style="padding-left:20px; color: var(--text-secondary); font-size:14px; line-height:2">
+              <li>分析公司：管理层的薪酬结构比他们的战略PPT重要100倍</li>
+              <li>分析人：一个人在做什么 > 一个人在说什么。看他的时间和金钱花在哪里</li>
+              <li>分析制度：好制度让坏人也做好事，坏制度让好人也做坏事</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 决策启发式 -->
+      <div id="tab-heuristics" class="tab-panel">
+        <div class="section-title">8 条决策启发式</div>
+
+        <div style="display: grid; gap: 12px;">
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔄</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">1. 逆向切入</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">不问「这件事的好处是什么」，先问「这件事怎么会让我完蛋」。避开所有灾难路径后，剩下的选择自然不会太差。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">案例：芒格1986年哈佛演讲——列举保证人生痛苦的4条路径，然后说：避开这些就够了。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🗂️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">2. 三筐分类法</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">遇到决策，先分三筐：Yes（确信）、No（确信不做）、Too Hard（太难，放弃）。大部分事情属于第三筐。不做决策也是决策。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">案例：芒格一生只做了少量重大投资决策——See's、可口可乐、BYD、Costco。其余99%进了Too Hard筐。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">💰</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">3. 激励诊断</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">在分析任何人或组织的行为前，先画出激励结构图。谁在赚钱？谁在承担风险？两者是否对齐？不对齐 = 危险。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"The investment banking profession will sell shit as long as shit can be sold."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔬</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">4. 反确认偏误（达尔文协议）</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">做完决策分析后，强制执行「达尔文协议」：花等量时间寻找反面证据。如果找不到有力的反对论据，可能是你搜索得不够努力。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">⏳</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">5. 坐在屁股上</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">找到极高确信度的机会后，最好的策略是买入然后什么都不做。交易频率和收益率通常负相关。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">案例：Costco，1997年买入，27年一股没卖。"The big money is not in the buying and selling, but in the waiting."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🍇</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">6. 葡萄干与粪便法则</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">评估组合/合作/混搭时的快速检验：如果其中有一个致命缺陷，整体就是有毒的。好的元素无法中和坏的元素。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"If you mix raisins with turds, they're still turds."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🏆</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">7. 配得上法则</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">在追求任何目标之前，先问：我配得上这个结果吗？如果不配，先成为配得上的人。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"To get what you want, you have to deserve what you want."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">📋</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">8. 愚蠢清单</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">主动收集这个领域里所有已知的愚蠢错误，做成清单，然后系统性地避开。避免愚蠢比追求聪明容易得多。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"We collect the asininities of the world in a kind of checklist and try to avoid everything on the checklist."</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 金句库 -->
+      <div id="tab-quotes" class="tab-panel">
+        <div class="section-title">经典金句</div>
+
+        <div class="search-wrap" style="margin-bottom:24px">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="quote-search" placeholder="搜索金句...">
+        </div>
+
+        <div id="quotes-list">
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent."</div>
+            <div class="quote-meta">伯克希尔股东会 · 核心理念</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"Show me the incentive and I'll show you the outcome."</div>
+            <div class="quote-meta">激励机制 · 人类误判心理学</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"All I want to know is where I'm going to die, so I'll never go there."</div>
+            <div class="quote-meta">逆向思考 · 经典表达</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"I never allow myself to have an opinion on anything that I don't know the other side's argument better than they do."</div>
+            <div class="quote-meta">意见资格制 · 能力圈</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"The big money is not in the buying and selling, but in the waiting."</div>
+            <div class="quote-meta">投资哲学 · 耐心</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"To get what you want, you have to deserve what you want. The world is not yet a crazy enough place to reward a whole bunch of undeserving people."</div>
+            <div class="quote-meta">配得上法则 · 人生哲学</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"I have known no wise people who didn't read all the time — none, zero."</div>
+            <div class="quote-meta">终身学习 · 阅读习惯</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"Invert, always invert."</div>
+            <div class="quote-meta">逆向思考 · 源自Carl Jacobi</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"Extremely intense ideology cabbages up one's mind."</div>
+            <div class="quote-meta">反意识形态 · 理性思考</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--munger)">
+            <div class="quote-text">"The first rule of a happy life is low expectations. That's the way I got married."</div>
+            <div class="quote-meta">干燥幽默 · 人生哲学</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 25种偏误 -->
+      <div id="tab-biases" class="tab-panel">
+        <div class="section-title">25 种人类误判心理学</div>
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; line-height:1.7">芒格在2003年完整版演讲中系统整理的25种认知偏误，是他多元思维模型的核心组成部分。</p>
+
+        <div class="bias-grid">
+          <div class="bias-item">
+            <div class="bias-num">#01</div>
+            <div class="bias-name">奖惩超级反应</div>
+            <div class="bias-desc">激励比道德说教有效100倍</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#02</div>
+            <div class="bias-name">喜爱/热爱倾向</div>
+            <div class="bias-desc">因为喜欢某人而扭曲判断</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#03</div>
+            <div class="bias-name">厌恶/憎恨倾向</div>
+            <div class="bias-desc">因为厌恶而扭曲事实</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#04</div>
+            <div class="bias-name">避免怀疑倾向</div>
+            <div class="bias-desc">快速消除不确定性的冲动</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#05</div>
+            <div class="bias-name">避免不一致倾向</div>
+            <div class="bias-desc">维护已有信念，拒绝改变</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#06</div>
+            <div class="bias-name">好奇心倾向</div>
+            <div class="bias-desc">（正向偏误）驱动学习</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#07</div>
+            <div class="bias-name">康德式公平倾向</div>
+            <div class="bias-desc">期待对等的公平对待</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#08</div>
+            <div class="bias-name">羡慕/嫉妒倾向</div>
+            <div class="bias-desc">「嫉妒是最蠢的罪」</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#09</div>
+            <div class="bias-name">互惠倾向</div>
+            <div class="bias-desc">回报善意，也回报恶意</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#10</div>
+            <div class="bias-name">受简单联想影响</div>
+            <div class="bias-desc">把好消息和坏消息的传递者混同</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#11</div>
+            <div class="bias-name">简单的痛苦/快乐倾向</div>
+            <div class="bias-desc">趋乐避苦的基本驱动</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#12</div>
+            <div class="bias-name">过度自我评价</div>
+            <div class="bias-desc">几乎所有人高估自己</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#13</div>
+            <div class="bias-name">过度乐观倾向</div>
+            <div class="bias-desc">系统性高估好结果的概率</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#14</div>
+            <div class="bias-name">被剥夺超级反应</div>
+            <div class="bias-desc">失去 > 得到的反应强度</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#15</div>
+            <div class="bias-name">社会认同</div>
+            <div class="bias-desc">不确定时模仿他人</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#16</div>
+            <div class="bias-name">对比错误反应</div>
+            <div class="bias-desc">相对比较扭曲绝对判断</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#17</div>
+            <div class="bias-name">压力影响倾向</div>
+            <div class="bias-desc">压力下判断力下降</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#18</div>
+            <div class="bias-name">可得性错误</div>
+            <div class="bias-desc">高估容易想到的事情的概率</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#19</div>
+            <div class="bias-name">使用/不使用倾向</div>
+            <div class="bias-desc">不用就会退化</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#20</div>
+            <div class="bias-name">毒品/成瘾倾向</div>
+            <div class="bias-desc">化学物质改变大脑奖励回路</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#21</div>
+            <div class="bias-name">衰老错误倾向</div>
+            <div class="bias-desc">年龄带来的认知退化</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#22</div>
+            <div class="bias-name">权威错误倾向</div>
+            <div class="bias-desc">盲目服从权威</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#23</div>
+            <div class="bias-name">废话倾向</div>
+            <div class="bias-desc">用复杂语言掩盖空洞内容</div>
+          </div>
+          <div class="bias-item">
+            <div class="bias-num">#24</div>
+            <div class="bias-name">赌徒谬误</div>
+            <div class="bias-desc">把随机事件当成有规律的序列</div>
+          </div>
+          <div class="bias-item" style="grid-column: 1/-1; background: rgba(240,165,0,0.06); border-color: rgba(240,165,0,0.2)">
+            <div class="bias-num" style="color: var(--munger)">#25 · 终极Boss</div>
+            <div class="bias-name" style="color: var(--munger)">Lollapalooza 效应</div>
+            <div class="bias-desc">多种偏误叠加 → 极端非线性结果。金融泡沫、邪教洗脑、公司欺诈的共同机制。</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside>
+
+      <!-- 身份卡 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">身份卡</div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <p style="margin-bottom:8px">伯克希尔·哈撒韦副董事长，Warren的合伙人。</p>
+            <p style="margin-bottom:8px">奥马哈长大，哈佛法学院毕业。当过律师，做过房地产，1959年遇到Warren，改变了彼此的投资哲学。</p>
+            <p>他让巴菲特从买便宜货变成了买好公司。</p>
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border)">
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px">核心信念</div>
+            <div style="font-size:13px; color:var(--text-secondary); font-style:italic">「避免愚蠢比追求聪明重要得多。」</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 智识谱系 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">影响了芒格的人</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div class="lineage-item">
+            <div class="lineage-avatar">🏛️</div>
+            <div>
+              <div class="lineage-name">本杰明·富兰克林</div>
+              <div class="lineage-desc">最崇拜的人，终身学习的典范</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🔬</div>
+            <div>
+              <div class="lineage-name">查尔斯·达尔文</div>
+              <div class="lineage-desc">「主动寻找反面证据」的方法</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">📐</div>
+            <div>
+              <div class="lineage-name">Carl Jacobi</div>
+              <div class="lineage-desc">「Invert, always invert」的来源</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🧠</div>
+            <div>
+              <div class="lineage-name">Robert Cialdini</div>
+              <div class="lineage-desc">《影响力》塑造了25种偏误框架</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 核心概念 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">核心概念</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="munger-concepts-sidebar"></div>
+      </div>
+
+      <!-- 延伸阅读 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">延伸阅读</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="munger-books-sidebar"></div>
+        <a href="../articles/index.html" style="display:block;margin-top:10px;font-size:12px;color:var(--text-muted);text-decoration:none;text-align:center">查看完整书单 →</a>
+      </div>
+
+      <!-- 相关人物 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">思想碰撞</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">芒格 vs 纳瓦尔</div>
+              <div style="font-size:12px; color:var(--text-muted)">如何对待失败</div>
+            </div>
+          </a>
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">芒格 vs 巴菲特</div>
+              <div style="font-size:12px; color:var(--text-muted)">什么是好的投资</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 诚实边界 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">诚实边界</div>
+        <div class="card" style="padding: 16px 20px; font-size:12px; color:var(--text-muted); line-height:1.7">
+          <p style="margin-bottom:8px">⚠️ 科技盲区：芒格体系在评估网络效应、AI等领域时存在结构性缺陷，系统性错过了Google、Amazon。</p>
+          <p style="margin-bottom:8px">⚠️ 中国认知有偏：BYD赚了39倍，阿里巴巴亏了。</p>
+          <p>⚠️ 芒格于2023年11月28日辞世，享年99岁。</p>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// 渲染侧边栏核心概念
+(function() {
+  const mungerConcepts = WV_CONCEPTS.filter(c => c.people.includes('munger'));
+  const el = document.getElementById('munger-concepts-sidebar');
+  if (!el) return;
+  el.innerHTML = mungerConcepts.map(c => `
+    <a href="../concepts/${c.id}.html" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:12px;transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+      <span>${c.name}</span><span style="color:var(--text-muted);font-size:11px">${c.nameEn}</span>
+    </a>
+  `).join('');
+})();
+
+// 渲染侧边栏书单
+(function() {
+  const books = WV_ARTICLES.filter(a => a.person === 'munger' && a.type === 'book').slice(0, 4);
+  const el = document.getElementById('munger-books-sidebar');
+  if (!el) return;
+  el.innerHTML = books.map(b => `
+    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+    </div>
+  `).join('');
+})();
+</script>
+</body>
+</html>

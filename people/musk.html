@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>埃隆·马斯克 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .musk-hero {
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(0,180,255,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,180,255,0.05) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--musk);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0,180,255,0.2);
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--musk); border-bottom-color: var(--musk); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .lineage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lineage-item:last-child { border-bottom: none; }
+    .lineage-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(0,180,255,0.08);
+      border: 1px solid rgba(0,180,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .lineage-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .lineage-desc { font-size: 12px; color: var(--text-muted); }
+
+    .five-step {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(0,180,255,0.03);
+      border: 1px solid rgba(0,180,255,0.1);
+      border-radius: 8px;
+    }
+    .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--musk);
+      opacity: 0.7;
+      min-width: 28px;
+      padding-top: 2px;
+    }
+    .step-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="munger.html">芒格</a></li>
+    <li><a href="naval.html">纳瓦尔</a></li>
+    <li><a href="buffett.html">巴菲特</a></li>
+    <li><a href="musk.html" class="active">马斯克</a></li>
+    <li><a href="jobs.html">乔布斯</a></li>
+    <li><a href="taleb.html">塔勒布</a></li>
+    <li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+    <li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="person-hero musk-hero">
+    <div class="person-hero-content fade-in">
+      <div class="person-avatar" style="border-color: var(--musk); color: var(--musk)">🚀</div>
+      <div class="person-name" style="color: var(--musk)">埃隆·马斯克</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.05em">Elon Musk · 1971–</div>
+      <div class="person-tagline">
+        "When something is important enough, you do it even if the odds are not in your favor."
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <span class="tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">第一性原理</span>
+        <span class="tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">快速迭代</span>
+        <span class="tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">多星球文明</span>
+        <span class="tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">垂直整合</span>
+        <span class="tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">极限工程</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content-grid">
+
+    <!-- 主栏 -->
+    <div>
+
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('models', this)">心智模型</button>
+        <button class="tab-btn" onclick="switchTab('heuristics', this)">决策启发式</button>
+        <button class="tab-btn" onclick="switchTab('quotes', this)">金句库</button>
+        <button class="tab-btn" onclick="switchTab('algorithm', this)">五步算法</button>
+      </div>
+
+      <!-- 心智模型 -->
+      <div id="tab-models" class="tab-panel active">
+        <div class="section-title">6 个核心心智模型</div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.05s">
+          <div class="model-num">MODEL 01</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            第一性原理 · First Principles Thinking
+          </div>
+          <div class="model-oneliner">把问题拆解到最基本的物理事实，从零重建，而不是类比已有方案。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">马斯克在2013年TED演讲中完整阐述。他用这个方法把火箭成本降低了90%——不是「火箭很贵」，而是「火箭的原材料成本是多少？」</p>
+            <div class="quote-block" style="border-color: var(--musk); margin-bottom:16px">
+              "I think it's important to reason from first principles rather than by analogy. The normal way we conduct our lives is we reason by analogy."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>遇到「这件事很贵/很难/不可能」时，问：这件事的物理极限是什么？现有方案和物理极限之间的差距是多少？差距来自哪里？</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>第一性原理需要极深的领域知识才能正确拆解。在不熟悉的领域，「第一性原理」可能只是「我不了解行业惯例的原因」的高级说法。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.10s">
+          <div class="model-num">MODEL 02</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            白痴指数 · Idiot Index
+          </div>
+          <div class="model-oneliner">成品价格 ÷ 原材料成本。比值越高，说明制造过程越「愚蠢」，改进空间越大。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">马斯克在SpaceX和特斯拉内部使用的成本分析工具。碳纤维的白痴指数约为100x，意味着制造过程有巨大的优化空间。</p>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>对任何产品或流程，计算：最终成本 ÷ 基础材料/资源成本 = 白痴指数。指数越高，越值得用第一性原理重新设计。</p>
+            <div style="background: rgba(0,180,255,0.04); border: 1px solid rgba(0,180,255,0.12); border-radius: 8px; padding: 14px; font-size: 13px; color: var(--text-secondary)">
+              火箭白痴指数 ≈ 50x → SpaceX目标：把它降到 5x。<br>
+              电池白痴指数 ≈ 30x → 特斯拉目标：垂直整合，自建电池工厂。
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.15s">
+          <div class="model-num">MODEL 03</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            制造机器的机器 · The Machine that Builds the Machine
+          </div>
+          <div class="model-oneliner">真正的竞争优势不在产品设计，而在制造系统的设计。工厂本身就是产品。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">马斯克认为，大多数公司把99%的精力放在产品设计上，只有1%放在制造系统上。他反过来——特斯拉的Gigafactory和SpaceX的生产线本身就是核心竞争力。</p>
+            <div class="quote-block" style="border-color: var(--musk); margin-bottom:16px">
+              "The real challenge is not designing the product, but designing the machine that makes the machine."
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>这个模型在硬件制造领域极其有效，但在软件、内容、服务等领域的适用性有限。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.20s">
+          <div class="model-num">MODEL 04</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            概率思维 · Probabilistic Thinking
+          </div>
+          <div class="model-oneliner">不问「这件事会不会成功」，问「这件事成功的概率是多少，期望值是多少」。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">马斯克在创立SpaceX时估计成功概率只有10%，但期望值（成功的影响 × 概率）仍然值得押注。他把自己的全部身家都押上了。</p>
+            <div class="quote-block" style="border-color: var(--musk); margin-bottom:16px">
+              "When something is important enough, you do it even if the odds are not in your favor."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>对重要决策，不只问「会不会」，而是估算：成功概率 × 成功价值 - 失败概率 × 失败成本 = 期望值。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.25s">
+          <div class="model-num">MODEL 05</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            垂直整合 · Vertical Integration
+          </div>
+          <div class="model-oneliner">控制供应链的每一个关键环节，消除外部依赖，把「白痴指数」内化为竞争优势。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">SpaceX自制火箭发动机、特斯拉自建电池工厂、Neuralink自制芯片——马斯克的每家公司都在系统性地垂直整合。</p>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong>识别供应链中「白痴指数最高」的环节，评估自建的成本和收益。如果某个环节是核心竞争力的来源，外包就是战略错误。</p>
+            <p style="color: var(--text-muted); font-size: 13px"><strong>⚠️ 局限：</strong>垂直整合需要巨大的资本投入和管理复杂度。对大多数公司来说，过度垂直整合会分散注意力，反而削弱核心竞争力。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.30s">
+          <div class="model-num">MODEL 06</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            使命驱动 · Mission-Driven Urgency
+          </div>
+          <div class="model-oneliner">用文明级别的使命感制造紧迫性，让不可能的时间表变成可能。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">「让人类成为多星球物种」「加速可持续能源转型」——这些使命不只是PR，而是马斯克用来对抗官僚主义和惰性的工具。当目标足够大，「不可能」就变成了「还没找到方法」。</p>
+            <div class="quote-block" style="border-color: var(--musk)">
+              "I'm not trying to be anyone's savior. I'm just trying to think about the future and not be sad."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 决策启发式 -->
+      <div id="tab-heuristics" class="tab-panel">
+        <div class="section-title">8 条决策启发式</div>
+        <div style="display: grid; gap: 12px;">
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔬</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">1. 先问物理极限</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">遇到「这件事很贵/很难」时，先问：物理定律允许的极限是什么？现实和极限之间的差距来自哪里？差距 = 机会。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🗑️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">2. 先删除，再优化</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">五步算法的核心：优化一个不该存在的步骤是最大的浪费。先问「这个步骤能不能删掉」，再问「怎么优化」。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">马斯克在特斯拉Model 3生产线上删掉了数百个「必要」步骤。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">⚡</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">3. 压缩时间表</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">给自己一个激进的时间表，然后逆向推导需要做什么。「不可能」的时间表会逼出创造性解决方案。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"If you give yourself 5 years, it takes 5 years. Give yourself 6 months."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔄</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">4. 失败是数据</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">SpaceX前三次火箭发射全部失败，但每次失败都收集了关键数据。失败不是终点，是迭代的原材料。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">"Failure is an option here. If things are not failing, you are not innovating enough."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">📐</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">5. 计算白痴指数</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">对任何成本高的环节，计算白痴指数（成品价格÷原材料成本）。指数高 = 制造过程有问题 = 改进机会。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🌐</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">6. 跨领域迁移</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">把一个领域的解决方案迁移到另一个领域。马斯克把汽车行业的直销模式用到火箭，把软件行业的OTA更新用到汽车。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🎯</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">7. 招募传教士，不要雇佣兵</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">为使命工作的人（传教士）比为薪水工作的人（雇佣兵）更能承受极端压力和不确定性。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔭</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">8. 长期思维 + 短期执行</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">用20年的时间框架定义目标，用6个月的时间框架执行。长期使命防止短视，短期迭代防止空想。</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 金句库 -->
+      <div id="tab-quotes" class="tab-panel">
+        <div class="section-title">经典金句</div>
+
+        <div class="search-wrap" style="margin-bottom:24px">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="quote-search" placeholder="搜索金句...">
+        </div>
+
+        <div id="quotes-list">
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"When something is important enough, you do it even if the odds are not in your favor."</div>
+            <div class="quote-meta">60 Minutes · 2014 · 决策哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"Failure is an option here. If things are not failing, you are not innovating enough."</div>
+            <div class="quote-meta">Interview · 2014 · 创新哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"I think it's important to reason from first principles rather than by analogy."</div>
+            <div class="quote-meta">TED Talk · 2013 · 第一性原理</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"The real challenge is not designing the product, but designing the machine that makes the machine."</div>
+            <div class="quote-meta">Tesla Earnings Call · 2016 · 制造哲学</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"I'd rather be optimistic and wrong than pessimistic and right."</div>
+            <div class="quote-meta">Twitter / X · 2020 · 人生态度</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"I'm not trying to be anyone's savior. I'm just trying to think about the future and not be sad."</div>
+            <div class="quote-meta">Rolling Stone · 2017 · 使命感</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"Physics is the best framework for understanding the universe. Everything else is derived from physics."</div>
+            <div class="quote-meta">Interview · 2015 · 思维框架</div>
+          </div>
+          <div class="quote-card card" style="border-left-color: var(--musk)">
+            <div class="quote-text">"If you give yourself 5 years to accomplish something, it will take 5 years. If you give yourself 6 months, it will take 6 months."</div>
+            <div class="quote-meta">Interview · 2018 · 时间管理</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 五步算法 -->
+      <div id="tab-algorithm" class="tab-panel">
+        <div class="section-title">马斯克五步算法</div>
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; line-height:1.7">马斯克在特斯拉和SpaceX内部推行的工程优化方法论，按顺序执行，不可跳步。</p>
+
+        <div class="five-step">
+          <div class="step-item">
+            <div class="step-num">STEP 1</div>
+            <div>
+              <div class="step-name">质疑需求</div>
+              <div class="step-desc">每一个需求都要有具体的人负责，而不是「规定」或「流程」。如果你不能说出是谁要求这个，这个需求可能根本不存在。</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">STEP 2</div>
+            <div>
+              <div class="step-name">删除步骤</div>
+              <div class="step-desc">如果你没有在删除过程中把一些东西加回来，说明你删得不够狠。目标是删掉至少10%的步骤。优化一个不该存在的步骤是最大的浪费。</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">STEP 3</div>
+            <div>
+              <div class="step-name">简化和优化</div>
+              <div class="step-desc">只有在完成步骤1和2之后，才能开始优化。过早优化是万恶之源——你可能在精心优化一个根本不该存在的步骤。</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">STEP 4</div>
+            <div>
+              <div class="step-name">加速循环</div>
+              <div class="step-desc">提高迭代速度。但只有在完成前三步之后，加速才有意义。加速一个错误的流程只会更快地到达错误的地方。</div>
+            </div>
+          </div>
+          <div class="step-item" style="background: rgba(0,180,255,0.06); border-color: rgba(0,180,255,0.2)">
+            <div class="step-num" style="color: var(--musk); opacity: 1">STEP 5</div>
+            <div>
+              <div class="step-name" style="color: var(--musk)">自动化</div>
+              <div class="step-desc">最后才考虑自动化。把一个糟糕的流程自动化，只会更高效地产生糟糕的结果。自动化是对前四步的奖励，不是替代。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 16px 20px; margin-top: 20px; font-size: 13px; color: var(--text-muted); line-height: 1.7">
+          <strong style="color: var(--text-secondary)">⚠️ 马斯克的警告：</strong>大多数公司直接跳到步骤3或5，跳过了步骤1和2。这就是为什么他们的效率提升总是有限的——他们在优化一个根本上有缺陷的系统。
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside>
+
+      <!-- 身份卡 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">身份卡</div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <p style="margin-bottom:8px">SpaceX创始人兼CEO，特斯拉CEO，X（原Twitter）所有者，xAI创始人。</p>
+            <p style="margin-bottom:8px">南非出生，12岁自学编程卖出第一款游戏。斯坦福博士录取后两天退学，创立Zip2。</p>
+            <p>2002年以1.5亿美元卖掉PayPal后，把全部身家押注SpaceX和特斯拉，一度濒临破产。</p>
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border)">
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px">核心信念</div>
+            <div style="font-size:13px; color:var(--text-secondary); font-style:italic">「人类必须成为多星球物种，否则文明是脆弱的。」</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 智识谱系 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">影响了马斯克的人</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div class="lineage-item">
+            <div class="lineage-avatar">📚</div>
+            <div>
+              <div class="lineage-name">艾萨克·阿西莫夫</div>
+              <div class="lineage-desc">《基地》系列塑造了他的文明使命感</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🔭</div>
+            <div>
+              <div class="lineage-name">尼古拉·特斯拉</div>
+              <div class="lineage-desc">工程师偶像，特斯拉公司以他命名</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">🚀</div>
+            <div>
+              <div class="lineage-name">冯·布劳恩</div>
+              <div class="lineage-desc">火箭工程的精神先驱</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar">💡</div>
+            <div>
+              <div class="lineage-name">托马斯·爱迪生</div>
+              <div class="lineage-desc">「失败是数据」的工程迭代精神</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 核心概念 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">核心概念</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="musk-concepts-sidebar"></div>
+      </div>
+
+      <!-- 延伸阅读 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">延伸阅读</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="musk-books-sidebar"></div>
+        <a href="../articles/index.html" style="display:block;margin-top:10px;font-size:12px;color:var(--text-muted);text-decoration:none;text-align:center">查看完整书单 →</a>
+      </div>
+
+      <!-- 思想碰撞 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">思想碰撞</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">马斯克 vs 乔布斯</div>
+              <div style="font-size:12px; color:var(--text-muted)">工程师 vs 设计师的产品哲学</div>
+            </div>
+          </a>
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">马斯克 vs 塔勒布</div>
+              <div style="font-size:12px; color:var(--text-muted)">激进乐观 vs 反脆弱保守</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 诚实边界 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">诚实边界</div>
+        <div class="card" style="padding: 16px 20px; font-size:12px; color:var(--text-muted); line-height:1.7">
+          <p style="margin-bottom:8px">⚠️ 时间表几乎永远延误：FSD完全自动驾驶、Cybertruck、Starship都比承诺晚了数年。</p>
+          <p style="margin-bottom:8px">⚠️ 管理风格极端：高离职率、极端工作时长，对大多数组织不可复制。</p>
+          <p>⚠️ Twitter/X收购是典型的「使命驱动」压倒「理性分析」的案例。</p>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// 渲染侧边栏核心概念
+(function() {
+  const concepts = WV_CONCEPTS.filter(c => c.people.includes('musk'));
+  const el = document.getElementById('musk-concepts-sidebar');
+  if (!el) return;
+  el.innerHTML = concepts.map(c => `
+    <a href="../concepts/${c.id}.html" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:12px;transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+      <span>${c.name}</span><span style="color:var(--text-muted);font-size:11px">${c.nameEn}</span>
+    </a>
+  `).join('');
+})();
+
+// 渲染侧边栏书单
+(function() {
+  const books = WV_ARTICLES.filter(a => a.person === 'musk' && a.type === 'book').slice(0, 4);
+  const el = document.getElementById('musk-books-sidebar');
+  if (!el) return;
+  el.innerHTML = books.map(b => `
+    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+    </div>
+  `).join('');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>思想碰撞 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .collision-hero {
+      padding: 80px 40px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .collision-hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .collision-hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .topic-nav {
+      display: flex;
+      gap: 8px;
+      padding: 24px 40px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: none;
+    }
+
+    .topic-nav::-webkit-scrollbar { display: none; }
+
+    .topic-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .topic-btn:hover {
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+    }
+
+    .topic-btn.active {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text-primary);
+    }
+
+    .collision-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    .topic-panel { display: none; }
+    .topic-panel.active { display: block; }
+
+    .topic-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .topic-question {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .topic-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .collision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .collision-col {
+      padding: 32px 28px;
+      border-right: 1px solid var(--border);
+    }
+
+    .collision-col:last-child { border-right: none; }
+
+    .collision-col-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .col-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .collision-col-name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .collision-col-role {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .collision-answer {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .collision-quote {
+      padding: 12px 16px;
+      border-left: 2px solid;
+      background: rgba(255,255,255,0.02);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .collision-insight {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+
+    .insight-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .insight-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .insight-text strong {
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .collision-grid { grid-template-columns: 1fr; }
+      .collision-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .collision-col:last-child { border-bottom: none; }
+      .collision-hero { padding: 60px 24px 36px; }
+      .collision-hero h1 { font-size: 28px; }
+      .topic-nav { padding: 16px 20px; }
+      .collision-container { padding: 24px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../people/munger.html">芒格</a></li>
+    <li><a href="../people/naval.html">纳瓦尔</a></li>
+    <li><a href="../people/buffett.html">巴菲特</a></li>
+    <li><a href="index.html" class="active">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="collision-hero fade-in">
+    <h1>⚡ 思想碰撞</h1>
+    <p>同一个问题，三位大神的不同答案。看见思维的差异，发现认知的共鸣。</p>
+  </div>
+
+  <!-- 专题导航 -->
+  <div class="topic-nav">
+    <button class="topic-btn active" onclick="switchTopic('failure', this)">如何对待失败</button>
+    <button class="topic-btn" onclick="switchTopic('wealth', this)">如何定义财富</button>
+    <button class="topic-btn" onclick="switchTopic('learning', this)">如何学习</button>
+    <button class="topic-btn" onclick="switchTopic('competition', this)">如何看待竞争</button>
+    <button class="topic-btn" onclick="switchTopic('decision', this)">如何做决策</button>
+  </div>
+
+  <div class="collision-container">
+
+    <!-- 专题1：如何对待失败 -->
+    <div id="topic-failure" class="topic-panel active">
+      <div class="topic-header">
+        <div class="topic-question">如何对待失败？</div>
+        <div class="topic-desc">失败是人生不可避免的一部分。三位大神的应对方式，折射出截然不同的世界观。</div>
+      </div>
+
+      <div class="collision-grid">
+
+        <!-- 芒格 -->
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(240,165,0,0.1); border:1px solid rgba(240,165,0,0.2)">🦁</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--munger)">查理·芒格</div>
+              <div class="collision-col-role">逆向思考者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            失败不是需要「对待」的东西，而是需要系统性预防的东西。我不问「失败了怎么办」，我问「什么情况下一定会失败，然后避开那些情况」。
+            <br><br>
+            如果失败已经发生，有两种反应是有毒的：自怜和怨恨。这两种情绪都是灾难性的思维模式，会让你在错误的地方停留太久。
+            <br><br>
+            正确的做法是：承认错误，分析原因，更新你的愚蠢清单，然后继续前进。达尔文协议——主动寻找反面证据，是防止重复失败的最好工具。
+          </div>
+          <div class="collision-quote" style="border-color:var(--munger)">
+            "I like the idea of using artificial intelligence because we're so short of the real thing."
+          </div>
+        </div>
+
+        <!-- 纳瓦尔 -->
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(0,201,167,0.1); border:1px solid rgba(0,201,167,0.2)">⚡</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--naval)">纳瓦尔</div>
+              <div class="collision-col-role">系统重构者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            失败是信号，不是终点。关键是问：这个失败是个案，还是结构性问题？
+            <br><br>
+            如果是个案——修复它，继续前进。如果是结构性问题——不要修复个案，重构产生问题的系统。我被VC骗了，我没有去起诉那个VC，我创建了Venture Hacks，让所有创始人都不再被骗。
+            <br><br>
+            失败还有一个功能：它是欲望的清洗剂。当你失败了，你会发现哪些欲望是真正属于你的，哪些是社会注入的。真正属于你的欲望，失败之后你还会继续追求。
+          </div>
+          <div class="collision-quote" style="border-color:var(--naval)">
+            "Failure is just a signal that you need to update your model of the world."
+          </div>
+        </div>
+
+        <!-- 巴菲特 -->
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(224,92,92,0.1); border:1px solid rgba(224,92,92,0.2)">🏛️</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--buffett)">沃伦·巴菲特</div>
+              <div class="collision-col-role">长期主义者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            我犯过很多错误。德克斯特鞋业是我最糟糕的投资之一，我用伯克希尔的股票买了一家被竞争摧毁的公司，实际损失超过35亿美元。
+            <br><br>
+            我对待失败的方式很简单：承认它，从中学习，然后继续前进。不要在失败上花太多时间，因为时间是你最宝贵的资产。
+            <br><br>
+            更重要的是：在投资中，你不需要每次都对。你只需要在真正有把握的时候重仓，在不确定的时候保持耐心。失败的代价是有限的，但错过好机会的代价是无限的。
+          </div>
+          <div class="collision-quote" style="border-color:var(--buffett)">
+            "The most important thing to do if you find yourself in a hole is to stop digging."
+          </div>
+        </div>
+
+      </div>
+
+      <div class="collision-insight">
+        <div class="insight-title">洞察 · 三种失败哲学</div>
+        <div class="insight-text">
+          芒格的方式是<strong>预防性的</strong>——用逆向思考和愚蠢清单，在失败发生前就把它排除在外。纳瓦尔的方式是<strong>系统性的</strong>——把个人失败转化为解决所有人同类问题的系统。巴菲特的方式是<strong>长期主义的</strong>——承认失败，快速翻篇，把注意力放在下一个好机会上。
+          <br><br>
+          三者的共同点：<strong>都拒绝自怜</strong>。没有一个人在失败上停留太久。
+        </div>
+      </div>
+    </div>
+
+    <!-- 专题2：如何定义财富 -->
+    <div id="topic-wealth" class="topic-panel">
+      <div class="topic-header">
+        <div class="topic-question">如何定义财富？</div>
+        <div class="topic-desc">三位大神都是财富的创造者，但他们对「财富」的定义，却有着根本性的差异。</div>
+      </div>
+
+      <div class="collision-grid">
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(240,165,0,0.1); border:1px solid rgba(240,165,0,0.2)">🦁</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--munger)">查理·芒格</div>
+              <div class="collision-col-role">理性主义者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            财富的本质是独立性——不需要做你不想做的事，不需要和你不喜欢的人打交道。金钱只是实现这种独立性的工具，不是目的本身。
+            <br><br>
+            我一生中最重要的财富决策，是在年轻时就决定：我宁愿少赚一些，也要和我尊重的人一起工作，做我认为有意义的事。这个决策的回报，远超任何投资。
+            <br><br>
+            真正的财富还包括：好的判断力、好的习惯、好的人际关系。这些东西比账户里的数字更难积累，也更难失去。
+          </div>
+          <div class="collision-quote" style="border-color:var(--munger)">
+            "The best thing a human being can do is to help another human being know more."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(0,201,167,0.1); border:1px solid rgba(0,201,167,0.2)">⚡</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--naval)">纳瓦尔</div>
+              <div class="collision-col-role">重新定义者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            先重新定义「财富」。财富不是钱，不是地位。财富是睡觉时也在赚的资产。
+            <br><br>
+            工资不是财富——你停止工作，工资就停止。资产才是财富——你睡觉，资产还在工作。这个区别改变了一切。
+            <br><br>
+            但财富还有更深的一层：时间自由。真正的富有，是你的日历完全由你自己填满。你不需要向任何人汇报，不需要出现在任何你不想出现的地方。这比账户里的数字更难实现，也更值得追求。
+          </div>
+          <div class="collision-quote" style="border-color:var(--naval)">
+            "Seek wealth, not money or status. Wealth is having assets that earn while you sleep."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(224,92,92,0.1); border:1px solid rgba(224,92,92,0.2)">🏛️</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--buffett)">沃伦·巴菲特</div>
+              <div class="collision-col-role">复利信徒</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            财富是复利的产物。不是一次性的聪明决策，而是长期正确决策的积累。
+            <br><br>
+            我99%的财富是在50岁之后积累的。这不是因为我50岁之后变得更聪明，而是因为复利需要时间。时间是财富最重要的原材料。
+            <br><br>
+            但我对财富的使用方式，可能和大多数人不同。我住在1958年买的房子里，开普通的车，吃麦当劳。财富给了我最重要的东西：做我想做的事的自由，和我想和的人一起工作的自由。
+          </div>
+          <div class="collision-quote" style="border-color:var(--buffett)">
+            "Someone's sitting in the shade today because someone planted a tree a long time ago."
+          </div>
+        </div>
+
+      </div>
+
+      <div class="collision-insight">
+        <div class="insight-title">洞察 · 三种财富观的共鸣</div>
+        <div class="insight-text">
+          三人对财富的定义，表面不同，深层一致：<strong>财富的终极价值是自由</strong>。芒格说的是「不需要做你不想做的事」，纳瓦尔说的是「时间自由」，巴菲特说的是「做我想做的事的自由」。
+          <br><br>
+          差异在于路径：芒格强调<strong>判断力和人际关系</strong>，纳瓦尔强调<strong>资产和杠杆</strong>，巴菲特强调<strong>复利和时间</strong>。三条路，同一个目的地。
+        </div>
+      </div>
+    </div>
+
+    <!-- 专题3：如何学习 -->
+    <div id="topic-learning" class="topic-panel">
+      <div class="topic-header">
+        <div class="topic-question">如何学习？</div>
+        <div class="topic-desc">三位大神都是终身学习者，但他们的学习方法论，有着鲜明的个人风格。</div>
+      </div>
+
+      <div class="collision-grid">
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(240,165,0,0.1); border:1px solid rgba(240,165,0,0.2)">🦁</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--munger)">查理·芒格</div>
+              <div class="collision-col-role">跨学科编织者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            学习的目标不是积累知识，而是构建心智模型的网格。孤立的事实没有价值，只有当它们连接成网络，才能产生洞察。
+            <br><br>
+            我的方法是：从每个学科中提取最核心的模型，然后把它们编织在一起。心理学告诉你人为什么这样行动，经济学告诉你激励如何运作，物理学告诉你系统如何演化。
+            <br><br>
+            最重要的是：我有已知无知的清单。我知道自己不知道什么，这比知道什么更重要。
+          </div>
+          <div class="collision-quote" style="border-color:var(--munger)">
+            "I have known no wise people who didn't read all the time — none, zero."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(0,201,167,0.1); border:1px solid rgba(0,201,167,0.2)">⚡</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--naval)">纳瓦尔</div>
+              <div class="collision-col-role">好奇心驱动者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            学习的最高形式是跟随好奇心，而不是按照课程表。学校教的是手册化知识——可以被标准化、被批量生产的东西。但真正有价值的特定知识，只能通过好奇心驱动的自学获得。
+            <br><br>
+            我的方法是：读书，但不按顺序读。同时读五本书，哪本有趣读哪本，读不下去就换。这不是没有纪律，这是让好奇心引导你找到真正适合你的知识。
+            <br><br>
+            学习的终极目标是：让你的判断力比大多数人好，但你说不清为什么。那就是特定知识在说话。
+          </div>
+          <div class="collision-quote" style="border-color:var(--naval)">
+            "The most important skill for getting rich is becoming a perpetual learner."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(224,92,92,0.1); border:1px solid rgba(224,92,92,0.2)">🏛️</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--buffett)">沃伦·巴菲特</div>
+              <div class="collision-col-role">深度阅读者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            我每天花80%的时间阅读和思考。这不是因为我没有其他事情做，而是因为这是我能做的最有价值的事情。
+            <br><br>
+            我的学习方法很简单：读大量的年报、行业报告、历史书。不是为了找到下一个投资机会，而是为了建立对商业世界的深度理解。这种理解是复利的——每一年的阅读都建立在前一年的基础上。
+            <br><br>
+            最重要的是：我只在自己真正理解的领域做判断。不理解的东西，我宁愿承认不知道，也不愿意假装理解。
+          </div>
+          <div class="collision-quote" style="border-color:var(--buffett)">
+            "The best investment you can make is in yourself."
+          </div>
+        </div>
+
+      </div>
+
+      <div class="collision-insight">
+        <div class="insight-title">洞察 · 三种学习方法的差异</div>
+        <div class="insight-text">
+          芒格是<strong>系统性的</strong>——他要构建一个完整的心智模型网格，每个学科都要覆盖。纳瓦尔是<strong>好奇心驱动的</strong>——他跟随兴趣，不按课程，寻找属于自己的特定知识。巴菲特是<strong>深度专注的</strong>——他在一个领域（商业和投资）读到极深，而不是广泛涉猎。
+          <br><br>
+          共同点：<strong>都是终身学习者，都拒绝停止学习</strong>。芒格99岁还在读书，纳瓦尔说「退休不是不工作，是只做想做的事」，巴菲特93岁还在管理伯克希尔。
+        </div>
+      </div>
+    </div>
+
+    <!-- 专题4：如何看待竞争 -->
+    <div id="topic-competition" class="topic-panel">
+      <div class="topic-header">
+        <div class="topic-question">如何看待竞争？</div>
+        <div class="topic-desc">竞争是商业世界的常态，但三位大神对竞争的态度，揭示了截然不同的战略思维。</div>
+      </div>
+
+      <div class="collision-grid">
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(240,165,0,0.1); border:1px solid rgba(240,165,0,0.2)">🦁</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--munger)">查理·芒格</div>
+              <div class="collision-col-role">护城河建造者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            竞争是你必须理解但不必参与的游戏。我们寻找的是有护城河的企业——那些竞争对手无法轻易复制的优势。
+            <br><br>
+            如果一家企业需要不断地与竞争对手厮杀才能维持市场份额，那它就没有真正的护城河。真正好的企业，竞争对手越努力，它的优势反而越明显。
+            <br><br>
+            对于个人也是一样：不要在别人的游戏里竞争，要找到你有不对称优势的领域。
+          </div>
+          <div class="collision-quote" style="border-color:var(--munger)">
+            "In business, I look for economic castles protected by unbreachable moats."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(0,201,167,0.1); border:1px solid rgba(0,201,167,0.2)">⚡</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--naval)">纳瓦尔</div>
+              <div class="collision-col-role">竞争逃离者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            竞争是你在模仿别人的证据。如果你在竞争，说明你还没有找到自己的特定知识。
+            <br><br>
+            真正的赢不是在竞争中胜出，而是找到一个只有你能做的事，让竞争变得无关紧要。当你有了真正的特定知识，竞争对手根本不知道怎么复制你。
+            <br><br>
+            最好的商业策略是：找到一个你是世界上最好的人的交叉点，然后在那里建立杠杆。在那个交叉点上，你没有竞争对手。
+          </div>
+          <div class="collision-quote" style="border-color:var(--naval)">
+            "Competition is for losers. If you're competing, you're not differentiating."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(224,92,92,0.1); border:1px solid rgba(224,92,92,0.2)">🏛️</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--buffett)">沃伦·巴菲特</div>
+              <div class="collision-col-role">护城河评估者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            我投资的第一个问题是：这家公司的护城河有多宽？竞争对手需要多少时间和资源才能复制它的优势？
+            <br><br>
+            可口可乐的品牌护城河，竞争对手花了100年也没有复制成功。喜诗糖果的品牌忠诚度，让它可以每年提价而不失去顾客。这些才是真正值得投资的企业。
+            <br><br>
+            对于没有护城河的企业，再便宜我也不买。因为竞争会把所有的利润都侵蚀掉。
+          </div>
+          <div class="collision-quote" style="border-color:var(--buffett)">
+            "The key to investing is not assessing how much an industry is going to affect society, but rather determining the competitive advantage of any given company."
+          </div>
+        </div>
+
+      </div>
+
+      <div class="collision-insight">
+        <div class="insight-title">洞察 · 三种竞争观的共鸣</div>
+        <div class="insight-text">
+          三人对竞争的态度，有一个惊人的共同点：<strong>都在寻找逃离竞争的方法</strong>，而不是在竞争中取胜的方法。芒格和巴菲特用「护城河」来描述这种逃离，纳瓦尔用「特定知识」来描述。
+          <br><br>
+          本质上，他们都在说同一件事：<strong>最好的竞争策略，是让竞争变得无关紧要</strong>。
+        </div>
+      </div>
+    </div>
+
+    <!-- 专题5：如何做决策 -->
+    <div id="topic-decision" class="topic-panel">
+      <div class="topic-header">
+        <div class="topic-question">如何做决策？</div>
+        <div class="topic-desc">决策是人生最核心的能力。三位大神的决策框架，各有侧重，相互补充。</div>
+      </div>
+
+      <div class="collision-grid">
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(240,165,0,0.1); border:1px solid rgba(240,165,0,0.2)">🦁</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--munger)">查理·芒格</div>
+              <div class="collision-col-role">逆向决策者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            我的决策框架是逆向的。不问「这个决策有什么好处」，先问「这个决策怎么会让我完蛋」。把所有灾难路径排除之后，剩下的选择自然不会太差。
+            <br><br>
+            然后用三筐分类法：Yes（确信）、No（确信不做）、Too Hard（太复杂，放弃）。大部分决策属于第三筐。不做决策也是决策。
+            <br><br>
+            最后，强制执行达尔文协议：花等量时间寻找反面证据。如果找不到有力的反对论据，可能是你搜索得不够努力。
+          </div>
+          <div class="collision-quote" style="border-color:var(--munger)">
+            "Invert, always invert."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(0,201,167,0.1); border:1px solid rgba(0,201,167,0.2)">⚡</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--naval)">纳瓦尔</div>
+              <div class="collision-col-role">定义先行者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            我的决策第一步是重新定义问题。大多数人在错误的问题上做决策，因为他们接受了别人给的定义。
+            <br><br>
+            然后是纠结即否定原则：如果我在两个选择间纠结超过10分钟，答案就是No。真正好的机会不会让你犹豫。
+            <br><br>
+            最重要的是：减少需要做决策的事情。欲望越少，需要做的决策越少，每个决策的质量越高。焦虑不是来自决策困难，而是来自欲望的并发冲突。
+          </div>
+          <div class="collision-quote" style="border-color:var(--naval)">
+            "If I can't decide, the answer is no."
+          </div>
+        </div>
+
+        <div class="collision-col">
+          <div class="collision-col-header">
+            <div class="col-avatar" style="background:rgba(224,92,92,0.1); border:1px solid rgba(224,92,92,0.2)">🏛️</div>
+            <div>
+              <div class="collision-col-name" style="color:var(--buffett)">沃伦·巴菲特</div>
+              <div class="collision-col-role">耐心等待者</div>
+            </div>
+          </div>
+          <div class="collision-answer">
+            我的决策框架很简单：等待真正好的机会，然后重仓。不需要每个球都打，只需要在甜蜜区的球出现时全力挥棒。
+            <br><br>
+            大多数人的问题不是决策质量差，而是决策频率太高。每一次决策都有犯错的风险，减少决策次数是提高决策质量的最简单方法。
+            <br><br>
+            我有一个简单的测试：如果我不能用简单的语言解释为什么要做这个决策，我就不做。复杂的理由通常是自我欺骗的信号。
+          </div>
+          <div class="collision-quote" style="border-color:var(--buffett)">
+            "The stock market is a no-called-strike game. You don't have to swing at everything."
+          </div>
+        </div>
+
+      </div>
+
+      <div class="collision-insight">
+        <div class="insight-title">洞察 · 三种决策框架的互补</div>
+        <div class="insight-text">
+          三个框架可以组合使用：先用<strong>纳瓦尔的重新定义</strong>确保你在解决正确的问题，再用<strong>芒格的逆向思考</strong>排除灾难路径，最后用<strong>巴菲特的耐心等待</strong>确保只在真正有把握时出手。
+          <br><br>
+          共同的底层逻辑：<strong>少做决策，但每次都做对</strong>。三人都是通过减少决策频率来提高决策质量的。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+function switchTopic(name, btn) {
+  document.querySelectorAll('.topic-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('topic-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

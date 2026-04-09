@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大神认知知识库 · Wisdom Vault</title>
+  <meta name="description" content="汇聚巴菲特、芒格、纳瓦尔等顶级思想家的认知框架与智慧精华">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* 星空粒子 */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--d, 3s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* 连接线动画 */
+    .connection-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+      transform-origin: left center;
+    }
+
+    /* 特色区块 */
+    .features {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 640px) {
+      .features { grid-template-columns: 1fr; padding: 0 20px; }
+    }
+
+    .feature-card {
+      padding: 24px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 即将上线 */
+    .coming-soon {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+    }
+
+    .coming-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .coming-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .coming-item {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .coming-item .badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+
+<!-- 星空背景 -->
+<div class="stars" id="stars"></div>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">首页</a></li>
+    <li><a href="people/munger.html">芒格</a></li>
+    <li><a href="people/naval.html">纳瓦尔</a></li>
+    <li><a href="people/buffett.html">巴菲特</a></li>
+    <li><a href="people/musk.html">马斯克</a></li>
+    <li><a href="people/jobs.html">乔布斯</a></li>
+    <li><a href="people/taleb.html">塔勒布</a></li>
+    <li><a href="collision/index.html">思想碰撞</a></li>
+    <li><a href="graph.html">知识图谱</a></li>
+<li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<!-- 主内容 -->
+<main class="main">
+
+  <!-- 英雄区 -->
+  <section class="hero">
+    <p class="hero-eyebrow">大神认知知识库 · MVP v1.0</p>
+    <h1 class="hero-title">站在巨人的<br>思维肩膀上</h1>
+    <p class="hero-sub">
+      汇聚顶级思想家的认知框架、心智模型与决策智慧<br>
+      每个概念都能溯源到原话，每个洞见都有来处
+    </p>
+
+    <!-- 统计 -->
+    <div class="stats-row stagger">
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">位思想家</div>
+      </div>
+<div class="stat-item">
+<div class="stat-num">26</div>
+<div class="stat-label">个核心概念</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">92</div>
+<div class="stat-label">条精选语录</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">39</div>
+<div class="stat-label">本书单与文章</div>
+</div>
+    </div>
+
+    <!-- 人物卡片 -->
+    <div class="people-grid stagger">
+
+      <!-- 芒格 -->
+      <a href="people/munger.html" class="person-card munger">
+        <span class="pc-arrow">↗</span>
+        <span class="pc-emoji">🦁</span>
+        <div class="pc-name" style="color: var(--munger)">查理·芒格</div>
+        <div class="pc-en">Charlie Munger</div>
+        <div class="pc-desc">伯克希尔副董事长，多元思维模型的构建者。用99年时间收集世界上的蠢事，然后系统性地避开它们。</div>
+        <div class="pc-tags">
+          <span class="pc-tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">逆向思考</span>
+          <span class="pc-tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">认知偏误</span>
+          <span class="pc-tag" style="color: var(--munger); border-color: rgba(240,165,0,0.3)">跨学科</span>
+        </div>
+      </a>
+
+      <!-- 纳瓦尔 -->
+      <a href="people/naval.html" class="person-card naval">
+        <span class="pc-arrow">↗</span>
+        <span class="pc-emoji">⚡</span>
+        <div class="pc-name" style="color: var(--naval)">纳瓦尔</div>
+        <div class="pc-en">Naval Ravikant</div>
+        <div class="pc-desc">AngelList创始人，财富与幸福哲学家。把深奥思想翻译成推文级别的可消化格言。</div>
+        <div class="pc-tags">
+          <span class="pc-tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">杠杆思维</span>
+          <span class="pc-tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">特定知识</span>
+          <span class="pc-tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">财富自由</span>
+        </div>
+      </a>
+
+      <!-- 巴菲特 -->
+      <a href="people/buffett.html" class="person-card buffett">
+        <span class="pc-arrow">↗</span>
+        <span class="pc-emoji">🏛️</span>
+        <div class="pc-name" style="color: var(--buffett)">沃伦·巴菲特</div>
+        <div class="pc-en">Warren Buffett</div>
+        <div class="pc-desc">奥马哈先知，价值投资的集大成者。70年投资智慧，用复利和耐心构建了人类历史上最伟大的投资记录。</div>
+        <div class="pc-tags">
+          <span class="pc-tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">价值投资</span>
+          <span class="pc-tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">护城河</span>
+          <span class="pc-tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">复利</span>
+        </div>
+      </a>
+
+      <!-- 马斯克 -->
+      <a href="people/musk.html" class="person-card" style="border-color: rgba(0,180,255,0.15)" onmouseover="this.style.borderColor='rgba(0,180,255,0.4)'" onmouseout="this.style.borderColor='rgba(0,180,255,0.15)'">
+        <span class="pc-arrow">↗</span>
+        <span class="pc-emoji">🚀</span>
+        <div class="pc-name" style="color: var(--musk)">埃隆·马斯克</div>
+        <div class="pc-en">Elon Musk</div>
+        <div class="pc-desc">SpaceX、特斯拉创始人。用第一性原理把火箭成本降低90%，用快速迭代重新定义制造业。</div>
+        <div class="pc-tags">
+          <span class="pc-tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">第一性原理</span>
+          <span class="pc-tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">快速迭代</span>
+          <span class="pc-tag" style="color: var(--musk); border-color: rgba(0,180,255,0.3)">垂直整合</span>
+        </div>
+      </a>
+
+      <!-- 乔布斯 -->
+      <a href="people/jobs.html" class="person-card" style="border-color: rgba(200,160,255,0.15)" onmouseover="this.style.borderColor='rgba(200,160,255,0.4)'" onmouseout="this.style.borderColor='rgba(200,160,255,0.15)'">
+        <span class="pc-arrow">↗</span>
+        <span class="pc-emoji">🍎</span>
+        <div class="pc-name" style="color: var(--jobs)">史蒂夫·乔布斯</div>
+        <div class="pc-en">Steve Jobs</div>
+        <div class="pc-desc">苹果联合创始人。用极致简洁和产品工艺在宇宙中留下一个凹痕，重新定义了人与技术的关系。</div>
+        <div class="pc-tags">
+          <span class="pc-tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">极致简洁</span>
+          <span class="pc-tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">产品工艺</span>
+          <span class="pc-tag" style="color: var(--jobs); border-color: rgba(200,160,255,0.3)">连接点</span>
+        </div>
+      </a>
+
+      <!-- 塔勒布 -->
+      <a href="people/taleb.html" class="person-card" style="border-color: rgba(255,100,80,0.15)" onmouseover="this.style.borderColor='rgba(255,100,80,0.4)'" onmouseout="this.style.borderColor='rgba(255,100,80,0.15)'">
+        <span class="pc-arrow">↗</span>
+        <span class="pc-emoji">🦢</span>
+        <div class="pc-name" style="color: var(--taleb)">纳西姆·塔勒布</div>
+        <div class="pc-en">Nassim Taleb</div>
+        <div class="pc-desc">前期权交易员、风险哲学家。发明「反脆弱」和「黑天鹅」概念，重新定义了我们与不确定性的关系。</div>
+        <div class="pc-tags">
+          <span class="pc-tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">反脆弱</span>
+          <span class="pc-tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">黑天鹅</span>
+          <span class="pc-tag" style="color: var(--taleb); border-color: rgba(255,100,80,0.3)">切身利益</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- 按钮 -->
+    <div class="bottom-nav">
+      <a href="collision/index.html" class="btn btn-primary">✦ 思想碰撞专题</a>
+      <a href="graph.html" class="btn btn-ghost">◈ 知识图谱</a>
+    </div>
+  </section>
+
+  <!-- 内容库入口 -->
+  <section class="features stagger" style="margin-bottom:0">
+    <a href="concepts/index.html" class="feature-card" style="text-decoration:none;cursor:pointer" onmouseover="this.style.borderColor='var(--border-bright)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span class="feature-icon" style="font-size:0">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="3"/></svg>
+      </span>
+      <div class="feature-title">概念库 <span style="font-size:11px;font-weight:400;color:var(--text-muted);margin-left:6px">26 个</span></div>
+      <div class="feature-desc">每个概念溯源原话，标注来源人物，跨人物关联，构建可操作的思维工具</div>
+    </a>
+    <a href="quotes/index.html" class="feature-card" style="text-decoration:none;cursor:pointer" onmouseover="this.style.borderColor='var(--border-bright)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span class="feature-icon" style="font-size:0">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      <div class="feature-title">语录库 <span style="font-size:11px;font-weight:400;color:var(--text-muted);margin-left:6px">92 条</span></div>
+      <div class="feature-desc">六位大神精选语录，按人物、标签、概念多维筛选，找到最触动你的那句话</div>
+    </a>
+    <a href="articles/index.html" class="feature-card" style="text-decoration:none;cursor:pointer" onmouseover="this.style.borderColor='var(--border-bright)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span class="feature-icon" style="font-size:0">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </span>
+      <div class="feature-title">书单库 <span style="font-size:11px;font-weight:400;color:var(--text-muted);margin-left:6px">39 本</span></div>
+      <div class="feature-desc">大神们亲自推荐的书单与文章，每本都标注了推荐理由和关联概念</div>
+    </a>
+  </section>
+
+  <!-- 特色功能 -->
+  <section class="features stagger">
+    <div class="feature-card">
+      <span class="feature-icon" style="font-size:0">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      <div class="feature-title">思想碰撞</div>
+      <div class="feature-desc">同一个问题，三位大神的不同答案并排展示，看见思维的差异与共鸣</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" style="font-size:0">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00c9a7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="7" y1="19" x2="17" y2="19"/></svg>
+      </span>
+      <div class="feature-title">知识图谱</div>
+      <div class="feature-desc">概念之间的关联可视化，发现跨人物的思想连接，构建自己的认知网络</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" style="font-size:0">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </span>
+      <div class="feature-title">内容互联</div>
+      <div class="feature-desc">语录链接概念，概念链接书单，书单链接人物——每个知识点都有完整的上下文</div>
+    </div>
+  </section>
+
+  <!-- 即将上线 -->
+  <section class="coming-soon">
+    <div class="coming-title">即将加入的思想家</div>
+    <div class="coming-grid">
+      <div class="coming-item">✍️ Paul Graham <span class="badge">创业密度</span></div>
+      <div class="coming-item">🔬 理查德·费曼 <span class="badge">学习方法</span></div>
+      <div class="coming-item">🦋 张一鸣 <span class="badge">延迟满足</span></div>
+      <div class="coming-item">🌊 Ray Dalio <span class="badge">原则</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  // 生成星空
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      --d: ${2 + Math.random() * 4}s;
+      --delay: ${Math.random() * 4}s;
+      opacity: ${0.1 + Math.random() * 0.3};
+      width: ${1 + Math.random() * 2}px;
+      height: ${1 + Math.random() * 2}px;
+    `;
+    starsEl.appendChild(star);
+  }
+</script>
+</body>
+</html>

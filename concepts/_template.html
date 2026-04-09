@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">概念详情 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .concept-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+    }
+
+    /* ── 主内容 ── */
+    .concept-main { padding-right: 48px; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text-secondary); }
+    .breadcrumb span { margin: 0 6px; }
+
+    .concept-hero { margin-bottom: 40px; }
+
+    .concept-hero h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .concept-hero-en {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .concept-hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .concept-people-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .person-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .person-badge:hover { opacity: 0.8; }
+
+    /* ── 原话精选 ── */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .count-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .quotes-list { margin-bottom: 48px; }
+
+    .quote-item {
+      border-left: 2px solid var(--border);
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.015);
+      border-radius: 0 8px 8px 0;
+      transition: border-color 0.2s;
+    }
+
+    .quote-item:hover { border-left-color: var(--border-bright); }
+
+    .quote-item-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .quote-person-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    .quote-source-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .quote-year-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    .quote-text-main {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-primary);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .quote-text-en-main {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ── 侧边栏 ── */
+    .concept-sidebar {
+      border-left: 1px solid var(--border);
+      padding-left: 32px;
+    }
+
+    .sidebar-widget { margin-bottom: 36px; }
+
+    .widget-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .related-concept-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 13px;
+      margin-bottom: 6px;
+      transition: all 0.15s;
+    }
+
+    .related-concept-link:hover {
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+    }
+
+    .related-concept-link .arrow { color: var(--text-muted); font-size: 11px; }
+
+    .person-link-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 8px;
+      transition: all 0.15s;
+    }
+
+    .person-link-card:hover { border-color: var(--border-bright); }
+
+    .person-link-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .person-link-name { font-size: 13px; font-weight: 600; }
+    .person-link-sub { font-size: 11px; color: var(--text-muted); }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag-cloud-item {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 900px) {
+      .concept-layout { grid-template-columns: 1fr; padding: 24px 20px 60px; }
+      .concept-main { padding-right: 0; margin-bottom: 40px; }
+      .concept-sidebar { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo"><span class="dot"></span>Wisdom Vault</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../people/munger.html">芒格</a></li>
+    <li><a href="../people/naval.html">纳瓦尔</a></li>
+    <li><a href="../people/buffett.html">巴菲特</a></li>
+    <li><a href="../quotes/index.html">语录库</a></li>
+    <li><a href="../articles/index.html">书单</a></li>
+    <li><a href="index.html">概念</a></li>
+    <li><a href="../graph.html">图谱</a></li>
+  </ul>
+</nav>
+
+<div class="concept-layout">
+
+  <!-- 主内容 -->
+  <div class="concept-main fade-in">
+    <div class="breadcrumb">
+      <a href="index.html">概念索引</a>
+      <span>›</span>
+      <span id="bc-name">概念</span>
+    </div>
+
+    <div class="concept-hero">
+      <h1 id="hero-name"></h1>
+      <div class="concept-hero-en" id="hero-en"></div>
+      <div class="concept-hero-desc" id="hero-desc"></div>
+      <div class="concept-people-row" id="hero-people"></div>
+    </div>
+
+    <div class="quotes-list">
+      <div class="section-title">
+        💬 原话精选
+        <span class="count-badge" id="quotes-count"></span>
+      </div>
+      <div id="quotes-container"></div>
+    </div>
+  </div>
+
+  <!-- 侧边栏 -->
+  <aside class="concept-sidebar fade-in">
+
+    <div class="sidebar-widget">
+      <div class="widget-title">关联概念</div>
+      <div id="related-concepts"></div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="widget-title">涉及人物</div>
+      <div id="related-people"></div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="widget-title">标签</div>
+      <div class="tag-cloud" id="tag-cloud"></div>
+    </div>
+
+  </aside>
+</div>
+
+<script src="../data/concepts.js"></script>
+<script src="../data/quotes.js"></script>
+<script>
+// 从URL获取概念ID（文件名）
+const conceptId = location.pathname.split('/').pop().replace('.html','');
+
+const PERSON_CONFIG = {
+  munger:  { name: '查理·芒格', emoji: '🦁', color: 'var(--munger)', bg: 'rgba(240,165,0,0.1)', path: '../people/munger.html' },
+  naval:   { name: '纳瓦尔',    emoji: '⚡', color: 'var(--naval)',   bg: 'rgba(0,201,167,0.1)', path: '../people/naval.html' },
+  buffett: { name: '沃伦·巴菲特', emoji: '🏛️', color: 'var(--buffett)', bg: 'rgba(224,92,92,0.1)', path: '../people/buffett.html' }
+};
+
+function init() {
+  const concept = WV_CONCEPTS.find(c => c.id === conceptId);
+  if (!concept) {
+    document.querySelector('.concept-main').innerHTML = '<p style="color:var(--text-muted);padding:40px 0">概念未找到</p>';
+    return;
+  }
+
+  // 页面标题
+  document.title = concept.name + ' · 大神认知知识库';
+  document.getElementById('page-title').textContent = concept.name + ' · 大神认知知识库';
+  document.getElementById('bc-name').textContent = concept.name;
+
+  // 英雄区
+  document.getElementById('hero-name').textContent = concept.name;
+  document.getElementById('hero-en').textContent = concept.nameEn;
+  document.getElementById('hero-desc').textContent = concept.desc;
+
+  // 人物标签
+  const peoplePips = concept.people.map(p => {
+    const cfg = PERSON_CONFIG[p];
+    return `<a class="person-badge" href="${cfg.path}" style="background:${cfg.bg};color:${cfg.color}">${cfg.emoji} ${cfg.name}</a>`;
+  }).join('');
+  document.getElementById('hero-people').innerHTML = peoplePips;
+
+  // 语录
+  const quotes = WV_QUOTES.filter(q => (q.concepts||[]).includes(conceptId));
+  document.getElementById('quotes-count').textContent = quotes.length + ' 条';
+  document.getElementById('quotes-container').innerHTML = quotes.map(q => {
+    const p = PERSON_CONFIG[q.person];
+    return `
+      <div class="quote-item" style="border-left-color:${p.color}66">
+        <div class="quote-item-header">
+          <span class="quote-person-tag" style="background:${p.bg};color:${p.color}">${p.emoji} ${p.name}</span>
+          <span class="quote-source-tag">${q.source}</span>
+          <span class="quote-year-tag">${q.year}</span>
+        </div>
+        <div class="quote-text-main">"${q.text}"</div>
+        ${q.textEn ? `<div class="quote-text-en-main">"${q.textEn}"</div>` : ''}
+      </div>
+    `;
+  }).join('') || '<p style="color:var(--text-muted);font-size:14px">暂无语录</p>';
+
+  // 关联概念
+  const links = WV_CONCEPT_LINKS.filter(l => l.source === conceptId || l.target === conceptId);
+  const relatedIds = links.map(l => l.source === conceptId ? l.target : l.source);
+  const relatedConcepts = relatedIds.map(id => WV_CONCEPTS.find(c => c.id === id)).filter(Boolean);
+
+  document.getElementById('related-concepts').innerHTML = relatedConcepts.map(c => `
+    <a class="related-concept-link" href="${c.id}.html">
+      <span>${c.name}</span>
+      <span class="arrow">→</span>
+    </a>
+  `).join('') || '<p style="color:var(--text-muted);font-size:13px">暂无关联</p>';
+
+  // 涉及人物
+  document.getElementById('related-people').innerHTML = concept.people.map(p => {
+    const cfg = PERSON_CONFIG[p];
+    const qCount = WV_QUOTES.filter(q => q.person === p && (q.concepts||[]).includes(conceptId)).length;
+    return `
+      <a class="person-link-card" href="${cfg.path}">
+        <div class="person-link-avatar" style="background:${cfg.bg};border:1px solid ${cfg.color}44">${cfg.emoji}</div>
+        <div>
+          <div class="person-link-name" style="color:${cfg.color}">${cfg.name}</div>
+          <div class="person-link-sub">${qCount} 条相关语录</div>
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  // 标签云
+  document.getElementById('tag-cloud').innerHTML = (concept.tags||[]).map(t =>
+    `<span class="tag-cloud-item">${t}</span>`
+  ).join('');
+}
+
+init();
+</script>
+</body>
+</html>

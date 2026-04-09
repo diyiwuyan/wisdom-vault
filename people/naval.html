@@ -1,0 +1,688 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纳瓦尔 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .naval-hero {
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(0,201,167,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,201,167,0.06) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--naval);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0,201,167,0.2);
+    }
+
+    .leverage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .leverage-item {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid;
+    }
+
+    .leverage-item.permissionless {
+      background: rgba(0,201,167,0.06);
+      border-color: rgba(0,201,167,0.2);
+    }
+
+    .leverage-item.permission {
+      background: rgba(255,255,255,0.02);
+      border-color: var(--border);
+    }
+
+    .leverage-type {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .leverage-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .leverage-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .redefine-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 16px 0;
+    }
+
+    .redefine-table th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .redefine-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .redefine-table tr:last-child td { border-bottom: none; }
+
+    .redefine-table .old { color: var(--text-muted); text-decoration: line-through; }
+    .redefine-table .new { color: var(--naval); font-weight: 500; }
+    .redefine-table .result { color: var(--text-secondary); }
+
+    .tab-nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--naval); border-bottom-color: var(--naval); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    @media (max-width: 640px) {
+      .leverage-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="munger.html">芒格</a></li>
+<li><a href="naval.html" class="active">纳瓦尔</a></li>
+<li><a href="buffett.html">巴菲特</a></li>
+<li><a href="musk.html">马斯克</a></li>
+<li><a href="jobs.html">乔布斯</a></li>
+<li><a href="taleb.html">塔勒布</a></li>
+<li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+<li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="person-hero naval-hero">
+    <div class="person-hero-content fade-in">
+      <div class="person-avatar" style="border-color: var(--naval); color: var(--naval)">⚡</div>
+      <div class="person-name" style="color: var(--naval)">纳瓦尔·拉维坎特</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.05em">Naval Ravikant · AngelList 创始人</div>
+      <div class="person-tagline">
+        "Seek wealth, not money or status. Wealth is having assets that earn while you sleep."
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <span class="tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">杠杆思维</span>
+        <span class="tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">特定知识</span>
+        <span class="tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">财富自由</span>
+        <span class="tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">欲望管理</span>
+        <span class="tag" style="color: var(--naval); border-color: rgba(0,201,167,0.3)">无需许可</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content-grid">
+
+    <!-- 主栏 -->
+    <div>
+
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('models', this)">心智模型</button>
+        <button class="tab-btn" onclick="switchTab('heuristics', this)">决策启发式</button>
+        <button class="tab-btn" onclick="switchTab('quotes', this)">金句库</button>
+        <button class="tab-btn" onclick="switchTab('redefine', this)">重新定义术</button>
+      </div>
+
+      <!-- 心智模型 -->
+      <div id="tab-models" class="tab-panel active">
+        <div class="section-title">5 个核心心智模型</div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.05s">
+          <div class="model-num">MODEL 01</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            杠杆思维 · Leverage
+          </div>
+          <div class="model-oneliner">不要用时间换钱，要用可复制的系统换钱。</div>
+          <div class="model-body">
+            <p style="margin-bottom:16px">Naval把杠杆分为四种类型，其中后两种是新时代的核心武器：</p>
+            <div class="leverage-grid">
+              <div class="leverage-item permission">
+                <div class="leverage-type" style="color:var(--text-muted)">需要许可</div>
+                <div class="leverage-name">劳动力</div>
+                <div class="leverage-desc">他人为你工作，最古老，需要管理</div>
+              </div>
+              <div class="leverage-item permission">
+                <div class="leverage-type" style="color:var(--text-muted)">需要许可</div>
+                <div class="leverage-name">资本</div>
+                <div class="leverage-desc">钱为你工作，需要别人给你钱</div>
+              </div>
+              <div class="leverage-item permissionless">
+                <div class="leverage-type" style="color:var(--naval)">⚡ 无需许可</div>
+                <div class="leverage-name">代码</div>
+                <div class="leverage-desc">软件为你工作，边际成本为零</div>
+              </div>
+              <div class="leverage-item permissionless">
+                <div class="leverage-type" style="color:var(--naval)">⚡ 无需许可</div>
+                <div class="leverage-name">媒体</div>
+                <div class="leverage-desc">内容为你工作，边际成本为零</div>
+              </div>
+            </div>
+            <div class="quote-block" style="border-color: var(--naval); margin-top:16px">
+              "Code and media are permissionless leverage. They're the leverage behind the newly rich."
+            </div>
+            <p style="color: var(--text-muted); font-size: 13px; margin-top:12px"><strong>⚠️ 局限：</strong>过度强调杠杆可能导致忽视手工艺和深度工作的价值。不是所有有价值的事都需要规模化。</p>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.10s">
+          <div class="model-num">MODEL 02</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            特定知识 · Specific Knowledge
+          </div>
+          <div class="model-oneliner">你最大的竞争力是那些像玩一样的工作——别人觉得苦，你觉得有趣的事。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">特定知识不是「技能」。技能可以被培训、被教材化、被批量生产。特定知识是你独特的组合——你的好奇心、你的经历、你的判断力的交叉点。</p>
+            <div style="background: rgba(0,201,167,0.05); border: 1px solid rgba(0,201,167,0.15); border-radius: 8px; padding: 16px; margin-bottom:16px">
+              <div style="font-size:12px; color:var(--naval); font-weight:600; margin-bottom:10px">识别方法（Naval自己的测试）</div>
+              <ul style="padding-left:16px; font-size:13px; color:var(--text-secondary); line-height:2">
+                <li>如果有人能写一本书教别人做你做的事 → 那不是特定知识</li>
+                <li>如果你做这件事时觉得像在玩 → 接近了</li>
+                <li>如果你在这个领域的判断比大多数人好，但你说不清为什么 → 这就是</li>
+              </ul>
+            </div>
+            <div class="quote-block" style="border-color: var(--naval)">
+              "Society will pay you for creating things it wants. But society doesn't yet know how to create those things, because if it did, they wouldn't need you."
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.15s">
+          <div class="model-num">MODEL 03</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            欲望即合同 · Desire as Contract
+          </div>
+          <div class="model-oneliner">每一个欲望都是你跟不快乐签的合同——「只要我没得到X，我就不快乐」。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">来源：佛教（欲望是痛苦之源）+ 斯多葛主义（控制你能控制的）+ Naval的个人验证。</p>
+            <div class="quote-block" style="border-color: var(--naval); margin-bottom:16px">
+              "I try to keep my desires as few as possible. At any given time, I try to have only one desire."
+            </div>
+            <p style="margin-bottom:12px"><strong>应用方式：</strong></p>
+            <ul style="padding-left:20px; color: var(--text-secondary); font-size:14px; line-height:2">
+              <li>当你焦虑时 → 列出你当前所有欲望 → 焦虑来自欲望的并发冲突</li>
+              <li>当你做决策时 → 问「这个选择会增加还是减少我的欲望清单？」</li>
+              <li>当你追求目标时 → 检查你是在享受过程还是在忍受过程</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.20s">
+          <div class="model-num">MODEL 04</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            重新定义术 · Redefine the Word
+          </div>
+          <div class="model-oneliner">Naval最核心的思维策略：重新定义关键词，一旦接受了新定义，结论自动成立。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">这不只是修辞技巧，这是他思考的方式。他遇到任何问题，第一步不是回答，而是拆解和重新定义概念边界。</p>
+            <a href="#" onclick="switchTab('redefine', document.querySelectorAll('.tab-btn')[3]); return false;" style="display:inline-flex; align-items:center; gap:6px; color:var(--naval); font-size:13px; text-decoration:none;">
+              查看完整重新定义表 →
+            </a>
+          </div>
+        </div>
+
+        <div class="model-card card fade-in" style="animation-delay:0.25s">
+          <div class="model-num">MODEL 05</div>
+          <div class="model-title">
+            <span class="model-toggle">+</span>
+            痛苦→系统重构
+          </div>
+          <div class="model-oneliner">不修复个案，重构产生问题的系统。</div>
+          <div class="model-body">
+            <p style="margin-bottom:12px">这不是Naval说出来的理论，而是从他的行动记录中提炼的。</p>
+            <div style="display:grid; gap:8px; font-size:13px;">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="color:var(--naval); flex-shrink:0">→</span>
+                <span style="color:var(--text-secondary)">Epinions被VC欺骗（个人痛苦）→ 创建Venture Hacks教所有创始人防骗（系统解决）</span>
+              </div>
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="color:var(--naval); flex-shrink:0">→</span>
+                <span style="color:var(--text-secondary)">看到融资市场信息不对称 → 创建AngelList让融资透明化（系统解决）</span>
+              </div>
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="color:var(--naval); flex-shrink:0">→</span>
+                <span style="color:var(--text-secondary)">自己不快乐 → 系统性研究幸福并公开分享方法（系统解决）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 决策启发式 -->
+      <div id="tab-heuristics" class="tab-panel">
+        <div class="section-title">8 条决策启发式</div>
+        <div style="display:grid; gap:12px;">
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔓</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">1. 无需许可原则</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">如果一个机会需要某个权威的许可才能做 → 它的杠杆有限。优先选择无需许可的路径（写代码、做内容、建产品）。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">📅</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">2. 日历测试</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">如果你的日历被别人填满 → 你还不够「富有」。真正的财富是完全控制自己的时间。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🚫</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">3. 纠结即否定</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「If I can't decide, the answer is no.」如果在两个选择间纠结很久 → 选No。真正好的机会不会让你犹豫。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">📖</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">4. 手册测试</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">如果这份工作可以写成操作手册 → 它迟早会被自动化/AI化。选择需要判断力而非操作力的工作。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🏷️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">5. 党派测试</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">如果你对某个话题的所有观点都跟某个群体完全一致 → 你在模仿，不是在思考。给自己的身份标签越少越好。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔍</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">6. 欲望审计</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">当你焦虑时 → 审视欲望本身而非追逐目标。问：「这个欲望是我真正想要的，还是社会期望注入的？」</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔧</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">7. 创伤转化原则</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">面对不公正或重大挫折时 → 不妥协不沉沦。问：「这个痛苦能否转化为一个帮助所有人的系统性解决方案？」</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">👁️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">8. 行为优先原则</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">评估一个人（投资对象/合作伙伴）→ 看他们在压力下做了什么，不看他们平时说了什么。</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 金句库 -->
+      <div id="tab-quotes" class="tab-panel">
+        <div class="section-title">经典金句</div>
+
+        <div class="search-wrap" style="margin-bottom:24px">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="quote-search" placeholder="搜索金句...">
+        </div>
+
+        <div id="quotes-list">
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"Seek wealth, not money or status. Wealth is having assets that earn while you sleep."</div>
+            <div class="quote-meta">财富定义 · How to Get Rich</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"Code and media are permissionless leverage. They're the leverage behind the newly rich."</div>
+            <div class="quote-meta">杠杆思维 · 新时代财富</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"If I can't decide, the answer is no."</div>
+            <div class="quote-meta">决策原则 · 纠结即否定</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"Happiness is the absence of desire. It's the state you're in when nothing is missing."</div>
+            <div class="quote-meta">幸福定义 · 欲望管理</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"Retirement is when you stop sacrificing today for an imaginary tomorrow."</div>
+            <div class="quote-meta">退休重新定义 · 时间自由</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"The most important skill for getting rich is becoming a perpetual learner."</div>
+            <div class="quote-meta">学习方法 · 终身学习</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"Specific knowledge is knowledge that you cannot be trained for. If society can train you, it can train someone else and replace you."</div>
+            <div class="quote-meta">特定知识 · 不可替代性</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"We're just monkeys with a plan."</div>
+            <div class="quote-meta">冷幽默 · 自我降格</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"The enemy of peace of mind is expectations drilled into you by society and other people."</div>
+            <div class="quote-meta">内心平和 · 欲望来源</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--naval)">
+            <div class="quote-text">"Play long-term games with long-term people."</div>
+            <div class="quote-meta">关系选择 · 无限游戏</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 重新定义术 -->
+      <div id="tab-redefine" class="tab-panel">
+        <div class="section-title">重新定义术 · 完整对照表</div>
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; line-height:1.7">Naval最核心的思维+修辞策略：重新定义关键词，一旦接受了新定义，结论自动成立。他遇到任何问题，第一步不是回答，而是拆解和重新定义概念边界。</p>
+
+        <div class="card" style="overflow:hidden;">
+          <table class="redefine-table">
+            <thead>
+              <tr>
+                <th>概念</th>
+                <th>常规定义</th>
+                <th>Naval的重新定义</th>
+                <th>推导出的结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>财富</strong></td>
+                <td class="old">很多钱</td>
+                <td class="new">睡觉时也在赚的资产</td>
+                <td class="result">工资不是财富，资产才是</td>
+              </tr>
+              <tr>
+                <td><strong>退休</strong></td>
+                <td class="old">不工作</td>
+                <td class="new">只做想做的事</td>
+                <td class="result">他「已经退休了」即使还在创业</td>
+              </tr>
+              <tr>
+                <td><strong>运气</strong></td>
+                <td class="old">随机</td>
+                <td class="new">有4个层级（盲运→行动→准备→人格）</td>
+                <td class="result">你可以系统性地制造运气</td>
+              </tr>
+              <tr>
+                <td><strong>幸福</strong></td>
+                <td class="old">得到想要的</td>
+                <td class="new">没有欲望的状态</td>
+                <td class="result">减少欲望比实现欲望更有效</td>
+              </tr>
+              <tr>
+                <td><strong>竞争</strong></td>
+                <td class="old">赢过对手</td>
+                <td class="new">你在模仿别人的证据</td>
+                <td class="result">真正的赢是不竞争</td>
+              </tr>
+              <tr>
+                <td><strong>工作</strong></td>
+                <td class="old">用时间换钱</td>
+                <td class="new">建立可复制的系统</td>
+                <td class="result">时薪思维是陷阱</td>
+              </tr>
+              <tr>
+                <td><strong>学习</strong></td>
+                <td class="old">上课/读教材</td>
+                <td class="new">跟随好奇心，不按课程</td>
+                <td class="result">学校教不了特定知识</td>
+              </tr>
+              <tr>
+                <td><strong>自由</strong></td>
+                <td class="old">有钱/有权</td>
+                <td class="new">时间自由 > 财务自由 > 精神自由</td>
+                <td class="result">时间是最稀缺的资源</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside>
+
+      <!-- 身份卡 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">身份卡</div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <p style="margin-bottom:8px">AngelList联合创始人，天使投资人。</p>
+            <p style="margin-bottom:8px">纽约皇后区长大，印度移民家庭。Dartmouth读了计算机和经济学。1999年创办Epinions，被VC和联合创始人骗了。那次经历改变了他看世界的方式——不再修个案，开始重构系统。</p>
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border)">
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px">核心信念</div>
+            <div style="font-size:13px; color:var(--text-secondary); font-style:italic">「不靠运气变富有，不靠外部条件变快乐。」</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 智识谱系 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">影响了纳瓦尔的人</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(0,201,167,0.1); border-color:rgba(0,201,167,0.2)">🔬</div>
+            <div>
+              <div class="lineage-name">Richard Feynman</div>
+              <div class="lineage-desc">第一性原理，证伪主义</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(0,201,167,0.1); border-color:rgba(0,201,167,0.2)">🏛️</div>
+            <div>
+              <div class="lineage-name">Marcus Aurelius</div>
+              <div class="lineage-desc">斯多葛主义，内在平和</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(0,201,167,0.1); border-color:rgba(0,201,167,0.2)">🦁</div>
+            <div>
+              <div class="lineage-name">查理·芒格</div>
+              <div class="lineage-desc">多元思维模型，激励结构</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(0,201,167,0.1); border-color:rgba(0,201,167,0.2)">☯️</div>
+            <div>
+              <div class="lineage-name">Krishnamurti / 佛教</div>
+              <div class="lineage-desc">无选择觉知，欲望即苦</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 内在张力 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">内在张力（真实的矛盾）</div>
+        <div class="card" style="padding: 16px 20px; font-size:12px; color:var(--text-muted); line-height:1.7">
+          <p style="margin-bottom:8px">⚡ 「反身份标签」vs「Naval品牌」：他用反标签的姿态建立了一个新标签。</p>
+          <p style="margin-bottom:8px">⚡ 「远离政治」vs 实际政治表态：2024年公开力挺特定政治立场。</p>
+          <p>⚡ 「幸福是选择」vs 特权视角：从Dartmouth毕业、硅谷网络的位置说这话，语义不同。</p>
+        </div>
+      </div>
+
+      <!-- 相关人物 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">思想碰撞</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">纳瓦尔 vs 芒格</div>
+              <div style="font-size:12px; color:var(--text-muted)">如何定义财富</div>
+            </div>
+          </a>
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">纳瓦尔 vs 巴菲特</div>
+              <div style="font-size:12px; color:var(--text-muted)">如何对待竞争</div>
+            </div>
+          </a>
+        </div>
+</div>
+
+<!-- 核心概念 -->
+<div class="sidebar-section">
+<div class="sidebar-title">核心概念</div>
+<div style="display:flex;flex-direction:column;gap:6px;" id="naval-concepts-sidebar"></div>
+</div>
+
+<!-- 延伸阅读 -->
+<div class="sidebar-section">
+<div class="sidebar-title">延伸阅读</div>
+<div style="display:flex;flex-direction:column;gap:6px;" id="naval-books-sidebar"></div>
+</div>
+
+</aside>
+</div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// 渲染侧边栏核心概念
+(function() {
+  const navalConcepts = WV_CONCEPTS.filter(c => c.people.includes('naval'));
+  const el = document.getElementById('naval-concepts-sidebar');
+  if (!el) return;
+  el.innerHTML = navalConcepts.map(c => `
+    <a href="../concepts/${c.id}.html" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:12px;transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+      <span>${c.name}</span><span style="color:var(--text-muted);font-size:11px">${c.nameEn}</span>
+    </a>
+  `).join('');
+})();
+
+// 渲染侧边栏书单
+(function() {
+  const books = WV_ARTICLES.filter(a => a.person === 'naval' && a.type === 'book').slice(0, 4);
+  const el = document.getElementById('naval-books-sidebar');
+  if (!el) return;
+  el.innerHTML = books.map(b => `
+    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+    </div>
+  `).join('');
+})();
+</script>
+</body>
+</html>

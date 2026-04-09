@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语录库 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .library-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: calc(100vh - 56px);
+    }
+
+    /* ── 侧边栏 ── */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      padding: 28px 0;
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .sidebar-section {
+      padding: 0 20px;
+      margin-bottom: 28px;
+    }
+
+    .sidebar-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--font-sans);
+      transition: all 0.15s;
+      margin-bottom: 2px;
+    }
+
+    .filter-btn:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+    .filter-btn.active { background: rgba(255,255,255,0.07); color: var(--text-primary); }
+
+    .filter-btn .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .filter-btn .count {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    .filter-btn.active .count { color: var(--text-secondary); }
+
+    /* ── 主内容区 ── */
+    .main-content {
+      padding: 32px 40px 80px;
+    }
+
+    .content-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .content-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .result-count {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .search-bar:focus-within { border-color: var(--border-bright); }
+
+    .search-bar input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+    }
+
+    .search-bar input::placeholder { color: var(--text-muted); }
+
+    .search-icon { color: var(--text-muted); font-size: 14px; }
+
+    /* ── 语录卡片 ── */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    .quote-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .quote-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+
+    .quote-person {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .person-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .person-name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .quote-year {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .quote-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .quote-text-en {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .quote-source {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .quote-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .quote-tag {
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .quote-tag:hover { opacity: 0.7; }
+
+    .concept-link {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .concept-link:hover {
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+      opacity: 1;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon { font-size: 40px; margin-bottom: 16px; }
+    .empty-state p { font-size: 15px; }
+
+    @media (max-width: 768px) {
+      .library-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .main-content { padding: 24px 20px 60px; }
+      .quotes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo"><span class="dot"></span>Wisdom Vault</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../people/munger.html">芒格</a></li>
+    <li><a href="../people/naval.html">纳瓦尔</a></li>
+    <li><a href="../people/buffett.html">巴菲特</a></li>
+    <li><a href="index.html" class="active">语录库</a></li>
+    <li><a href="../articles/index.html">书单</a></li>
+    <li><a href="../concepts/index.html">概念</a></li>
+    <li><a href="../graph.html">图谱</a></li>
+  </ul>
+</nav>
+
+<div class="library-layout">
+
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">人物</div>
+      <button class="filter-btn active" onclick="filterBy('person','all',this)">
+        <span>全部</span>
+        <span class="count" id="count-all">36</span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('person','munger',this)">
+        <span class="dot" style="background:var(--munger)"></span>
+        <span>查理·芒格</span>
+        <span class="count" id="count-munger">12</span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('person','naval',this)">
+        <span class="dot" style="background:var(--naval)"></span>
+        <span>纳瓦尔</span>
+        <span class="count" id="count-naval">12</span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('person','buffett',this)">
+        <span class="dot" style="background:var(--buffett)"></span>
+        <span>沃伦·巴菲特</span>
+        <span class="count" id="count-buffett">12</span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">主题</div>
+      <button class="filter-btn" onclick="filterBy('tag','投资',this)">
+        <span>💰 投资</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','思维',this)">
+        <span>🧠 思维</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','学习',this)">
+        <span>📚 学习</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','财富',this)">
+        <span>✨ 财富</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','决策',this)">
+        <span>⚡ 决策</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','人生',this)">
+        <span>🌱 人生</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','心理',this)">
+        <span>🔮 心理</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','竞争',this)">
+        <span>🏆 竞争</span><span class="count"></span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">核心概念</div>
+      <button class="filter-btn" onclick="filterBy('concept','compounding',this)">
+        <span>复利</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('concept','moat',this)">
+        <span>护城河</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('concept','mental-models',this)">
+        <span>心智模型</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('concept','specific-knowledge',this)">
+        <span>特定知识</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('concept','wealth',this)">
+        <span>财富即自由</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('concept','long-term',this)">
+        <span>长期主义</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('concept','inversion',this)">
+        <span>逆向思考</span><span class="count"></span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main-content">
+    <div class="content-header">
+      <div class="content-title" id="section-title">全部语录</div>
+      <div class="result-count" id="result-count"></div>
+    </div>
+
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="搜索语录内容..." oninput="onSearch()">
+    </div>
+
+    <div class="quotes-grid" id="quotes-grid"></div>
+    <div class="empty-state" id="empty-state" style="display:none">
+      <div class="icon">🔍</div>
+      <p>没有找到匹配的语录</p>
+    </div>
+  </main>
+</div>
+
+<script src="../data/concepts.js"></script>
+<script src="../data/quotes.js"></script>
+<script>
+const PERSON_CONFIG = {
+  munger:  { name: '查理·芒格', emoji: '🦁', color: 'var(--munger)' },
+  naval:   { name: '纳瓦尔',    emoji: '⚡', color: 'var(--naval)'  },
+  buffett: { name: '沃伦·巴菲特', emoji: '🏛️', color: 'var(--buffett)' }
+};
+
+let currentFilter = { type: 'person', value: 'all' };
+let searchQuery = '';
+
+function getConceptName(id) {
+  const c = WV_CONCEPTS.find(c => c.id === id);
+  return c ? c.name : id;
+}
+
+function renderCard(q) {
+  const p = PERSON_CONFIG[q.person];
+  const conceptTags = (q.concepts || []).map(cid =>
+    `<a class="quote-tag concept-link" href="../concepts/${cid}.html">${getConceptName(cid)}</a>`
+  ).join('');
+
+  return `
+    <div class="quote-card" data-person="${q.person}" data-tags="${(q.tags||[]).join(',')}" data-concepts="${(q.concepts||[]).join(',')}">
+      <div class="quote-person">
+        <div class="person-avatar" style="background:${p.color}22; border:1px solid ${p.color}44">${p.emoji}</div>
+        <span class="person-name" style="color:${p.color}">${p.name}</span>
+        <span class="quote-year">${q.year}</span>
+      </div>
+      <div class="quote-text">"${q.text}"</div>
+      ${q.textEn ? `<div class="quote-text-en">"${q.textEn}"</div>` : ''}
+      <div class="quote-source">— ${q.source}</div>
+      <div class="quote-tags">${conceptTags}</div>
+    </div>
+  `;
+}
+
+function filterBy(type, value, btn) {
+  currentFilter = { type, value };
+  searchQuery = '';
+  document.getElementById('search-input').value = '';
+
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  render();
+}
+
+function onSearch() {
+  searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+  render();
+}
+
+function render() {
+  let filtered = WV_QUOTES;
+
+  // 人物/标签/概念筛选
+  if (currentFilter.type === 'person' && currentFilter.value !== 'all') {
+    filtered = filtered.filter(q => q.person === currentFilter.value);
+  } else if (currentFilter.type === 'tag') {
+    filtered = filtered.filter(q => (q.tags||[]).includes(currentFilter.value));
+  } else if (currentFilter.type === 'concept') {
+    filtered = filtered.filter(q => (q.concepts||[]).includes(currentFilter.value));
+  }
+
+  // 搜索
+  if (searchQuery) {
+    filtered = filtered.filter(q =>
+      q.text.toLowerCase().includes(searchQuery) ||
+      (q.textEn||'').toLowerCase().includes(searchQuery) ||
+      (q.source||'').toLowerCase().includes(searchQuery)
+    );
+  }
+
+  const grid = document.getElementById('quotes-grid');
+  const empty = document.getElementById('empty-state');
+  const countEl = document.getElementById('result-count');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    grid.innerHTML = filtered.map(renderCard).join('');
+    empty.style.display = 'none';
+  }
+
+  countEl.textContent = `${filtered.length} 条语录`;
+
+  // 更新标题
+  const titleEl = document.getElementById('section-title');
+  if (currentFilter.type === 'person' && currentFilter.value !== 'all') {
+    titleEl.textContent = PERSON_CONFIG[currentFilter.value].name + ' · 语录';
+  } else if (currentFilter.type === 'tag') {
+    titleEl.textContent = currentFilter.value + ' · 语录';
+  } else if (currentFilter.type === 'concept') {
+    titleEl.textContent = getConceptName(currentFilter.value) + ' · 语录';
+  } else {
+    titleEl.textContent = '全部语录';
+  }
+}
+
+// 更新侧边栏计数
+function updateCounts() {
+  ['munger','naval','buffett'].forEach(p => {
+    const el = document.getElementById('count-' + p);
+    if (el) el.textContent = WV_QUOTES.filter(q => q.person === p).length;
+  });
+  document.getElementById('count-all').textContent = WV_QUOTES.length;
+}
+
+// 初始化
+updateCounts();
+render();
+</script>
+</body>
+</html>

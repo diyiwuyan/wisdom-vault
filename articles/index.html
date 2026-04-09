@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>书单与文章 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .library-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: calc(100vh - 56px);
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--border);
+      padding: 28px 0;
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .sidebar-section { padding: 0 20px; margin-bottom: 28px; }
+
+    .sidebar-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--font-sans);
+      transition: all 0.15s;
+      margin-bottom: 2px;
+    }
+
+    .filter-btn:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+    .filter-btn.active { background: rgba(255,255,255,0.07); color: var(--text-primary); }
+
+    .filter-btn .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .filter-btn .count {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    .main-content { padding: 32px 40px 80px; }
+
+    .content-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .content-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+    .result-count { font-size: 13px; color: var(--text-muted); }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .search-bar:focus-within { border-color: var(--border-bright); }
+
+    .search-bar input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+    }
+
+    .search-bar input::placeholder { color: var(--text-muted); }
+
+    /* ── 书单卡片 ── */
+    .articles-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .article-card {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 16px;
+      align-items: start;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .article-card:hover { border-color: var(--border-bright); }
+
+    .article-icon {
+      width: 56px; height: 56px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .article-body { min-width: 0; }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .article-type-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .badge-book { background: rgba(240,165,0,0.1); color: var(--munger); }
+    .badge-article { background: rgba(0,201,167,0.1); color: var(--naval); }
+
+    .article-person {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .article-year { font-size: 11px; color: var(--text-muted); }
+
+    .article-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .article-title-en {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .article-author {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .article-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .article-concepts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .concept-chip {
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .concept-chip:hover {
+      border-color: var(--border-bright);
+      color: var(--text-secondary);
+    }
+
+    .article-action {
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-link:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+    }
+
+    .must-read-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--buffett);
+      background: rgba(224,92,92,0.08);
+      border: 1px solid rgba(224,92,92,0.2);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .library-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .main-content { padding: 24px 20px 60px; }
+      .article-card { grid-template-columns: 1fr; }
+      .article-icon { display: none; }
+      .article-action { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo"><span class="dot"></span>Wisdom Vault</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../people/munger.html">芒格</a></li>
+    <li><a href="../people/naval.html">纳瓦尔</a></li>
+    <li><a href="../people/buffett.html">巴菲特</a></li>
+    <li><a href="../quotes/index.html">语录库</a></li>
+    <li><a href="index.html" class="active">书单</a></li>
+    <li><a href="../concepts/index.html">概念</a></li>
+    <li><a href="../graph.html">图谱</a></li>
+  </ul>
+</nav>
+
+<div class="library-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">类型</div>
+      <button class="filter-btn active" onclick="filterBy('type','all',this)">
+        <span>全部</span><span class="count" id="count-all"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('type','book',this)">
+        <span>📚 书籍</span><span class="count" id="count-book"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('type','article',this)">
+        <span>📄 文章/演讲</span><span class="count" id="count-article"></span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">人物</div>
+      <button class="filter-btn" onclick="filterBy('person','munger',this)">
+        <span class="dot" style="background:var(--munger)"></span>
+        <span>芒格推荐</span><span class="count" id="count-munger"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('person','naval',this)">
+        <span class="dot" style="background:var(--naval)"></span>
+        <span>纳瓦尔推荐</span><span class="count" id="count-naval"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('person','buffett',this)">
+        <span class="dot" style="background:var(--buffett)"></span>
+        <span>巴菲特推荐</span><span class="count" id="count-buffett"></span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">标签</div>
+      <button class="filter-btn" onclick="filterBy('tag','必读',this)">
+        <span>⭐ 必读</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','投资',this)">
+        <span>💰 投资</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','思维',this)">
+        <span>🧠 思维</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','心理',this)">
+        <span>🔮 心理</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','哲学',this)">
+        <span>🌿 哲学</span><span class="count"></span>
+      </button>
+      <button class="filter-btn" onclick="filterBy('tag','传记',this)">
+        <span>👤 传记</span><span class="count"></span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="content-header">
+      <div class="content-title" id="section-title">书单与文章</div>
+      <div class="result-count" id="result-count"></div>
+    </div>
+
+    <div class="search-bar">
+      <span>🔍</span>
+      <input type="text" id="search-input" placeholder="搜索书名、作者或描述..." oninput="onSearch()">
+    </div>
+
+    <div class="articles-list" id="articles-list"></div>
+    <div class="empty-state" id="empty-state" style="display:none">
+      <div style="font-size:40px;margin-bottom:16px">📚</div>
+      <p style="color:var(--text-muted)">没有找到匹配的内容</p>
+    </div>
+  </main>
+</div>
+
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+const PERSON_CONFIG = {
+  munger:  { name: '芒格推荐', color: 'var(--munger)' },
+  naval:   { name: '纳瓦尔推荐', color: 'var(--naval)' },
+  buffett: { name: '巴菲特推荐', color: 'var(--buffett)' }
+};
+
+const TYPE_ICONS = {
+  book: '📚',
+  article: '📄'
+};
+
+const TYPE_COLORS = {
+  book: 'rgba(240,165,0,0.08)',
+  article: 'rgba(0,201,167,0.08)'
+};
+
+let currentFilter = { type: 'type', value: 'all' };
+let searchQuery = '';
+
+function getConceptName(id) {
+  const c = WV_CONCEPTS.find(c => c.id === id);
+  return c ? c.name : id;
+}
+
+function renderCard(a) {
+  const p = PERSON_CONFIG[a.person];
+  const isMustRead = (a.tags||[]).includes('必读');
+  const conceptChips = (a.concepts||[]).map(cid =>
+    `<a class="concept-chip" href="../concepts/${cid}.html">${getConceptName(cid)}</a>`
+  ).join('');
+
+  const actionBtn = a.url
+    ? `<a class="btn-link" href="${a.url}" target="_blank">阅读原文 →</a>`
+    : `<span class="btn-link" style="opacity:0.4;cursor:default">暂无链接</span>`;
+
+  return `
+    <div class="article-card">
+      <div class="article-icon" style="background:${TYPE_COLORS[a.type] || 'rgba(255,255,255,0.04)'}">
+        ${TYPE_ICONS[a.type] || '📄'}
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-type-badge ${a.type === 'book' ? 'badge-book' : 'badge-article'}">
+            ${a.type === 'book' ? '书籍' : '文章'}
+          </span>
+          <span class="article-person" style="color:${p.color}">${p.name}</span>
+          <span class="article-year">${a.year}</span>
+          ${isMustRead ? '<span class="must-read-badge">⭐ 必读</span>' : ''}
+        </div>
+        <div class="article-title">${a.title}</div>
+        ${a.titleEn ? `<div class="article-title-en">${a.titleEn}</div>` : ''}
+        <div class="article-author">作者：${a.author}</div>
+        <div class="article-desc">${a.desc}</div>
+        <div class="article-concepts">${conceptChips}</div>
+      </div>
+      <div class="article-action">${actionBtn}</div>
+    </div>
+  `;
+}
+
+function filterBy(type, value, btn) {
+  currentFilter = { type, value };
+  searchQuery = '';
+  document.getElementById('search-input').value = '';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function onSearch() {
+  searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+  render();
+}
+
+function render() {
+  let filtered = WV_ARTICLES;
+
+  if (currentFilter.type === 'type' && currentFilter.value !== 'all') {
+    filtered = filtered.filter(a => a.type === currentFilter.value);
+  } else if (currentFilter.type === 'person') {
+    filtered = filtered.filter(a => a.person === currentFilter.value);
+  } else if (currentFilter.type === 'tag') {
+    filtered = filtered.filter(a => (a.tags||[]).includes(currentFilter.value));
+  }
+
+  if (searchQuery) {
+    filtered = filtered.filter(a =>
+      a.title.toLowerCase().includes(searchQuery) ||
+      (a.titleEn||'').toLowerCase().includes(searchQuery) ||
+      a.author.toLowerCase().includes(searchQuery) ||
+      a.desc.toLowerCase().includes(searchQuery)
+    );
+  }
+
+  const list = document.getElementById('articles-list');
+  const empty = document.getElementById('empty-state');
+  const countEl = document.getElementById('result-count');
+
+  if (filtered.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    list.innerHTML = filtered.map(renderCard).join('');
+    empty.style.display = 'none';
+  }
+
+  countEl.textContent = `${filtered.length} 项`;
+
+  const titleEl = document.getElementById('section-title');
+  if (currentFilter.type === 'person') {
+    titleEl.textContent = PERSON_CONFIG[currentFilter.value].name + ' · 书单';
+  } else if (currentFilter.type === 'tag') {
+    titleEl.textContent = currentFilter.value + ' · 书单';
+  } else if (currentFilter.value === 'book') {
+    titleEl.textContent = '推荐书单';
+  } else if (currentFilter.value === 'article') {
+    titleEl.textContent = '文章与演讲';
+  } else {
+    titleEl.textContent = '书单与文章';
+  }
+}
+
+function updateCounts() {
+  document.getElementById('count-all').textContent = WV_ARTICLES.length;
+  document.getElementById('count-book').textContent = WV_ARTICLES.filter(a => a.type === 'book').length;
+  document.getElementById('count-article').textContent = WV_ARTICLES.filter(a => a.type === 'article').length;
+  ['munger','naval','buffett'].forEach(p => {
+    const el = document.getElementById('count-' + p);
+    if (el) el.textContent = WV_ARTICLES.filter(a => a.person === p).length;
+  });
+}
+
+updateCounts();
+render();
+</script>
+</body>
+</html>

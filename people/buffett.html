@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>沃伦·巴菲特 · 大神认知知识库</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .buffett-hero {
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(224,92,92,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(224,92,92,0.06) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--buffett);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(224,92,92,0.2);
+    }
+
+    .concept-card {
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--buffett);
+    }
+
+    .concept-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--buffett);
+    }
+
+    .concept-def {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .concept-quote {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px; top: 8px; bottom: 8px;
+      width: 1px;
+      background: rgba(224,92,92,0.2);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -20px; top: 6px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--buffett);
+      opacity: 0.6;
+    }
+
+    .timeline-year {
+      font-size: 11px;
+      color: var(--buffett);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .timeline-event {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--buffett); border-bottom-color: var(--buffett); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="dot"></span>
+    Wisdom Vault
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="munger.html">芒格</a></li>
+    <li><a href="naval.html">纳瓦尔</a></li>
+<li><a href="buffett.html" class="active">巴菲特</a></li>
+<li><a href="musk.html">马斯克</a></li>
+<li><a href="jobs.html">乔布斯</a></li>
+<li><a href="taleb.html">塔勒布</a></li>
+<li><a href="../collision/index.html">思想碰撞</a></li>
+    <li><a href="../graph.html">知识图谱</a></li>
+<li><a href="search.html" class="nav-search-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>搜索</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- 英雄区 -->
+  <div class="person-hero buffett-hero">
+    <div class="person-hero-content fade-in">
+      <div class="person-avatar" style="border-color: var(--buffett); color: var(--buffett)">🏛️</div>
+      <div class="person-name" style="color: var(--buffett)">沃伦·巴菲特</div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.05em">Warren Buffett · 奥马哈先知 · 1930–</div>
+      <div class="person-tagline">
+        "Rule No.1: Never lose money. Rule No.2: Never forget rule No.1."
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <span class="tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">价值投资</span>
+        <span class="tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">护城河</span>
+        <span class="tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">复利</span>
+        <span class="tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">能力圈</span>
+        <span class="tag" style="color: var(--buffett); border-color: rgba(224,92,92,0.3)">长期持有</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content-grid">
+
+    <!-- 主栏 -->
+    <div>
+
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('concepts', this)">核心概念</button>
+        <button class="tab-btn" onclick="switchTab('principles', this)">投资原则</button>
+        <button class="tab-btn" onclick="switchTab('quotes', this)">金句库</button>
+        <button class="tab-btn" onclick="switchTab('evolution', this)">思想演变</button>
+      </div>
+
+      <!-- 核心概念 -->
+      <div id="tab-concepts" class="tab-panel active">
+        <div class="section-title">8 个核心投资概念</div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.05s">
+          <div class="concept-name">护城河 · Economic Moat</div>
+          <div class="concept-def">企业持续竞争优势的来源。护城河越宽，企业抵御竞争的能力越强，长期盈利能力越稳定。护城河的来源包括：品牌、网络效应、成本优势、转换成本、规模经济。</div>
+          <div class="concept-quote">"In business, I look for economic castles protected by unbreachable moats."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.10s">
+          <div class="concept-name">内在价值 · Intrinsic Value</div>
+          <div class="concept-def">一家企业在其剩余寿命中可以产生的现金流的折现值。这是价值投资的核心概念——当市场价格低于内在价值时，存在安全边际，值得买入。</div>
+          <div class="concept-quote">"Price is what you pay. Value is what you get."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.15s">
+          <div class="concept-name">复利 · Compounding</div>
+          <div class="concept-def">时间是复利的朋友。巴菲特99%的财富是在他50岁之后积累的。复利的关键不是找到最高收益率，而是找到足够好的收益率，然后让时间做剩下的事。</div>
+          <div class="concept-quote">"My wealth has come from a combination of living in America, some lucky genes, and compound interest."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.20s">
+          <div class="concept-name">能力圈 · Circle of Competence</div>
+          <div class="concept-def">只在自己真正理解的领域做投资决策。能力圈的大小不重要，重要的是清楚地知道边界在哪里。在能力圈内的机会，才值得深入研究。</div>
+          <div class="concept-quote">"Risk comes from not knowing what you're doing."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.25s">
+          <div class="concept-name">市场先生 · Mr. Market</div>
+          <div class="concept-def">本杰明·格雷厄姆的比喻，被巴菲特发扬光大。市场先生每天都会给你报价，有时候他情绪高涨，有时候他悲观绝望。你可以利用他的情绪，但不要被他的情绪左右。</div>
+          <div class="concept-quote">"Be fearful when others are greedy, and greedy when others are fearful."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.30s">
+          <div class="concept-name">安全边际 · Margin of Safety</div>
+          <div class="concept-def">以低于内在价值的价格买入，为判断错误留出缓冲空间。安全边际越大，投资越安全。这是价值投资最重要的风险控制工具。</div>
+          <div class="concept-quote">"The three most important words in investing are margin of safety."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.35s">
+          <div class="concept-name">资本配置 · Capital Allocation</div>
+          <div class="concept-def">CEO最重要的工作是决定如何分配公司产生的现金流——再投资、收购、回购、分红。资本配置能力是区分优秀管理层和平庸管理层的核心标准。</div>
+          <div class="concept-quote">"The job of the CEO is to allocate capital. That's the most important thing they do."</div>
+        </div>
+
+        <div class="concept-card card fade-in" style="animation-delay:0.40s">
+          <div class="concept-name">管理层品质 · Management Quality</div>
+          <div class="concept-def">巴菲特寻找三种品质的管理层：聪明、勤奋、诚实。但如果没有诚实，前两者反而会害了你。他更愿意投资于不需要他介入的优秀管理层。</div>
+          <div class="concept-quote">"When you look for a manager, you look for three qualities: integrity, intelligence, and energy. But if they don't have the first, the other two will kill you."</div>
+        </div>
+
+      </div>
+
+      <!-- 投资原则 -->
+      <div id="tab-principles" class="tab-panel">
+        <div class="section-title">巴菲特的投资原则</div>
+
+        <div style="display:grid; gap:12px;">
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🛡️</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">第一条：永远不要亏钱</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「Rule No.1: Never lose money. Rule No.2: Never forget rule No.1.」亏损50%需要100%的收益才能回本。保护本金比追求高收益更重要。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🎯</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">只打甜蜜区的球</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">棒球打者必须挥棒，但投资者可以等待。只在最有把握的机会出手，不需要每个球都打。等待是投资者最大的优势。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">「The stock market is a no-called-strike game. You don't have to swing at everything.」</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🏰</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">买好公司，不买便宜货</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">受芒格影响，从格雷厄姆的「烟蒂股」策略转向「以合理价格买优秀公司」。一家优秀公司的长期回报，远超一家便宜但平庸的公司。</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:8px">「It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price.」</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">⏰</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">最喜欢的持有期是永远</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「Our favorite holding period is forever.」长期持有优秀公司，让复利发挥作用。频繁交易是财富的敌人，不是朋友。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🌊</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">别人恐惧时贪婪</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">「Be fearful when others are greedy, and greedy when others are fearful.」市场情绪是你的朋友，不是你的向导。在市场恐慌时，往往是最好的买入机会。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:20px 24px;">
+            <div style="display:flex; align-items:flex-start; gap:16px;">
+              <div style="font-size:24px; flex-shrink:0">🔍</div>
+              <div>
+                <div style="font-weight:600; margin-bottom:6px">理解你投资的东西</div>
+                <div style="font-size:14px; color:var(--text-secondary); line-height:1.7">如果你不能用简单的语言解释一家公司如何赚钱，你就不应该投资它。巴菲特长期回避科技股，正是因为他承认自己不理解这个行业。</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 金句库 -->
+      <div id="tab-quotes" class="tab-panel">
+        <div class="section-title">经典金句</div>
+
+        <div class="search-wrap" style="margin-bottom:24px">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="quote-search" placeholder="搜索金句...">
+        </div>
+
+        <div id="quotes-list">
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"Rule No.1: Never lose money. Rule No.2: Never forget rule No.1."</div>
+            <div class="quote-meta">投资第一原则 · 保护本金</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"Be fearful when others are greedy, and greedy when others are fearful."</div>
+            <div class="quote-meta">市场情绪 · 逆向投资</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"Price is what you pay. Value is what you get."</div>
+            <div class="quote-meta">价值投资核心 · 内在价值</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."</div>
+            <div class="quote-meta">投资哲学转变 · 受芒格影响</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"Our favorite holding period is forever."</div>
+            <div class="quote-meta">长期持有 · 复利哲学</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"The stock market is a device for transferring money from the impatient to the patient."</div>
+            <div class="quote-meta">耐心 · 市场本质</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"Someone's sitting in the shade today because someone planted a tree a long time ago."</div>
+            <div class="quote-meta">复利 · 长期思维</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"Risk comes from not knowing what you're doing."</div>
+            <div class="quote-meta">能力圈 · 风险定义</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"It takes 20 years to build a reputation and five minutes to ruin it."</div>
+            <div class="quote-meta">诚信 · 声誉管理</div>
+          </div>
+
+          <div class="quote-card card" style="border-left-color: var(--buffett)">
+            <div class="quote-text">"The best investment you can make is in yourself."</div>
+            <div class="quote-meta">自我投资 · 人生建议</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 思想演变 -->
+      <div id="tab-evolution" class="tab-panel">
+        <div class="section-title">思想演变时间线</div>
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:24px; line-height:1.7">巴菲特的投资哲学不是一成不变的。从格雷厄姆的学生到超越老师，这个演变过程本身就是最有价值的内容。</p>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-year">1950s · 格雷厄姆时代</div>
+            <div class="timeline-event">师从本杰明·格雷厄姆，学习「烟蒂股」策略——以极低价格买入被严重低估的公司，等待价值回归后卖出。这是纯粹的统计套利，不关心公司质量。</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1959 · 遇见芒格</div>
+            <div class="timeline-event">在奥马哈的一次晚宴上遇见查理·芒格。芒格开始影响他的思维方式，引入跨学科思考和「买优秀公司」的理念。</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1972 · 喜诗糖果转折点</div>
+            <div class="timeline-event">以2500万美元收购喜诗糖果——这是他第一次为「品质」支付溢价。这笔投资最终带来了超过20亿美元的利润，彻底改变了他的投资哲学。</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1988 · 可口可乐</div>
+            <div class="timeline-event">以10亿美元买入可口可乐，占伯克希尔资产的25%。这是他「集中投资优秀品牌」哲学的最完整体现。</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2016 · 苹果</div>
+            <div class="timeline-event">开始大量买入苹果股票，最终持仓超过1500亿美元。这标志着他对「消费者生态系统」护城河的理解，突破了传统价值投资的边界。</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2023 · 芒格离世</div>
+            <div class="timeline-event">查理·芒格于2023年11月28日辞世，享年99岁。巴菲特在2024年股东信中写道：「伯克希尔的建筑师是查理，我只是按照他的蓝图建造。」</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside>
+
+      <!-- 身份卡 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">身份卡</div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size:13px; color:var(--text-secondary); line-height:1.8">
+            <p style="margin-bottom:8px">伯克希尔·哈撒韦董事长兼CEO，奥马哈先知。</p>
+            <p style="margin-bottom:8px">1930年生于奥马哈，11岁买入第一只股票。哥伦比亚大学师从本杰明·格雷厄姆，1956年创立巴菲特合伙公司。</p>
+            <p>70年投资生涯，年化收益率约20%，是标普500的两倍。</p>
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border)">
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px">核心信念</div>
+            <div style="font-size:13px; color:var(--text-secondary); font-style:italic">「以合理价格买优秀公司，然后永远持有。」</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 关键数字 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">关键数字</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; text-align:center;">
+            <div>
+              <div style="font-size:24px; font-weight:700; color:var(--buffett)">~20%</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px">年化收益率</div>
+            </div>
+            <div>
+              <div style="font-size:24px; font-weight:700; color:var(--buffett)">70年</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px">投资生涯</div>
+            </div>
+            <div>
+              <div style="font-size:24px; font-weight:700; color:var(--buffett)">98封</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px">股东信</div>
+            </div>
+            <div>
+              <div style="font-size:24px; font-weight:700; color:var(--buffett)">99%</div>
+              <div style="font-size:11px; color:var(--text-muted); margin-top:4px">财富在50岁后</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 智识谱系 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">影响了巴菲特的人</div>
+        <div class="card" style="padding: 16px 20px;">
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(224,92,92,0.1); border-color:rgba(224,92,92,0.2)">📚</div>
+            <div>
+              <div class="lineage-name">本杰明·格雷厄姆</div>
+              <div class="lineage-desc">价值投资之父，安全边际概念</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(224,92,92,0.1); border-color:rgba(224,92,92,0.2)">🦁</div>
+            <div>
+              <div class="lineage-name">查理·芒格</div>
+              <div class="lineage-desc">从烟蒂股到优质公司的转变</div>
+            </div>
+          </div>
+          <div class="lineage-item">
+            <div class="lineage-avatar" style="background:rgba(224,92,92,0.1); border-color:rgba(224,92,92,0.2)">📈</div>
+            <div>
+              <div class="lineage-name">菲利普·费雪</div>
+              <div class="lineage-desc">成长股投资，管理层质量评估</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 相关人物 -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">思想碰撞</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">巴菲特 vs 芒格</div>
+              <div style="font-size:12px; color:var(--text-muted)">什么是好的投资</div>
+            </div>
+          </a>
+          <a href="../collision/index.html" class="card" style="padding:14px 16px; text-decoration:none; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:20px">⚡</span>
+            <div>
+              <div style="font-size:13px; font-weight:500">巴菲特 vs 纳瓦尔</div>
+              <div style="font-size:12px; color:var(--text-muted)">如何定义财富</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+<!-- 核心概念 -->
+<div class="sidebar-section">
+<div class="sidebar-title">核心概念</div>
+<div style="display:flex;flex-direction:column;gap:6px;" id="buffett-concepts-sidebar"></div>
+</div>
+
+<!-- 延伸阅读 -->
+<div class="sidebar-section">
+<div class="sidebar-title">延伸阅读</div>
+<div style="display:flex;flex-direction:column;gap:6px;" id="buffett-books-sidebar"></div>
+</div>
+
+    </aside>
+  </div>
+
+</main>
+
+<footer>
+  <p>大神认知知识库 · Wisdom Vault &nbsp;·&nbsp; 基于公开信息整理，仅供学习参考</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../data/concepts.js"></script>
+<script src="../data/articles.js"></script>
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// 渲染侧边栏核心概念
+(function() {
+  const buffettConcepts = WV_CONCEPTS.filter(c => c.people.includes('buffett'));
+  const el = document.getElementById('buffett-concepts-sidebar');
+  if (!el) return;
+  el.innerHTML = buffettConcepts.map(c => `
+    <a href="../concepts/${c.id}.html" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:12px;transition:all 0.15s" onmouseover="this.style.borderColor='var(--border-bright)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+      <span>${c.name}</span><span style="color:var(--text-muted);font-size:11px">${c.nameEn}</span>
+    </a>
+  `).join('');
+})();
+
+// 渲染侧边栏书单
+(function() {
+  const books = WV_ARTICLES.filter(a => a.person === 'buffett' && a.type === 'book').slice(0, 4);
+  const el = document.getElementById('buffett-books-sidebar');
+  if (!el) return;
+  el.innerHTML = books.map(b => `
+    <div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px">${b.title}</div>
+      <div style="font-size:11px;color:var(--text-muted)">${b.author}</div>
+    </div>
+  `).join('');
+})();
+</script>
+</body>
+</html>
